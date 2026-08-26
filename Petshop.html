@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Paws & Play — Love, Care & Happy Tails</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0" rel="stylesheet">
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                cream: "#FFF9F1",
+                peach: "#FFE7D6",
+                peachDark: "#F6B895",
+                teal: "#087F82",
+                tealDark: "#056568",
+                mint: "#DDF5F0",
+                brown: "#4B3A32",
+                soft: "#F7F2EC",
+                pink: "#FFD9E4",
+                yellow: "#FFE9A8"
+            },
+
+            fontFamily: {
+                display: ["Fredoka", "sans-serif"],
+                body: ["DM Sans", "sans-serif"]
+            },
+
+            boxShadow: {
+                cute: "0 18px 50px rgba(75,58,50,.10)",
+                soft: "0 8px 30px rgba(75,58,50,.08)"
+            }
+        }
+    }
+}
+</script>
+
+<style>
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #FFF9F1;
+    color: #4B3A32;
+}
+
+.font-display {
+    font-family: "Fredoka", sans-serif;
+}
+
+::selection {
+    background: #DDF5F0;
+    color: #056568;
+}
+
+/* -------------------------
+   Cute decorations
+------------------------- */
+
+.paw {
+    position: absolute;
+    color: #087F82;
+    opacity: .10;
+    pointer-events: none;
+    user-select: none;
+}
+
+.float {
+    animation: float 5s ease-in-out infinite;
+}
+
+.float2 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.float3 {
+    animation: float 7s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+}
+
+/* -------------------------
+   Hero blobs
+------------------------- */
+
+.blob {
+    border-radius: 48% 52% 62% 38% / 45% 42% 58% 55%;
+}
+
+.hero-image {
+    transition: transform .7s ease;
+}
+
+.hero-card:hover .hero-image {
+    transform: scale(1.04);
+}
+
+/* -------------------------
+   Cards
+------------------------- */
+
+.pet-card {
+    transition: all .35s ease;
+}
+
+.pet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(75,58,50,.13);
+}
+
+/* -------------------------
+   Product
+------------------------- */
+
+.product-card {
+    transition: .35s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 45px rgba(75,58,50,.12);
+}
+
+.product-image {
+    transition: transform .5s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.07);
+}
+
+/* -------------------------
+   Buttons
+------------------------- */
+
+.btn {
+    transition: all .25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: scale(.97);
+}
+
+/* -------------------------
+   Modal
+------------------------- */
+
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-box {
+    transform: translateY(25px) scale(.97);
+    transition: .3s ease;
+}
+
+.modal.active .modal-box {
+    transform: translateY(0) scale(1);
+}
+
+/* -------------------------
+   Cart
+------------------------- */
+
+.cart-drawer {
+    transform: translateX(100%);
+    transition: .35s ease;
+}
+
+.cart-drawer.active {
+    transform: translateX(0);
+}
+
+/* -------------------------
+   Mobile menu
+------------------------- */
+
+.mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+}
+
+.mobile-menu.active {
+    max-height: 500px;
+}
+
+/* -------------------------
+   Scroll reveal
+------------------------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -------------------------
+   Hide scrollbar
+------------------------- */
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    scrollbar-width: none;
+}
+
+/* -------------------------
+   Heart
+------------------------- */
+
+.heart.active {
+    color: #e96d8b;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     TOP ANNOUNCEMENT
+========================================================= -->
+
+<div class="bg-teal text-white text-center text-sm py-2 px-4">
+    🐾 Free delivery on orders over $50 · Because happy pets deserve happy shopping! 💕
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav class="sticky top-0 z-50 bg-cream/95 backdrop-blur-md border-b border-[#eadfd4]">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="h-20 flex items-center justify-between">
+
+            <!-- Logo -->
+
+            <a href="#" class="flex items-center gap-3">
+
+                <div class="w-12 h-12 rounded-2xl bg-peach flex items-center justify-center text-2xl">
+                    🐾
+                </div>
+
+                <div>
+                    <div class="font-display text-2xl font-bold text-teal">
+                        Paws & Play
+                    </div>
+
+                    <div class="text-[11px] text-brown/60 font-semibold tracking-wide">
+                        LOVE • CARE • PLAY
+                    </div>
+                </div>
+
+            </a>
+
+
+            <!-- Desktop nav -->
+
+            <div class="hidden lg:flex items-center gap-8">
+
+                <a href="#" class="font-semibold text-teal">
+                    Home
+                </a>
+
+                <a href="#services" class="font-medium hover:text-teal transition">
+                    Services
+                </a>
+
+                <a href="#shop" class="font-medium hover:text-teal transition">
+                    Shop
+                </a>
+
+                <a href="#story" class="font-medium hover:text-teal transition">
+                    Our Story
+                </a>
+
+                <a href="#reviews" class="font-medium hover:text-teal transition">
+                    Reviews
+                </a>
+
+                <a href="#contact" class="font-medium hover:text-teal transition">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- Actions -->
+
+            <div class="flex items-center gap-2">
+
+                <button
+                    onclick="openCart()"
+                    class="relative w-11 h-11 rounded-full bg-white border border-[#eadfd4] flex items-center justify-center hover:bg-mint transition">
+
+                    <span class="material-symbols-rounded">
+                        shopping_bag
+                    </span>
+
+                    <span
+                        id="cartCount"
+                        class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-teal text-white text-[10px] font-bold flex items-center justify-center">
+                        0
+                    </span>
+
+                </button>
+
+
+                <button
+                    onclick="openBooking()"
+                    class="hidden sm:flex btn bg-teal hover:bg-tealDark text-white px-5 py-3 rounded-full font-bold">
+
+                    Book a Visit
+                    <span class="ml-1">🐶</span>
+
+                </button>
+
+
+                <!-- Mobile -->
+
+                <button
+                    onclick="toggleMobileMenu()"
+                    class="lg:hidden w-11 h-11 rounded-full bg-white border border-[#eadfd4] flex items-center justify-center">
+
+                    <span class="material-symbols-rounded">
+                        menu
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Mobile menu -->
+
+        <div id="mobileMenu" class="mobile-menu lg:hidden">
+
+            <div class="py-5 border-t border-[#eadfd4] flex flex-col gap-4">
+
+                <a onclick="closeMobileMenu()" href="#" class="font-semibold">
+                    Home
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#services">
+                    Services
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#shop">
+                    Shop
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#story">
+                    Our Story
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#reviews">
+                    Reviews
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#contact">
+                    Contact
+                </a>
+
+                <button
+                    onclick="openBooking();closeMobileMenu()"
+                    class="bg-teal text-white rounded-full py-3 font-bold">
+                    Book a Visit 🐾
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="relative overflow-hidden">
+
+    <div class="absolute inset-0 bg-gradient-to-br from-peach/60 via-cream to-mint/60"></div>
+
+
+    <!-- Decorations -->
+
+    <span class="paw text-8xl left-[5%] top-20 rotate-[-20deg] float">
+        🐾
+    </span>
+
+    <span class="paw text-6xl right-[8%] top-32 rotate-[20deg] float2">
+        🐾
+    </span>
+
+    <span class="paw text-5xl left-[45%] bottom-20 rotate-[15deg] float3">
+        🐾
+    </span>
+
+
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-24">
+
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+
+            <!-- Copy -->
+
+            <div class="reveal">
+
+                <div class="inline-flex items-center gap-2 bg-white/80 border border-[#eadfd4] px-4 py-2 rounded-full mb-6 shadow-soft">
+
+                    <span class="text-xl">🐾</span>
+
+                    <span class="text-sm font-bold text-teal">
+                        A little happiness for every furry friend
+                    </span>
+
+                </div>
+
+
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.02] font-bold text-brown">
+
+                    Where every
+                    <span class="text-teal">
+                        wag
+                    </span>
+
+                    <br>
+
+                    &
+
+                    <span class="text-[#D98967]">
+                        purr
+                    </span>
+
+                    matters. 💕
+
+                </h1>
+
+
+                <p class="mt-7 text-lg lg:text-xl leading-8 text-brown/70 max-w-xl">
+
+                    From cozy cuddles to fresh grooming and carefully chosen goodies,
+                    we make pet care feel like a warm hug.
+
+                </p>
+
+
+                <div class="flex flex-col sm:flex-row gap-4 mt-8">
+
+                    <button
+                        onclick="openBooking()"
+                        class="btn bg-teal hover:bg-tealDark text-white px-7 py-4 rounded-full font-bold shadow-cute">
+
+                        Book Grooming
+
+                        <span class="ml-2">
+                            ✨
+                        </span>
+
+                    </button>
+
+
+                    <a
+                        href="#shop"
+                        class="btn bg-white hover:bg-mint border border-[#eadfd4] px-7 py-4 rounded-full font-bold text-teal text-center">
+
+                        Shop Happy Things 🛍️
+
+                    </a>
+
+                </div>
+
+
+                <!-- Trust -->
+
+                <div class="flex flex-wrap items-center gap-5 mt-9">
+
+                    <div class="flex -space-x-3">
+
+                        <img
+                            class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                            src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=100">
+
+                        <img
+                            class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                            src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=100">
+
+                        <img
+                            class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                            src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=100">
+
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-yellow flex items-center justify-center text-sm">
+                            +2k
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div class="flex text-[#F5A623]">
+                            ★★★★★
+                        </div>
+
+                        <div class="text-xs text-brown/60">
+                            Loved by 2,000+ pet parents
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Hero image -->
+
+            <div class="relative reveal hero-card">
+
+                <div class="absolute -inset-5 bg-peach/60 blob blur-2xl"></div>
+
+                <div class="relative rounded-[40px] overflow-hidden shadow-cute border-8 border-white">
+
+                    <img
+                        class="hero-image w-full h-[520px] object-cover"
+                        src="https://images.unsplash.com/photo-1558929996-da64ba858215?w=1000&q=85"
+                        alt="Happy dog">
+
+                    <div class="absolute inset-x-5 bottom-5">
+
+                        <div class="bg-white/95 backdrop-blur-md rounded-3xl p-5 shadow-soft flex items-center gap-4">
+
+                            <div class="w-14 h-14 bg-peach rounded-2xl flex items-center justify-center text-3xl">
+                                🛁
+                            </div>
+
+                            <div class="flex-1">
+
+                                <p class="font-display text-lg font-bold">
+                                    Spa day? Yes please!
+                                </p>
+
+                                <p class="text-sm text-brown/60">
+                                    Gentle grooming made extra cozy.
+                                </p>
+
+                            </div>
+
+                            <span class="text-2xl">
+                                🐶
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- floating card -->
+
+                <div class="absolute -left-5 top-16 bg-white rounded-2xl shadow-soft px-4 py-3 hidden sm:flex items-center gap-3 float">
+
+                    <span class="text-2xl">
+                        ❤️
+                    </span>
+
+                    <div>
+
+                        <div class="font-bold text-sm">
+                            Happy pets
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            Our #1 priority
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="absolute -right-5 top-1/2 bg-white rounded-2xl shadow-soft px-4 py-3 hidden sm:flex items-center gap-3 float2">
+
+                    <span class="text-2xl">
+                        🐱
+                    </span>
+
+                    <div>
+
+                        <div class="font-bold text-sm">
+                            Cat approved
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            100% cuddles
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     PET LOVE STRIP
+========================================================= -->
+
+<section class="bg-teal text-white">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-5">
+
+        <div class="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm font-semibold">
+
+            <span>🐶 Dog lovers welcome</span>
+            <span>🐱 Cat cuddles encouraged</span>
+            <span>🌿 Carefully selected products</span>
+            <span>💗 Gentle hands only</span>
+            <span>✨ Happy tails guaranteed</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
+<section id="services" class="py-20 lg:py-28 bg-cream">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+
+        <div class="text-center max-w-2xl mx-auto reveal">
+
+            <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                Our Services
+            </span>
+
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+                More than a pet shop.
+                <span class="text-teal">
+                    We're their happy place. 🐾
+                </span>
+            </h2>
+
+            <p class="mt-5 text-brown/65 text-lg">
+                Everything your furry family member needs to feel loved,
+                fresh, healthy and very, very spoiled.
+            </p>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-3 gap-6 mt-14">
+
+
+            <!-- Dog -->
+
+            <div class="pet-card bg-white rounded-[30px] overflow-hidden border border-[#eadfd4] reveal">
+
+                <div class="h-64 overflow-hidden">
+
+                    <img
+                        class="w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=800"
+                        alt="Dog grooming">
+
+                </div>
+
+                <div class="p-7">
+
+                    <div class="w-14 h-14 rounded-2xl bg-peach flex items-center justify-center text-3xl -mt-14 relative mb-5 border-4 border-white">
+                        🛁
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold">
+                        Dog Grooming
+                    </h3>
+
+                    <p class="mt-3 text-brown/60 leading-7">
+                        Warm baths, gentle brushing, nail care and adorable
+                        styling for your best friend.
+                    </p>
+
+                    <button
+                        onclick="openBooking('Dog Grooming')"
+                        class="mt-5 font-bold text-teal hover:text-tealDark">
+
+                        Book a spa day
+                        →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Cat -->
+
+            <div class="pet-card bg-white rounded-[30px] overflow-hidden border border-[#eadfd4] reveal">
+
+                <div class="h-64 overflow-hidden">
+
+                    <img
+                        class="w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=800"
+                        alt="Cat">
+
+                </div>
+
+                <div class="p-7">
+
+                    <div class="w-14 h-14 rounded-2xl bg-pink flex items-center justify-center text-3xl -mt-14 relative mb-5 border-4 border-white">
+                        🐱
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold">
+                        Gentle Cat Care
+                    </h3>
+
+                    <p class="mt-3 text-brown/60 leading-7">
+                        Calm grooming, de-shedding and gentle care designed
+                        especially for sensitive little whiskers.
+                    </p>
+
+                    <button
+                        onclick="openBooking('Cat Grooming')"
+                        class="mt-5 font-bold text-teal hover:text-tealDark">
+
+                        Book kitty care
+                        →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Wellness -->
+
+            <div class="pet-card bg-white rounded-[30px] overflow-hidden border border-[#eadfd4] reveal">
+
+                <div class="h-64 overflow-hidden">
+
+                    <img
+                        class="w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800"
+                        alt="Pet playing">
+
+                </div>
+
+                <div class="p-7">
+
+                    <div class="w-14 h-14 rounded-2xl bg-mint flex items-center justify-center text-3xl -mt-14 relative mb-5 border-4 border-white">
+                        ❤️
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold">
+                        Wellness & Care
+                    </h3>
+
+                    <p class="mt-3 text-brown/60 leading-7">
+                        Discover nutritious food, enrichment toys and everyday
+                        essentials selected with love.
+                    </p>
+
+                    <a
+                        href="#shop"
+                        class="inline-block mt-5 font-bold text-teal">
+
+                        Explore goodies
+                        →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SHOP
+========================================================= -->
+
+<section id="shop" class="py-20 lg:py-28 bg-soft">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-7 reveal">
+
+            <div>
+
+                <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                    Our little boutique
+                </span>
+
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+                    Goodies that make tails wag. 🛍️
+                </h2>
+
+                <p class="mt-4 text-brown/60 text-lg">
+                    Cute things. Useful things. Things your pet will probably
+                    steal from you.
+                </p>
+
+            </div>
+
+
+            <!-- Search -->
+
+            <div class="relative">
+
+                <span class="material-symbols-rounded absolute left-4 top-1/2 -translate-y-1/2 text-brown/40">
+                    search
+                </span>
+
+                <input
+                    id="productSearch"
+                    oninput="searchProducts()"
+                    type="text"
+                    placeholder="Search treats, toys..."
+                    class="w-full lg:w-72 pl-12 pr-5 py-4 rounded-full border border-[#e5d9cd] bg-white outline-none focus:ring-2 focus:ring-mint">
+
+            </div>
+
+        </div>
+
+
+        <!-- Categories -->
+
+        <div class="flex gap-3 overflow-x-auto hide-scrollbar py-8">
+
+            <button
+                onclick="filterProducts('all',this)"
+                class="category active bg-teal text-white px-5 py-3 rounded-full font-bold whitespace-nowrap">
+                ✨ All goodies
+            </button>
+
+            <button
+                onclick="filterProducts('food',this)"
+                class="category bg-white border border-[#e5d9cd] px-5 py-3 rounded-full font-semibold whitespace-nowrap hover:bg-mint">
+                🦴 Food & Treats
+            </button>
+
+            <button
+                onclick="filterProducts('toys',this)"
+                class="category bg-white border border-[#e5d9cd] px-5 py-3 rounded-full font-semibold whitespace-nowrap hover:bg-mint">
+                🧸 Toys
+            </button>
+
+            <button
+                onclick="filterProducts('beds',this)"
+                class="category bg-white border border-[#e5d9cd] px-5 py-3 rounded-full font-semibold whitespace-nowrap hover:bg-mint">
+                🛏️ Cozy Beds
+            </button>
+
+            <button
+                onclick="filterProducts('accessories',this)"
+                class="category bg-white border border-[#e5d9cd] px-5 py-3 rounded-full font-semibold whitespace-nowrap hover:bg-mint">
+                🎀 Accessories
+            </button>
+
+        </div>
+
+
+        <!-- Product Grid -->
+
+        <div
+            id="productGrid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+
+            <!-- Product -->
+
+            <article
+                class="product-card bg-white rounded-[28px] p-4 border border-[#eadfd4] product"
+                data-category="food"
+                data-name="organic salmon bites"
+                data-id="1"
+                data-title="Organic Salmon Bites"
+                data-price="18.00"
+                data-image="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=800"
+                data-description="Tasty little salmon bites made with simple ingredients and lots of love. Perfect for training and treating.">
+
+                <div class="relative aspect-square rounded-[22px] overflow-hidden bg-peach">
+
+                    <img
+                        class="product-image w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=800"
+                        alt="Dog treats">
+
+                    <span class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-teal">
+                        BEST SELLER
+                    </span>
+
+                    <button
+                        onclick="toggleHeart(this)"
+                        class="heart absolute top-3 right-3 w-10 h-10 rounded-full bg-white flex items-center justify-center text-brown/50">
+
+                        ♥
+                    </button>
+
+                </div>
+
+                <div class="p-2 pt-5">
+
+                    <div class="text-xs font-bold text-teal mb-2">
+                        FOOD & TREATS
+                    </div>
+
+                    <h3 class="font-display text-xl font-bold">
+                        Organic Salmon Bites
+                    </h3>
+
+                    <div class="flex items-center gap-2 mt-2">
+
+                        <span class="text-[#F5A623]">
+                            ★★★★★
+                        </span>
+
+                        <span class="text-xs text-brown/50">
+                            128 reviews
+                        </span>
+
+                    </div>
+
+                    <div class="flex items-center justify-between mt-5">
+
+                        <span class="font-display text-xl font-bold">
+                            $18.00
+                        </span>
+
+                        <button
+                            onclick="addProduct(this)"
+                            class="w-11 h-11 rounded-full bg-teal text-white flex items-center justify-center hover:bg-tealDark">
+
+                            <span class="material-symbols-rounded">
+                                add
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Product -->
+
+            <article
+                class="product-card bg-white rounded-[28px] p-4 border border-[#eadfd4] product"
+                data-category="toys"
+                data-name="rainbow rope toy"
+                data-id="2"
+                data-title="Rainbow Rope Toy"
+                data-price="14.50"
+                data-image="https://images.unsplash.com/photo-1535294435445-d7249524ef2e?w=800"
+                data-description="A colorful, durable rope toy made for tugging, chewing and hours of playful bonding.">
+
+                <div class="relative aspect-square rounded-[22px] overflow-hidden bg-mint">
+
+                    <img
+                        class="product-image w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1535294435445-d7249524ef2e?w=800"
+                        alt="Dog toy">
+
+                    <span class="absolute top-3 left-3 bg-yellow px-3 py-1 rounded-full text-xs font-bold">
+                        FUN PICK
+                    </span>
+
+                    <button
+                        onclick="toggleHeart(this)"
+                        class="heart absolute top-3 right-3 w-10 h-10 rounded-full bg-white flex items-center justify-center text-brown/50">
+
+                        ♥
+                    </button>
+
+                </div>
+
+                <div class="p-2 pt-5">
+
+                    <div class="text-xs font-bold text-teal mb-2">
+                        TOYS
+                    </div>
+
+                    <h3 class="font-display text-xl font-bold">
+                        Rainbow Rope Toy
+                    </h3>
+
+                    <div class="flex items-center gap-2 mt-2">
+
+                        <span class="text-[#F5A623]">
+                            ★★★★★
+                        </span>
+
+                        <span class="text-xs text-brown/50">
+                            94 reviews
+                        </span>
+
+                    </div>
+
+                    <div class="flex items-center justify-between mt-5">
+
+                        <span class="font-display text-xl font-bold">
+                            $14.50
+                        </span>
+
+                        <button
+                            onclick="addProduct(this)"
+                            class="w-11 h-11 rounded-full bg-teal text-white flex items-center justify-center">
+
+                            <span class="material-symbols-rounded">
+                                add
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Product -->
+
+            <article
+                class="product-card bg-white rounded-[28px] p-4 border border-[#eadfd4] product"
+                data-category="beds"
+                data-name="cloud cuddle bed"
+                data-id="3"
+                data-title="Cloud Cuddle Bed"
+                data-price="59.00"
+                data-image="https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=800"
+                data-description="A soft, fluffy bed designed for deep naps, tiny paws and extremely serious afternoon snoozing.">
+
+                <div class="relative aspect-square rounded-[22px] overflow-hidden bg-peach">
+
+                    <img
+                        class="product-image w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=800"
+                        alt="Pet bed">
+
+                    <span class="absolute top-3 left-3 bg-pink px-3 py-1 rounded-full text-xs font-bold">
+                        COZY
+                    </span>
+
+                    <button
+                        onclick="toggleHeart(this)"
+                        class="heart absolute top-3 right-3 w-10 h-10 rounded-full bg-white flex items-center justify-center text-brown/50">
+
+                        ♥
+                    </button>
+
+                </div>
+
+                <div class="p-2 pt-5">
+
+                    <div class="text-xs font-bold text-teal mb-2">
+                        COZY BEDS
+                    </div>
+
+                    <h3 class="font-display text-xl font-bold">
+                        Cloud Cuddle Bed
+                    </h3>
+
+                    <div class="flex items-center gap-2 mt-2">
+
+                        <span class="text-[#F5A623]">
+                            ★★★★★
+                        </span>
+
+                        <span class="text-xs text-brown/50">
+                            76 reviews
+                        </span>
+
+                    </div>
+
+                    <div class="flex items-center justify-between mt-5">
+
+                        <span class="font-display text-xl font-bold">
+                            $59.00
+                        </span>
+
+                        <button
+                            onclick="addProduct(this)"
+                            class="w-11 h-11 rounded-full bg-teal text-white flex items-center justify-center">
+
+                            <span class="material-symbols-rounded">
+                                add
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Product -->
+
+            <article
+                class="product-card bg-white rounded-[28px] p-4 border border-[#eadfd4] product"
+                data-category="accessories"
+                data-name="pretty teal collar"
+                data-id="4"
+                data-title="Pretty Teal Collar"
+                data-price="24.00"
+                data-image="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=800"
+                data-description="A stylish and comfortable collar for everyday adventures, walks and adorable photo sessions.">
+
+                <div class="relative aspect-square rounded-[22px] overflow-hidden bg-mint">
+
+                    <img
+                        class="product-image w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=800"
+                        alt="Pet collar">
+
+                    <span class="absolute top-3 left-3 bg-teal text-white px-3 py-1 rounded-full text-xs font-bold">
+                        NEW
+                    </span>
+
+                    <button
+                        onclick="toggleHeart(this)"
+                        class="heart absolute top-3 right-3 w-10 h-10 rounded-full bg-white flex items-center justify-center text-brown/50">
+
+                        ♥
+                    </button>
+
+                </div>
+
+                <div class="p-2 pt-5">
+
+                    <div class="text-xs font-bold text-teal mb-2">
+                        ACCESSORIES
+                    </div>
+
+                    <h3 class="font-display text-xl font-bold">
+                        Pretty Teal Collar
+                    </h3>
+
+                    <div class="flex items-center gap-2 mt-2">
+
+                        <span class="text-[#F5A623]">
+                            ★★★★★
+                        </span>
+
+                        <span class="text-xs text-brown/50">
+                            51 reviews
+                        </span>
+
+                    </div>
+
+                    <div class="flex items-center justify-between mt-5">
+
+                        <span class="font-display text-xl font-bold">
+                            $24.00
+                        </span>
+
+                        <button
+                            onclick="addProduct(this)"
+                            class="w-11 h-11 rounded-full bg-teal text-white flex items-center justify-center">
+
+                            <span class="material-symbols-rounded">
+                                add
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <div
+            id="noProducts"
+            class="hidden text-center py-16">
+
+            <div class="text-6xl mb-4">
+                🐶
+            </div>
+
+            <h3 class="font-display text-2xl font-bold">
+                Uh-oh, no goodies found!
+            </h3>
+
+            <p class="text-brown/50 mt-2">
+                Try another search or category.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LOVE SECTION
+========================================================= -->
+
+<section class="py-20 lg:py-28 bg-cream overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+
+            <div class="relative reveal">
+
+                <div class="absolute -inset-6 bg-pink/40 blob blur-2xl"></div>
+
+                <div class="relative grid grid-cols-2 gap-4">
+
+                    <img
+                        class="rounded-[30px] h-72 w-full object-cover shadow-soft"
+                        src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=700">
+
+                    <img
+                        class="rounded-[30px] h-72 w-full object-cover shadow-soft mt-12"
+                        src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=700">
+
+                </div>
+
+
+                <div class="absolute left-1/2 bottom-4 -translate-x-1/2 bg-white rounded-2xl px-5 py-3 shadow-soft whitespace-nowrap">
+
+                    ❤️
+                    <strong>
+                        Made with lots of love
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="reveal">
+
+                <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                    Why Paws & Play?
+                </span>
+
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+                    Because they're not
+                    <span class="text-[#D98967]">
+                        "just pets."
+                    </span>
+                </h2>
+
+                <p class="mt-6 text-lg leading-8 text-brown/65">
+
+                    They're your morning alarm, your couch buddy,
+                    your walking partner, your tiny therapist and sometimes
+                    the reason there's fur on absolutely everything.
+
+                </p>
+
+
+                <div class="space-y-5 mt-8">
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-mint flex items-center justify-center text-xl shrink-0">
+                            🌿
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-bold text-lg">
+                                Carefully chosen
+                            </h3>
+
+                            <p class="text-brown/55 mt-1">
+                                Products we would happily give to our own pets.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-peach flex items-center justify-center text-xl shrink-0">
+                            🤗
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-bold text-lg">
+                                Gentle always
+                            </h3>
+
+                            <p class="text-brown/55 mt-1">
+                                Every pet deserves patience, kindness and a little extra love.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-pink flex items-center justify-center text-xl shrink-0">
+                            🐾
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-bold text-lg">
+                                Community driven
+                            </h3>
+
+                            <p class="text-brown/55 mt-1">
+                                We love supporting pet parents and their furry families.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROMO
+========================================================= -->
+
+<section class="py-10 bg-soft">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="relative overflow-hidden bg-teal rounded-[35px] p-8 lg:p-14 text-white">
+
+            <div class="absolute right-[-50px] top-[-80px] text-[220px] opacity-10">
+                🐾
+            </div>
+
+            <div class="relative max-w-2xl">
+
+                <div class="inline-flex bg-white/15 px-4 py-2 rounded-full text-sm font-bold mb-5">
+                    🎁 A little treat for you
+                </div>
+
+                <h2 class="font-display text-4xl lg:text-5xl font-bold">
+                    Spoil them without
+                    spoiling your budget.
+                </h2>
+
+                <p class="mt-4 text-white/75 text-lg">
+                    Get 15% off your first order and make your pet's next
+                    happy moment extra special.
+                </p>
+
+                <button
+                    onclick="showPromo()"
+                    class="btn mt-7 bg-white text-teal px-7 py-4 rounded-full font-bold">
+
+                    Get 15% Off
+                    💕
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     REVIEWS
+========================================================= -->
+
+<section id="reviews" class="py-20 lg:py-28 bg-cream">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto reveal">
+
+            <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                Happy tails
+            </span>
+
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+                Our customers have
+                <span class="text-[#D98967]">
+                    pawsitive things
+                </span>
+                to say. 🐾
+            </h2>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-3 gap-6 mt-14">
+
+
+            <div class="bg-white rounded-[30px] p-7 border border-[#eadfd4] reveal">
+
+                <div class="text-[#F5A623] text-lg">
+                    ★★★★★
+                </div>
+
+                <p class="mt-5 text-brown/70 leading-7">
+                    "Bella absolutely loves coming here. She practically
+                    runs through the door when we arrive. The grooming team
+                    is wonderful!"
+                </p>
+
+                <div class="flex items-center gap-3 mt-7">
+
+                    <img
+                        class="w-12 h-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100">
+
+                    <div>
+
+                        <div class="font-bold">
+                            Sarah
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            Bella's human 🐶
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="bg-white rounded-[30px] p-7 border border-[#eadfd4] reveal">
+
+                <div class="text-[#F5A623] text-lg">
+                    ★★★★★
+                </div>
+
+                <p class="mt-5 text-brown/70 leading-7">
+                    "The treats are amazing and the staff actually remembers
+                    my cat's name. That little detail means everything."
+                </p>
+
+                <div class="flex items-center gap-3 mt-7">
+
+                    <img
+                        class="w-12 h-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100">
+
+                    <div>
+
+                        <div class="font-bold">
+                            Mark
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            Oliver's human 🐱
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="bg-white rounded-[30px] p-7 border border-[#eadfd4] reveal">
+
+                <div class="text-[#F5A623] text-lg">
+                    ★★★★★
+                </div>
+
+                <p class="mt-5 text-brown/70 leading-7">
+                    "It feels less like a shop and more like a little
+                    neighborhood pet family. We love Paws & Play!"
+                </p>
+
+                <div class="flex items-center gap-3 mt-7">
+
+                    <img
+                        class="w-12 h-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100">
+
+                    <div>
+
+                        <div class="font-bold">
+                            Emily
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            Cooper's human 🐕
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact" class="py-20 lg:py-28 bg-soft">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="grid lg:grid-cols-2 gap-14">
+
+
+            <div class="reveal">
+
+                <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                    Come say hi
+                </span>
+
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+                    Let's make your pet's day a little
+                    <span class="text-teal">
+                        happier.
+                    </span>
+                </h2>
+
+                <p class="mt-5 text-lg text-brown/60 leading-8">
+                    Have a question, want to book grooming or just want to
+                    tell us how adorable your pet is?
+                    We'd love to hear from you.
+                </p>
+
+
+                <div class="space-y-6 mt-9">
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-teal shadow-soft">
+                            📍
+                        </div>
+
+                        <div>
+                            <div class="font-bold">
+                                Visit us
+                            </div>
+
+                            <div class="text-brown/55">
+                                123 Pet Lane, Paw City
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-teal shadow-soft">
+                            📞
+                        </div>
+
+                        <div>
+                            <div class="font-bold">
+                                Call us
+                            </div>
+
+                            <div class="text-brown/55">
+                                (555) 123-4567
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-teal shadow-soft">
+                            🕐
+                        </div>
+
+                        <div>
+                            <div class="font-bold">
+                                Opening hours
+                            </div>
+
+                            <div class="text-brown/55">
+                                Mon - Sat · 8 AM - 6 PM
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <form
+                onsubmit="submitContact(event)"
+                class="bg-white rounded-[35px] p-7 lg:p-9 border border-[#eadfd4] shadow-soft reveal">
+
+                <h3 class="font-display text-2xl font-bold">
+                    Send us a message 💌
+                </h3>
+
+                <div class="space-y-5 mt-7">
+
+                    <div>
+
+                        <label class="text-sm font-bold">
+                            Your name
+                        </label>
+
+                        <input
+                            required
+                            type="text"
+                            class="mt-2 w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none focus:ring-2 focus:ring-mint"
+                            placeholder="Your name">
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="text-sm font-bold">
+                            Email
+                        </label>
+
+                        <input
+                            required
+                            type="email"
+                            class="mt-2 w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none focus:ring-2 focus:ring-mint"
+                            placeholder="you@example.com">
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="text-sm font-bold">
+                            Message
+                        </label>
+
+                        <textarea
+                            required
+                            rows="5"
+                            class="mt-2 w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none focus:ring-2 focus:ring-mint"
+                            placeholder="Tell us about your furry friend..."></textarea>
+
+                    </div>
+
+
+                    <button
+                        class="btn w-full bg-teal hover:bg-tealDark text-white py-4 rounded-full font-bold">
+
+                        Send Message
+                        🐾
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="bg-brown text-white">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+
+        <div class="grid md:grid-cols-4 gap-10">
+
+
+            <div class="md:col-span-2">
+
+                <div class="flex items-center gap-3">
+
+                    <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-2xl">
+                        🐾
+                    </div>
+
+                    <div>
+
+                        <div class="font-display text-2xl font-bold">
+                            Paws & Play
+                        </div>
+
+                        <div class="text-xs text-white/40">
+                            LOVE • CARE • PLAY
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="text-white/55 mt-5 max-w-md leading-7">
+                    A happy little pet shop built around one simple belief:
+                    every wag, purr, cuddle and tiny paw deserves to be loved.
+                </p>
+
+                <div class="flex gap-3 mt-6">
+
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-teal">
+                        f
+                    </a>
+
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-teal">
+                        ◎
+                    </a>
+
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-teal">
+                        ♥
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="font-bold mb-5">
+                    Shop
+                </h4>
+
+                <div class="space-y-3 text-white/55">
+
+                    <a href="#shop" class="block hover:text-white">
+                        Food & Treats
+                    </a>
+
+                    <a href="#shop" class="block hover:text-white">
+                        Toys
+                    </a>
+
+                    <a href="#shop" class="block hover:text-white">
+                        Beds
+                    </a>
+
+                    <a href="#shop" class="block hover:text-white">
+                        Accessories
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="font-bold mb-5">
+                    Company
+                </h4>
+
+                <div class="space-y-3 text-white/55">
+
+                    <a href="#story" class="block hover:text-white">
+                        Our Story
+                    </a>
+
+                    <a href="#services" class="block hover:text-white">
+                        Services
+                    </a>
+
+                    <a href="#reviews" class="block hover:text-white">
+                        Reviews
+                    </a>
+
+                    <a href="#contact" class="block hover:text-white">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-white/10 mt-12 pt-7 flex flex-col sm:flex-row justify-between gap-4 text-sm text-white/40">
+
+            <span>
+                © 2026 Paws & Play. Made with ❤️ for pets.
+            </span>
+
+            <span>
+                🐶 🐱 🐰 🐹 🐾
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     PRODUCT QUICK VIEW MODAL
+========================================================= -->
+
+<div id="productModal" class="modal fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-center justify-center p-5">
+
+    <div class="modal-box bg-white rounded-[35px] max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+
+        <div class="grid md:grid-cols-2">
+
+            <div class="relative">
+
+                <img
+                    id="modalImage"
+                    class="w-full h-80 md:h-full object-cover"
+                    src=""
+                    alt="Product">
+
+                <button
+                    onclick="closeProductModal()"
+                    class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white shadow-soft flex items-center justify-center">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <div class="p-7 lg:p-9">
+
+                <span
+                    id="modalCategory"
+                    class="text-xs font-bold text-teal uppercase">
+                </span>
+
+                <h2
+                    id="modalTitle"
+                    class="font-display text-3xl font-bold mt-3">
+                </h2>
+
+                <div class="text-[#F5A623] mt-3">
+                    ★★★★★
+                </div>
+
+                <div
+                    id="modalPrice"
+                    class="font-display text-3xl font-bold mt-5">
+                </div>
+
+                <p
+                    id="modalDescription"
+                    class="text-brown/60 leading-7 mt-5">
+                </p>
+
+
+                <div class="mt-7">
+
+                    <label class="text-sm font-bold">
+                        Quantity
+                    </label>
+
+                    <div class="flex items-center gap-3 mt-3">
+
+                        <button
+                            onclick="changeQty(-1)"
+                            class="w-11 h-11 rounded-full bg-soft font-bold">
+                            −
+                        </button>
+
+                        <span
+                            id="modalQty"
+                            class="w-10 text-center font-bold">
+                            1
+                        </span>
+
+                        <button
+                            onclick="changeQty(1)"
+                            class="w-11 h-11 rounded-full bg-soft font-bold">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    onclick="addModalProduct()"
+                    class="btn w-full bg-teal text-white rounded-full py-4 font-bold mt-8">
+
+                    Add to Cart
+                    🛍️
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CART DRAWER
+========================================================= -->
+
+<div
+    id="cartOverlay"
+    onclick="closeCart()"
+    class="hidden fixed inset-0 z-[90] bg-black/40">
+</div>
+
+
+<aside
+    id="cartDrawer"
+    class="cart-drawer fixed top-0 right-0 bottom-0 z-[100] w-full max-w-md bg-white shadow-2xl">
+
+    <div class="h-full flex flex-col">
+
+        <div class="p-6 border-b flex items-center justify-between">
+
+            <div>
+
+                <h2 class="font-display text-2xl font-bold">
+                    Your Happy Cart 🛍️
+                </h2>
+
+                <p class="text-sm text-brown/50">
+                    Little things for your best friend.
+                </p>
+
+            </div>
+
+            <button
+                onclick="closeCart()"
+                class="w-10 h-10 rounded-full bg-soft">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="cartItems"
+            class="flex-1 overflow-y-auto p-6">
+
+            <div class="text-center py-16">
+
+                <div class="text-6xl">
+                    🐾
+                </div>
+
+                <h3 class="font-display text-xl font-bold mt-4">
+                    Your cart is waiting!
+                </h3>
+
+                <p class="text-brown/50 mt-2">
+                    Add something lovely for your pet.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t p-6">
+
+            <div class="flex justify-between mb-4">
+
+                <span class="font-semibold">
+                    Total
+                </span>
+
+                <span
+                    id="cartTotal"
+                    class="font-display text-2xl font-bold">
+                    $0.00
+                </span>
+
+            </div>
+
+            <button
+                onclick="checkout()"
+                class="w-full bg-teal text-white py-4 rounded-full font-bold">
+
+                Checkout 💕
+            </button>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     BOOKING MODAL
+========================================================= -->
+
+<div id="bookingModal" class="modal fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-center justify-center p-5">
+
+    <div class="modal-box bg-white rounded-[35px] max-w-lg w-full p-7 lg:p-9 relative">
+
+        <button
+            onclick="closeBooking()"
+            class="absolute right-5 top-5 w-10 h-10 rounded-full bg-soft">
+            ×
+        </button>
+
+        <div class="text-5xl">
+            🐶
+        </div>
+
+        <h2 class="font-display text-3xl font-bold mt-4">
+            Let's plan a little spa day!
+        </h2>
+
+        <p class="text-brown/55 mt-2">
+            Tell us about your furry friend and we'll take care of the rest.
+        </p>
+
+
+        <form onsubmit="submitBooking(event)" class="space-y-4 mt-7">
+
+            <input
+                id="bookingService"
+                type="text"
+                placeholder="Service"
+                class="w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none focus:ring-2 focus:ring-mint">
+
+            <input
+                required
+                type="text"
+                placeholder="Pet's name"
+                class="w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none focus:ring-2 focus:ring-mint">
+
+            <select
+                required
+                class="w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none">
+
+                <option value="">
+                    Pet type
+                </option>
+
+                <option>
+                    Dog 🐶
+                </option>
+
+                <option>
+                    Cat 🐱
+                </option>
+
+                <option>
+                    Other 🐰
+                </option>
+
+            </select>
+
+            <input
+                required
+                type="date"
+                class="w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none">
+
+            <input
+                required
+                type="tel"
+                placeholder="Phone number"
+                class="w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none">
+
+            <button
+                class="w-full bg-teal text-white py-4 rounded-full font-bold">
+
+                Request Booking 🐾
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    id="toast"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] bg-brown text-white px-6 py-4 rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300">
+
+    <span id="toastText">
+        Added to cart!
+    </span>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* ==========================================
+   MOBILE MENU
+========================================== */
+
+function toggleMobileMenu() {
+
+    document
+        .getElementById("mobileMenu")
+        .classList.toggle("active");
+
+}
+
+function closeMobileMenu() {
+
+    document
+        .getElementById("mobileMenu")
+        .classList.remove("active");
+
+}
+
+
+/* ==========================================
+   PRODUCT DATA
+========================================== */
+
+let cart = [];
+
+let currentProduct = null;
+
+let modalQty = 1;
+
+
+/* ==========================================
+   PRODUCT FILTER
+========================================== */
+
+function filterProducts(category, button) {
+
+    document.querySelectorAll(".category").forEach(btn => {
+
+        btn.classList.remove("bg-teal", "text-white");
+
+        btn.classList.add("bg-white");
+
+    });
+
+
+    button.classList.remove("bg-white");
+
+    button.classList.add("bg-teal", "text-white");
+
+
+    const products = document.querySelectorAll(".product");
+
+    let visible = 0;
+
+
+    products.forEach(product => {
+
+        if (
+            category === "all" ||
+            product.dataset.category === category
+        ) {
+
+            product.style.display = "";
+
+            visible++;
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    document
+        .getElementById("noProducts")
+        .classList.toggle("hidden", visible !== 0);
+
+}
+
+
+/* ==========================================
+   PRODUCT SEARCH
+========================================== */
+
+function searchProducts() {
+
+    const query =
+        document
+            .getElementById("productSearch")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const products =
+        document.querySelectorAll(".product");
+
+    let visible = 0;
+
+
+    products.forEach(product => {
+
+        const name =
+            product.dataset.name.toLowerCase();
+
+        if (name.includes(query)) {
+
+            product.style.display = "";
+
+            visible++;
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    document
+        .getElementById("noProducts")
+        .classList.toggle("hidden", visible !== 0);
+
+}
+
+
+/* ==========================================
+   PRODUCT QUICK VIEW
+========================================== */
+
+document.querySelectorAll(".product").forEach(product => {
+
+    product.addEventListener("dblclick", () => {
+
+        openProductModal(product);
+
+    });
+
+});
+
+
+/* Make image/product area clickable */
+
+document.querySelectorAll(".product").forEach(product => {
+
+    product.querySelector(".product-image")
+        .addEventListener("click", () => {
+
+            openProductModal(product);
+
+        });
+
+});
+
+
+function openProductModal(product) {
+
+    currentProduct = {
+
+        id: product.dataset.id,
+
+        title: product.dataset.title,
+
+        price: parseFloat(product.dataset.price),
+
+        image: product.dataset.image,
+
+        description: product.dataset.description,
+
+        category: product.dataset.category
+
+    };
+
+
+    modalQty = 1;
+
+    document.getElementById("modalQty").textContent = 1;
+
+    document.getElementById("modalImage").src =
+        currentProduct.image;
+
+    document.getElementById("modalTitle").textContent =
+        currentProduct.title;
+
+    document.getElementById("modalPrice").textContent =
+        "$" + currentProduct.price.toFixed(2);
+
+    document.getElementById("modalDescription").textContent =
+        currentProduct.description;
+
+    document.getElementById("modalCategory").textContent =
+        currentProduct.category;
+
+
+    document
+        .getElementById("productModal")
+        .classList.add("active");
+
+}
+
+
+function closeProductModal() {
+
+    document
+        .getElementById("productModal")
+        .classList.remove("active");
+
+}
+
+
+function changeQty(amount) {
+
+    modalQty += amount;
+
+    if (modalQty < 1) {
+
+        modalQty = 1;
+
+    }
+
+    if (modalQty > 10) {
+
+        modalQty = 10;
+
+    }
+
+    document.getElementById("modalQty").textContent =
+        modalQty;
+
+}
+
+
+function addModalProduct() {
+
+    if (!currentProduct) return;
+
+
+    for (let i = 0; i < modalQty; i++) {
+
+        cart.push(currentProduct);
+
+    }
+
+
+    updateCart();
+
+    closeProductModal();
+
+    showToast(
+        modalQty +
+        " × " +
+        currentProduct.title +
+        " added to cart 🐾"
+    );
+
+}
+
+
+/* ==========================================
+   ADD PRODUCT
+========================================== */
+
+function addProduct(button) {
+
+    const product =
+        button.closest(".product");
+
+
+    const item = {
+
+        id: product.dataset.id,
+
+        title: product.dataset.title,
+
+        price: parseFloat(product.dataset.price),
+
+        image: product.dataset.image,
+
+        description: product.dataset.description,
+
+        category: product.dataset.category
+
+    };
+
+
+    cart.push(item);
+
+    updateCart();
+
+    showToast(
+        item.title +
+        " added to cart ❤️"
+    );
+
+}
+
+
+/* ==========================================
+   UPDATE CART
+========================================== */
+
+function updateCart() {
+
+    document
+        .getElementById("cartCount")
+        .textContent = cart.length;
+
+
+    const container =
+        document.getElementById("cartItems");
+
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="text-center py-16">
+
+                <div class="text-6xl">
+                    🐾
+                </div>
+
+                <h3 class="font-display text-xl font-bold mt-4">
+                    Your cart is waiting!
+                </h3>
+
+                <p class="text-brown/50 mt-2">
+                    Add something lovely for your pet.
+                </p>
+
+            </div>
+
+        `;
+
+        document.getElementById("cartTotal").textContent =
+            "$0.00";
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    let total = 0;
+
+
+    cart.forEach((item, index) => {
+
+        total += item.price;
+
+
+        const row =
+            document.createElement("div");
+
+
+        row.className =
+            "flex gap-4 py-4 border-b border-[#eee3d8]";
+
+
+        row.innerHTML = `
+
+            <img
+                src="${item.image}"
+                class="w-20 h-20 rounded-2xl object-cover">
+
+            <div class="flex-1">
+
+                <div class="font-bold">
+                    ${item.title}
+                </div>
+
+                <div class="text-sm text-brown/50 mt-1">
+                    $${item.price.toFixed(2)}
+                </div>
+
+                <button
+                    onclick="removeCartItem(${index})"
+                    class="text-xs text-red-400 mt-2">
+
+                    Remove
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(row);
+
+    });
+
+
+    document.getElementById("cartTotal").textContent =
+        "$" + total.toFixed(2);
+
+}
+
+
+function removeCartItem(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+}
+
+
+/* ==========================================
+   CART
+========================================== */
+
+function openCart() {
+
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("hidden");
+
+    document
+        .getElementById("cartDrawer")
+        .classList.add("active");
+
+}
+
+
+function closeCart() {
+
+    document
+        .getElementById("cartOverlay")
+        .classList.add("hidden");
+
+    document
+        .getElementById("cartDrawer")
+        .classList.remove("active");
+
+}
+
+
+function checkout() {
+
+    if (cart.length === 0) {
+
+        showToast(
+            "Your cart is empty 🐾"
+        );
+
+        return;
+
+    }
+
+
+    showToast(
+        "Checkout demo ready! 💕"
+    );
+
+}
+
+
+/* ==========================================
+   FAVORITES
+========================================== */
+
+function toggleHeart(button) {
+
+    button.classList.toggle("active");
+
+    if (
+        button.classList.contains("active")
+    ) {
+
+        button.innerHTML = "♥";
+
+        showToast("Added to favorites ❤️");
+
+    } else {
+
+        showToast("Removed from favorites");
+
+    }
+
+}
+
+
+/* ==========================================
+   BOOKING
+========================================== */
+
+function openBooking(service = "") {
+
+    document.getElementById("bookingService").value =
+        service;
+
+    document
+        .getElementById("bookingModal")
+        .classList.add("active");
+
+}
+
+
+function closeBooking() {
+
+    document
+        .getElementById("bookingModal")
+        .classList.remove("active");
+
+}
+
+
+function submitBooking(event) {
+
+    event.preventDefault();
+
+    closeBooking();
+
+    showToast(
+        "Booking request received! We'll contact you soon 🐶💕"
+    );
+
+}
+
+
+/* ==========================================
+   CONTACT
+========================================== */
+
+function submitContact(event) {
+
+    event.preventDefault();
+
+    showToast(
+        "Message sent! We can't wait to hear from you 💌"
+    );
+
+    event.target.reset();
+
+}
+
+
+/* ==========================================
+   PROMO
+========================================== */
+
+function showPromo() {
+
+    showToast(
+        "Your code is PAWS15 — 15% OFF! 🎁"
+    );
+
+}
+
+
+/* ==========================================
+   TOAST
+========================================== */
+
+let toastTimer;
+
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+    document.getElementById("toastText")
+        .textContent = message;
+
+
+    toast.classList.remove(
+        "opacity-0",
+        "pointer-events-none"
+    );
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.add(
+            "opacity-0",
+            "pointer-events-none"
+        );
+
+    }, 2800);
+
+}
+
+
+/* ==========================================
+   CLOSE MODALS BY BACKDROP
+========================================== */
+
+document
+    .getElementById("productModal")
+    .addEventListener("click", function(e) {
+
+        if (e.target === this) {
+
+            closeProductModal();
+
+        }
+
+    });
+
+
+document
+    .getElementById("bookingModal")
+    .addEventListener("click", function(e) {
+
+        if (e.target === this) {
+
+            closeBooking();
+
+        }
+
+    });
+
+
+/* ==========================================
+   ESCAPE KEY
+========================================== */
+
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "Escape") {
+
+        closeProductModal();
+
+        closeBooking();
+
+        closeCart();
+
+    }
+
+});
+
+
+/* ==========================================
+   SCROLL REVEAL
+========================================== */
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: .12
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(el => observer.observe(el));
+
+
+/* ==========================================
+   DOUBLE CLICK PRODUCT
+========================================== */
+
+document
+    .querySelectorAll(".product")
+    .forEach(product => {
+
+        product.addEventListener(
+            "dblclick",
+            () => openProductModal(product)
+        );
+
+    });
+
+
+/* ==========================================
+   INIT
+========================================== */
+
+updateCart();
+
+</script>
+
+</body>
+</html>

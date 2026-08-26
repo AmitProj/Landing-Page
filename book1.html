@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Alex Morgan — Author & Book Writer</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0" rel="stylesheet">
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                cream: "#FFF9F1",
+                peach: "#FFE7D6",
+                peachDark: "#F6B895",
+                teal: "#087F82",
+                tealDark: "#056568",
+                mint: "#DDF5F0",
+                brown: "#4B3A32",
+                soft: "#F7F2EC",
+                pink: "#FFD9E4",
+                yellow: "#FFE9A8"
+            },
+
+            fontFamily: {
+                display: ["Fredoka", "sans-serif"],
+                body: ["DM Sans", "sans-serif"]
+            },
+
+            boxShadow: {
+                cute: "0 18px 50px rgba(75,58,50,.10)",
+                soft: "0 8px 30px rgba(75,58,50,.08)"
+            }
+        }
+    }
+}
+</script>
+
+<style>
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #FFF9F1;
+    color: #4B3A32;
+}
+
+.font-display {
+    font-family: "Fredoka", sans-serif;
+}
+
+::selection {
+    background: #DDF5F0;
+    color: #056568;
+}
+
+/* =========================
+   DECORATIONS
+========================= */
+
+.paw {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    opacity: .10;
+}
+
+.float {
+    animation: float 5s ease-in-out infinite;
+}
+
+.float2 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.float3 {
+    animation: float 7s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+
+}
+
+/* =========================
+   HERO
+========================= */
+
+.blob {
+    border-radius: 48% 52% 62% 38% / 45% 42% 58% 55%;
+}
+
+.hero-image {
+    transition: transform .7s ease;
+}
+
+.hero-card:hover .hero-image {
+    transform: scale(1.03);
+}
+
+/* =========================
+   BOOK CARDS
+========================= */
+
+.book-card {
+    transition: all .35s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(75,58,50,.13);
+}
+
+.book-cover {
+    transition: transform .5s ease;
+}
+
+.book-card:hover .book-cover {
+    transform: scale(1.04);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+    transition: all .25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: scale(.97);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-box {
+    transform: translateY(25px) scale(.97);
+    transition: .3s ease;
+}
+
+.modal.active .modal-box {
+    transform: translateY(0) scale(1);
+}
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+}
+
+.mobile-menu.active {
+    max-height: 500px;
+}
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   BOOKMARK
+========================= */
+
+.bookmark {
+    transition: .25s ease;
+}
+
+.bookmark:hover {
+    transform: translateY(-3px);
+}
+
+/* =========================
+   HIDE SCROLLBAR
+========================= */
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    scrollbar-width: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     ANNOUNCEMENT
+========================================================= -->
+
+<div class="bg-teal text-white text-center text-sm py-2 px-4">
+
+    📚 New book available now · Order your signed copy today! ✨
+
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav class="sticky top-0 z-50 bg-cream/95 backdrop-blur-md border-b border-[#eadfd4]">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="h-20 flex items-center justify-between">
+
+            <!-- LOGO -->
+
+            <a href="#" class="flex items-center gap-3">
+
+                <div class="w-12 h-12 rounded-2xl bg-peach flex items-center justify-center text-2xl">
+                    ✍️
+                </div>
+
+                <div>
+
+                    <div class="font-display text-2xl font-bold text-teal">
+                        Alex Morgan
+                    </div>
+
+                    <div class="text-[11px] text-brown/60 font-semibold tracking-wide">
+                        AUTHOR • WRITER • STORYTELLER
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- DESKTOP NAV -->
+
+            <div class="hidden lg:flex items-center gap-8">
+
+                <a href="#" class="font-semibold text-teal">
+                    Home
+                </a>
+
+                <a href="#books" class="font-medium hover:text-teal transition">
+                    Books
+                </a>
+
+                <a href="#about" class="font-medium hover:text-teal transition">
+                    About
+                </a>
+
+                <a href="#story" class="font-medium hover:text-teal transition">
+                    My Journey
+                </a>
+
+                <a href="#reviews" class="font-medium hover:text-teal transition">
+                    Readers
+                </a>
+
+                <a href="#contact" class="font-medium hover:text-teal transition">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="flex items-center gap-2">
+
+                <a
+                    href="https://wa.me/15551234567"
+                    target="_blank"
+                    class="hidden sm:flex btn bg-teal hover:bg-tealDark text-white px-5 py-3 rounded-full font-bold">
+
+                    WhatsApp
+
+                    <span class="ml-2">
+                        💬
+                    </span>
+
+                </a>
+
+
+                <button
+                    onclick="toggleMobileMenu()"
+                    class="lg:hidden w-11 h-11 rounded-full bg-white border border-[#eadfd4] flex items-center justify-center">
+
+                    <span class="material-symbols-rounded">
+                        menu
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE MENU -->
+
+        <div id="mobileMenu" class="mobile-menu lg:hidden">
+
+            <div class="py-5 border-t border-[#eadfd4] flex flex-col gap-4">
+
+                <a onclick="closeMobileMenu()" href="#" class="font-semibold">
+                    Home
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#books">
+                    Books
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#about">
+                    About
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#story">
+                    My Journey
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#reviews">
+                    Readers
+                </a>
+
+                <a onclick="closeMobileMenu()" href="#contact">
+                    Contact
+                </a>
+
+                <a
+                    href="https://wa.me/15551234567"
+                    target="_blank"
+                    class="bg-teal text-white rounded-full py-3 text-center font-bold">
+
+                    WhatsApp Me 💬
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="relative overflow-hidden">
+
+    <div class="absolute inset-0 bg-gradient-to-br from-peach/60 via-cream to-mint/60"></div>
+
+
+    <span class="paw text-8xl left-[5%] top-20 rotate-[-20deg] float">
+        ✦
+    </span>
+
+    <span class="paw text-6xl right-[8%] top-32 rotate-[20deg] float2">
+        ✍️
+    </span>
+
+    <span class="paw text-5xl left-[45%] bottom-20 rotate-[15deg] float3">
+        📖
+    </span>
+
+
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-24">
+
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+
+            <!-- HERO COPY -->
+
+            <div class="reveal">
+
+                <div class="inline-flex items-center gap-2 bg-white/80 border border-[#eadfd4] px-4 py-2 rounded-full mb-6 shadow-soft">
+
+                    <span class="text-xl">
+                        ✨
+                    </span>
+
+                    <span class="text-sm font-bold text-teal">
+                        Author • Writer • Dreamer
+                    </span>
+
+                </div>
+
+
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.02] font-bold text-brown">
+
+                    Stories that
+
+                    <span class="text-teal">
+                        stay
+                    </span>
+
+                    <br>
+
+                    with you
+
+                    <span class="text-[#D98967]">
+                        forever.
+                    </span>
+
+                    📖
+
+                </h1>
+
+
+                <p class="mt-7 text-lg lg:text-xl leading-8 text-brown/70 max-w-xl">
+
+                    I write stories about love, life, dreams and the little
+                    moments that make us human. Welcome to my world of words.
+
+                </p>
+
+
+                <div class="flex flex-col sm:flex-row gap-4 mt-8">
+
+                    <a
+                        href="#books"
+                        class="btn bg-teal hover:bg-tealDark text-white px-7 py-4 rounded-full font-bold shadow-cute text-center">
+
+                        Explore My Books
+
+                        <span class="ml-2">
+                            📚
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="#about"
+                        class="btn bg-white hover:bg-mint border border-[#eadfd4] px-7 py-4 rounded-full font-bold text-teal text-center">
+
+                        Meet the Author ✍️
+
+                    </a>
+
+                </div>
+
+
+                <!-- TRUST -->
+
+                <div class="flex flex-wrap items-center gap-5 mt-9">
+
+                    <div class="flex -space-x-3">
+
+                        <img
+                            class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100">
+
+                        <img
+                            class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100">
+
+                        <img
+                            class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100">
+
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-yellow flex items-center justify-center text-sm font-bold">
+                            +5k
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div class="flex text-[#F5A623]">
+                            ★★★★★
+                        </div>
+
+                        <div class="text-xs text-brown/60">
+                            Loved by 5,000+ readers
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO BOOK -->
+
+            <div class="relative reveal hero-card">
+
+                <div class="absolute -inset-5 bg-peach/60 blob blur-2xl"></div>
+
+                <div class="relative rounded-[40px] overflow-hidden shadow-cute border-8 border-white">
+
+                    <img
+                        class="hero-image w-full h-[520px] object-cover"
+                        src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1000&q=85"
+                        alt="Featured book">
+
+                    <div class="absolute inset-x-5 bottom-5">
+
+                        <div class="bg-white/95 backdrop-blur-md rounded-3xl p-5 shadow-soft flex items-center gap-4">
+
+                            <div class="w-14 h-14 bg-peach rounded-2xl flex items-center justify-center text-3xl">
+                                📖
+                            </div>
+
+                            <div class="flex-1">
+
+                                <p class="font-display text-lg font-bold">
+                                    The Little Things
+                                </p>
+
+                                <p class="text-sm text-brown/60">
+                                    My newest story is here.
+                                </p>
+
+                            </div>
+
+                            <a
+                                href="BOOK_ORDER_LINK"
+                                target="_blank"
+                                class="text-teal font-bold">
+
+                                Order →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FLOATING CARD -->
+
+                <div class="absolute -left-5 top-16 bg-white rounded-2xl shadow-soft px-4 py-3 hidden sm:flex items-center gap-3 float">
+
+                    <span class="text-2xl">
+                        ❤️
+                    </span>
+
+                    <div>
+
+                        <div class="font-bold text-sm">
+                            Reader loved
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            "Beautifully written"
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="absolute -right-5 top-1/2 bg-white rounded-2xl shadow-soft px-4 py-3 hidden sm:flex items-center gap-3 float2">
+
+                    <span class="text-2xl">
+                        📚
+                    </span>
+
+                    <div>
+
+                        <div class="font-bold text-sm">
+                            5,000+ copies
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            Read worldwide
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     AUTHOR STRIP
+========================================================= -->
+
+<section class="bg-teal text-white">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-5">
+
+        <div class="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm font-semibold">
+
+            <span>📚 5 Published Books</span>
+
+            <span>✍️ 10+ Years Writing</span>
+
+            <span>🌎 Readers Worldwide</span>
+
+            <span>❤️ Stories from the Heart</span>
+
+            <span>✨ New Book Coming Soon</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURED BOOK
+========================================================= -->
+
+<section id="books" class="py-20 lg:py-28 bg-cream">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto reveal">
+
+            <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                My Books
+            </span>
+
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+
+                Stories written with
+                <span class="text-teal">
+                    heart.
+                </span>
+
+                📖
+
+            </h2>
+
+            <p class="mt-5 text-brown/65 text-lg">
+
+                Explore my collection of stories, ideas and characters.
+                Find the book that speaks to you.
+
+            </p>
+
+        </div>
+
+
+        <!-- FEATURED BOOK -->
+
+        <div class="mt-14 bg-white rounded-[35px] p-6 lg:p-10 border border-[#eadfd4] shadow-soft reveal">
+
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+
+                <div class="relative">
+
+                    <div class="absolute -inset-5 bg-mint/60 blob blur-2xl"></div>
+
+                    <div class="relative">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=900"
+                            class="w-full max-w-md mx-auto h-[500px] object-cover rounded-[28px] shadow-cute"
+                            alt="The Little Things book">
+
+                        <div class="absolute -right-2 top-8 bg-yellow rounded-2xl px-4 py-3 font-bold shadow-soft">
+
+                            ⭐ Reader Favorite
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                        Featured Book
+                    </span>
+
+                    <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+
+                        The Little Things
+
+                    </h2>
+
+                    <p class="text-[#D98967] font-bold mt-3">
+                        A story about love, hope & finding your way home.
+                    </p>
+
+                    <div class="flex text-[#F5A623] mt-5 text-lg">
+                        ★★★★★
+                    </div>
+
+                    <p class="mt-6 text-brown/65 leading-8 text-lg">
+
+                        Sometimes the biggest moments in life are hidden
+                        inside the smallest ones. This is a story about
+                        ordinary people, unexpected connections and the
+                        courage to start again.
+
+                    </p>
+
+
+                    <div class="grid grid-cols-2 gap-4 mt-7">
+
+                        <div class="bg-soft rounded-2xl p-4">
+
+                            <div class="text-xs text-brown/50">
+                                GENRE
+                            </div>
+
+                            <div class="font-bold mt-1">
+                                Fiction
+                            </div>
+
+                        </div>
+
+                        <div class="bg-soft rounded-2xl p-4">
+
+                            <div class="text-xs text-brown/50">
+                                PAGES
+                            </div>
+
+                            <div class="font-bold mt-1">
+                                284 Pages
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+
+                        <a
+                            href="BOOK_ORDER_LINK"
+                            target="_blank"
+                            rel="noopener"
+                            class="btn bg-teal hover:bg-tealDark text-white px-7 py-4 rounded-full font-bold text-center">
+
+                            Order This Book 📖
+
+                        </a>
+
+                        <button
+                            onclick="openBookDetails()"
+                            class="btn bg-white border border-[#eadfd4] text-teal px-7 py-4 rounded-full font-bold">
+
+                            Read More
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BOOK COLLECTION
+========================================================= -->
+
+<section class="py-20 lg:py-28 bg-soft">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-7 reveal">
+
+            <div>
+
+                <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                    Book Collection
+                </span>
+
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+                    Find your next favorite story. 📚
+                </h2>
+
+                <p class="mt-4 text-brown/60 text-lg">
+                    A collection of stories for curious minds and open hearts.
+                </p>
+
+            </div>
+
+
+            <a
+                href="BOOK_ORDER_LINK"
+                target="_blank"
+                class="btn bg-white border border-[#e5d9cd] px-6 py-3 rounded-full font-bold text-teal">
+
+                Order a Book →
+
+            </a>
+
+        </div>
+
+
+        <!-- BOOK GRID -->
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+
+
+            <!-- BOOK 1 -->
+
+            <article class="book-card bg-white rounded-[30px] p-4 border border-[#eadfd4] reveal">
+
+                <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-peach">
+
+                    <img
+                        class="book-cover w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1511108690759-009324a90311?w=800"
+                        alt="Book cover">
+
+                    <span class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-teal">
+                        BESTSELLER
+                    </span>
+
+                </div>
+
+                <div class="p-3 pt-5">
+
+                    <div class="text-xs font-bold text-teal uppercase mb-2">
+                        Fiction
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold">
+                        Letters Never Sent
+                    </h3>
+
+                    <p class="text-brown/55 leading-7 mt-3">
+                        A beautiful story about words left unsaid and
+                        the people who are worth finding again.
+                    </p>
+
+                    <div class="flex items-center gap-2 mt-4">
+
+                        <span class="text-[#F5A623]">
+                            ★★★★★
+                        </span>
+
+                        <span class="text-xs text-brown/50">
+                            324 readers
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="BOOK_ORDER_LINK_1"
+                        target="_blank"
+                        rel="noopener"
+                        class="block text-center mt-6 bg-teal text-white py-3 rounded-full font-bold hover:bg-tealDark transition">
+
+                        Order Book 📖
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- BOOK 2 -->
+
+            <article class="book-card bg-white rounded-[30px] p-4 border border-[#eadfd4] reveal">
+
+                <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-mint">
+
+                    <img
+                        class="book-cover w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=800"
+                        alt="Book cover">
+
+                    <span class="absolute top-4 left-4 bg-yellow px-3 py-1 rounded-full text-xs font-bold">
+                        NEW
+                    </span>
+
+                </div>
+
+                <div class="p-3 pt-5">
+
+                    <div class="text-xs font-bold text-teal uppercase mb-2">
+                        Inspirational
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold">
+                        When Tomorrow Comes
+                    </h3>
+
+                    <p class="text-brown/55 leading-7 mt-3">
+                        A gentle reminder that even after the darkest
+                        chapter, there can always be another beginning.
+                    </p>
+
+                    <div class="flex items-center gap-2 mt-4">
+
+                        <span class="text-[#F5A623]">
+                            ★★★★★
+                        </span>
+
+                        <span class="text-xs text-brown/50">
+                            187 readers
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="BOOK_ORDER_LINK_2"
+                        target="_blank"
+                        rel="noopener"
+                        class="block text-center mt-6 bg-teal text-white py-3 rounded-full font-bold hover:bg-tealDark transition">
+
+                        Order Book 📖
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- BOOK 3 -->
+
+            <article class="book-card bg-white rounded-[30px] p-4 border border-[#eadfd4] reveal">
+
+                <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-pink">
+
+                    <img
+                        class="book-cover w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800"
+                        alt="Book cover">
+
+                    <span class="absolute top-4 left-4 bg-pink px-3 py-1 rounded-full text-xs font-bold">
+                        POPULAR
+                    </span>
+
+                </div>
+
+                <div class="p-3 pt-5">
+
+                    <div class="text-xs font-bold text-teal uppercase mb-2">
+                        Romance
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold">
+                        Between Two Hearts
+                    </h3>
+
+                    <p class="text-brown/55 leading-7 mt-3">
+                        Two people. One unexpected meeting.
+                        A story about love arriving when you least expect it.
+                    </p>
+
+                    <div class="flex items-center gap-2 mt-4">
+
+                        <span class="text-[#F5A623]">
+                            ★★★★★
+                        </span>
+
+                        <span class="text-xs text-brown/50">
+                            412 readers
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="BOOK_ORDER_LINK_3"
+                        target="_blank"
+                        rel="noopener"
+                        class="block text-center mt-6 bg-teal text-white py-3 rounded-full font-bold hover:bg-tealDark transition">
+
+                        Order Book 📖
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT AUTHOR
+========================================================= -->
+
+<section id="about" class="py-20 lg:py-28 bg-cream overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+
+            <!-- AUTHOR IMAGES -->
+
+            <div class="relative reveal">
+
+                <div class="absolute -inset-6 bg-pink/40 blob blur-2xl"></div>
+
+                <div class="relative grid grid-cols-2 gap-4">
+
+                    <img
+                        class="rounded-[30px] h-72 w-full object-cover shadow-soft"
+                        src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=700"
+                        alt="Author">
+
+                    <img
+                        class="rounded-[30px] h-72 w-full object-cover shadow-soft mt-12"
+                        src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700"
+                        alt="Writing">
+
+                </div>
+
+
+                <div class="absolute left-1/2 bottom-4 -translate-x-1/2 bg-white rounded-2xl px-5 py-3 shadow-soft whitespace-nowrap">
+
+                    ✍️
+
+                    <strong>
+                        Writing from the heart
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ABOUT -->
+
+            <div class="reveal">
+
+                <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                    About the Author
+                </span>
+
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+
+                    Hi, I'm
+
+                    <span class="text-[#D98967]">
+                        Alex.
+                    </span>
+
+                    ✍️
+
+                </h2>
+
+                <p class="mt-6 text-lg leading-8 text-brown/65">
+
+                    I'm a writer who believes that every person carries
+                    a story worth telling. For me, writing isn't simply
+                    putting words on a page — it's about creating a feeling
+                    that stays with the reader long after the final chapter.
+
+                </p>
+
+                <p class="mt-5 text-lg leading-8 text-brown/65">
+
+                    Over the years I've written novels, essays and stories
+                    inspired by everyday life, relationships, hope and
+                    the beautifully complicated human experience.
+
+                </p>
+
+
+                <div class="space-y-5 mt-8">
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-mint flex items-center justify-center text-xl shrink-0">
+                            📚
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-bold text-lg">
+                                5 Published Books
+                            </h3>
+
+                            <p class="text-brown/55 mt-1">
+                                Stories read by thousands of people around the world.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-peach flex items-center justify-center text-xl shrink-0">
+                            ✍️
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-bold text-lg">
+                                10+ Years Writing
+                            </h3>
+
+                            <p class="text-brown/55 mt-1">
+                                Learning, creating and discovering new stories every day.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-pink flex items-center justify-center text-xl shrink-0">
+                            ❤️
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-bold text-lg">
+                                Writing With Purpose
+                            </h3>
+
+                            <p class="text-brown/55 mt-1">
+                                Every story begins with something worth saying.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY READ
+========================================================= -->
+
+<section class="py-20 lg:py-28 bg-soft">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto reveal">
+
+            <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                Why Read My Books?
+            </span>
+
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+
+                Stories made to be
+
+                <span class="text-teal">
+                    felt.
+                </span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-3 gap-6 mt-14">
+
+
+            <div class="bg-white rounded-[30px] p-8 border border-[#eadfd4] reveal">
+
+                <div class="w-14 h-14 rounded-2xl bg-peach flex items-center justify-center text-3xl">
+                    💭
+                </div>
+
+                <h3 class="font-display text-2xl font-bold mt-6">
+                    Real Emotions
+                </h3>
+
+                <p class="text-brown/60 leading-7 mt-3">
+                    Stories filled with characters, emotions and moments
+                    that feel real and relatable.
+                </p>
+
+            </div>
+
+
+            <div class="bg-white rounded-[30px] p-8 border border-[#eadfd4] reveal">
+
+                <div class="w-14 h-14 rounded-2xl bg-mint flex items-center justify-center text-3xl">
+                    🌱
+                </div>
+
+                <h3 class="font-display text-2xl font-bold mt-6">
+                    Meaningful Stories
+                </h3>
+
+                <p class="text-brown/60 leading-7 mt-3">
+                    Every book carries an idea, question or message
+                    that you can take with you.
+                </p>
+
+            </div>
+
+
+            <div class="bg-white rounded-[30px] p-8 border border-[#eadfd4] reveal">
+
+                <div class="w-14 h-14 rounded-2xl bg-pink flex items-center justify-center text-3xl">
+                    ✨
+                </div>
+
+                <h3 class="font-display text-2xl font-bold mt-6">
+                    Beautiful Escapes
+                </h3>
+
+                <p class="text-brown/60 leading-7 mt-3">
+                    Open a book, forget the world for a while and
+                    step into another story.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WRITING JOURNEY
+========================================================= -->
+
+<section id="story" class="py-20 lg:py-28 bg-cream">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+
+            <div class="reveal">
+
+                <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                    My Writing Journey
+                </span>
+
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+
+                    From a blank page
+
+                    <span class="text-[#D98967]">
+                        to your bookshelf.
+                    </span>
+
+                </h2>
+
+                <p class="mt-6 text-lg text-brown/65 leading-8">
+
+                    Every book begins quietly — usually with a notebook,
+                    a strange idea and a question that won't go away.
+
+                </p>
+
+                <div class="mt-9 space-y-7">
+
+
+                    <div class="flex gap-5">
+
+                        <div class="w-12 h-12 rounded-full bg-teal text-white flex items-center justify-center font-bold shrink-0">
+                            01
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-display text-xl font-bold">
+                                The Idea
+                            </h3>
+
+                            <p class="text-brown/55 mt-1">
+                                A tiny thought becomes a character,
+                                a scene and eventually a story.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-5">
+
+                        <div class="w-12 h-12 rounded-full bg-peach flex items-center justify-center font-bold shrink-0">
+                            02
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-display text-xl font-bold">
+                                The Writing
+                            </h3>
+
+                            <p class="text-brown/55 mt-1">
+                                Pages become chapters, chapters become
+                                a world and the story begins to breathe.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-5">
+
+                        <div class="w-12 h-12 rounded-full bg-pink flex items-center justify-center font-bold shrink-0">
+                            03
+                        </div>
+
+                        <div>
+
+                            <h3 class="font-display text-xl font-bold">
+                                Your Hands
+                            </h3>
+
+                            <p class="text-brown/55 mt-1">
+                                Finally, the story leaves my desk and
+                                becomes part of someone's life.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="relative reveal">
+
+                <div class="absolute -inset-5 bg-peach/50 blob blur-2xl"></div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1000"
+                    class="relative rounded-[40px] w-full h-[550px] object-cover shadow-cute"
+                    alt="Writer working">
+
+                <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-3xl p-5 shadow-soft">
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-14 h-14 rounded-2xl bg-mint flex items-center justify-center text-3xl">
+                            📝
+                        </div>
+
+                        <div>
+
+                            <div class="font-display text-xl font-bold">
+                                Currently writing...
+                            </div>
+
+                            <div class="text-sm text-brown/55">
+                                My next story is coming soon.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROMO / CTA
+========================================================= -->
+
+<section class="py-10 bg-soft">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="relative overflow-hidden bg-teal rounded-[35px] p-8 lg:p-14 text-white">
+
+            <div class="absolute right-[-50px] top-[-80px] text-[220px] opacity-10">
+                📖
+            </div>
+
+            <div class="relative max-w-2xl">
+
+                <div class="inline-flex bg-white/15 px-4 py-2 rounded-full text-sm font-bold mb-5">
+                    💌 Stay in the story
+                </div>
+
+                <h2 class="font-display text-4xl lg:text-5xl font-bold">
+
+                    Be the first to know
+                    about my next book.
+
+                </h2>
+
+                <p class="mt-4 text-white/75 text-lg">
+
+                    Get writing updates, new book announcements and
+                    occasional letters from my desk.
+
+                </p>
+
+                <button
+                    onclick="showNewsletter()"
+                    class="btn mt-7 bg-white text-teal px-7 py-4 rounded-full font-bold">
+
+                    Join the Reader List
+                    💕
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     REVIEWS
+========================================================= -->
+
+<section id="reviews" class="py-20 lg:py-28 bg-cream">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto reveal">
+
+            <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                Reader Reviews
+            </span>
+
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+
+                Words from
+
+                <span class="text-[#D98967]">
+                    wonderful readers.
+                </span>
+
+                ❤️
+
+            </h2>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-3 gap-6 mt-14">
+
+
+            <div class="bg-white rounded-[30px] p-7 border border-[#eadfd4] reveal">
+
+                <div class="text-[#F5A623] text-lg">
+                    ★★★★★
+                </div>
+
+                <p class="mt-5 text-brown/70 leading-7">
+
+                    "I couldn't put this book down. The characters
+                    felt so real and the ending stayed with me for days."
+
+                </p>
+
+                <div class="flex items-center gap-3 mt-7">
+
+                    <img
+                        class="w-12 h-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100">
+
+                    <div>
+
+                        <div class="font-bold">
+                            Sarah
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            Verified Reader 📖
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="bg-white rounded-[30px] p-7 border border-[#eadfd4] reveal">
+
+                <div class="text-[#F5A623] text-lg">
+                    ★★★★★
+                </div>
+
+                <p class="mt-5 text-brown/70 leading-7">
+
+                    "Beautiful writing and such a meaningful story.
+                    I recommended it to everyone in my book club."
+
+                </p>
+
+                <div class="flex items-center gap-3 mt-7">
+
+                    <img
+                        class="w-12 h-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100">
+
+                    <div>
+
+                        <div class="font-bold">
+                            Daniel
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            Book Club Reader 📚
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="bg-white rounded-[30px] p-7 border border-[#eadfd4] reveal">
+
+                <div class="text-[#F5A623] text-lg">
+                    ★★★★★
+                </div>
+
+                <p class="mt-5 text-brown/70 leading-7">
+
+                    "One of those books that makes you stop,
+                    think and appreciate the little things in life."
+
+                </p>
+
+                <div class="flex items-center gap-3 mt-7">
+
+                    <img
+                        class="w-12 h-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100">
+
+                    <div>
+
+                        <div class="font-bold">
+                            Emily
+                        </div>
+
+                        <div class="text-xs text-brown/50">
+                            Verified Reader ✨
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact" class="py-20 lg:py-28 bg-soft">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="grid lg:grid-cols-2 gap-14">
+
+
+            <div class="reveal">
+
+                <span class="text-sm font-bold text-teal uppercase tracking-wider">
+                    Let's Connect
+                </span>
+
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mt-3">
+
+                    Have something
+                    <span class="text-teal">
+                        to say?
+                    </span>
+
+                </h2>
+
+                <p class="mt-5 text-lg text-brown/60 leading-8">
+
+                    I'd love to hear from you. Whether you're a reader,
+                    fellow writer, book club or simply want to say hello.
+
+                </p>
+
+
+                <div class="space-y-6 mt-9">
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-teal shadow-soft">
+                            💬
+                        </div>
+
+                        <div>
+
+                            <div class="font-bold">
+                                WhatsApp
+                            </div>
+
+                            <a
+                                href="https://wa.me/15551234567"
+                                target="_blank"
+                                class="text-brown/55 hover:text-teal">
+
+                                +1 555 123 4567
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-teal shadow-soft">
+                            ✉️
+                        </div>
+
+                        <div>
+
+                            <div class="font-bold">
+                                Email
+                            </div>
+
+                            <a
+                                href="mailto:hello@alexmorgan.com"
+                                class="text-brown/55 hover:text-teal">
+
+                                hello@alexmorgan.com
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4">
+
+                        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-teal shadow-soft">
+                            📚
+                        </div>
+
+                        <div>
+
+                            <div class="font-bold">
+                                Book Clubs
+                            </div>
+
+                            <div class="text-brown/55">
+                                Available for selected events
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="https://wa.me/15551234567"
+                    target="_blank"
+                    class="inline-flex btn bg-teal text-white px-7 py-4 rounded-full font-bold mt-8">
+
+                    Message Me on WhatsApp
+
+                    <span class="ml-2">
+                        💬
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <form
+                onsubmit="submitContact(event)"
+                class="bg-white rounded-[35px] p-7 lg:p-9 border border-[#eadfd4] shadow-soft reveal">
+
+                <h3 class="font-display text-2xl font-bold">
+                    Send me a message 💌
+                </h3>
+
+                <div class="space-y-5 mt-7">
+
+
+                    <div>
+
+                        <label class="text-sm font-bold">
+                            Your name
+                        </label>
+
+                        <input
+                            required
+                            type="text"
+                            class="mt-2 w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none focus:ring-2 focus:ring-mint"
+                            placeholder="Your name">
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="text-sm font-bold">
+                            Email
+                        </label>
+
+                        <input
+                            required
+                            type="email"
+                            class="mt-2 w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none focus:ring-2 focus:ring-mint"
+                            placeholder="you@example.com">
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="text-sm font-bold">
+                            Message
+                        </label>
+
+                        <textarea
+                            required
+                            rows="5"
+                            class="mt-2 w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none focus:ring-2 focus:ring-mint"
+                            placeholder="Write your message..."></textarea>
+
+                    </div>
+
+
+                    <button
+                        class="btn w-full bg-teal hover:bg-tealDark text-white py-4 rounded-full font-bold">
+
+                        Send Message
+                        ✍️
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="bg-brown text-white">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+
+        <div class="grid md:grid-cols-4 gap-10">
+
+
+            <div class="md:col-span-2">
+
+                <div class="flex items-center gap-3">
+
+                    <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-2xl">
+                        ✍️
+                    </div>
+
+                    <div>
+
+                        <div class="font-display text-2xl font-bold">
+                            Alex Morgan
+                        </div>
+
+                        <div class="text-xs text-white/40">
+                            AUTHOR • WRITER • STORYTELLER
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="text-white/55 mt-5 max-w-md leading-7">
+
+                    Stories about life, love, hope and the little moments
+                    that make us who we are.
+
+                </p>
+
+
+                <div class="flex gap-3 mt-6">
+
+                    <a
+                        href="#"
+                        class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-teal">
+
+                        f
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-teal">
+
+                        ◎
+
+                    </a>
+
+                    <a
+                        href="https://wa.me/15551234567"
+                        target="_blank"
+                        class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-teal">
+
+                        💬
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="font-bold mb-5">
+                    Books
+                </h4>
+
+                <div class="space-y-3 text-white/55">
+
+                    <a href="#books" class="block hover:text-white">
+                        All Books
+                    </a>
+
+                    <a href="#books" class="block hover:text-white">
+                        Featured Book
+                    </a>
+
+                    <a href="#books" class="block hover:text-white">
+                        New Releases
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="font-bold mb-5">
+                    Author
+                </h4>
+
+                <div class="space-y-3 text-white/55">
+
+                    <a href="#about" class="block hover:text-white">
+                        About Me
+                    </a>
+
+                    <a href="#story" class="block hover:text-white">
+                        My Journey
+                    </a>
+
+                    <a href="#reviews" class="block hover:text-white">
+                        Reader Reviews
+                    </a>
+
+                    <a href="#contact" class="block hover:text-white">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-white/10 mt-12 pt-7 flex flex-col sm:flex-row justify-between gap-4 text-sm text-white/40">
+
+            <span>
+                © 2026 Alex Morgan. All rights reserved.
+            </span>
+
+            <span>
+                Made with ❤️ & many cups of ☕
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     BOOK DETAILS MODAL
+========================================================= -->
+
+<div
+    id="bookModal"
+    class="modal fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-center justify-center p-5">
+
+    <div class="modal-box bg-white rounded-[35px] max-w-lg w-full p-7 lg:p-9 relative">
+
+        <button
+            onclick="closeBookDetails()"
+            class="absolute right-5 top-5 w-10 h-10 rounded-full bg-soft">
+
+            ×
+
+        </button>
+
+
+        <div class="text-5xl">
+            📖
+        </div>
+
+        <h2 class="font-display text-3xl font-bold mt-4">
+            The Little Things
+        </h2>
+
+        <div class="text-[#F5A623] mt-3">
+            ★★★★★
+        </div>
+
+        <p class="text-brown/60 leading-7 mt-5">
+
+            A heartfelt story about ordinary people, unexpected
+            connections and the courage to begin again.
+
+        </p>
+
+
+        <div class="bg-soft rounded-2xl p-5 mt-6">
+
+            <div class="font-bold">
+                What readers are saying
+            </div>
+
+            <p class="text-brown/55 mt-2">
+                "A warm, emotional story that stays with you long
+                after you've finished reading."
+            </p>
+
+        </div>
+
+
+        <a
+            href="BOOK_ORDER_LINK"
+            target="_blank"
+            rel="noopener"
+            class="block text-center w-full bg-teal text-white rounded-full py-4 font-bold mt-7">
+
+            Order This Book 📚
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NEWSLETTER MODAL
+========================================================= -->
+
+<div
+    id="newsletterModal"
+    class="modal fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-center justify-center p-5">
+
+    <div class="modal-box bg-white rounded-[35px] max-w-md w-full p-7 lg:p-9 relative">
+
+        <button
+            onclick="closeNewsletter()"
+            class="absolute right-5 top-5 w-10 h-10 rounded-full bg-soft">
+
+            ×
+
+        </button>
+
+        <div class="text-5xl">
+            💌
+        </div>
+
+        <h2 class="font-display text-3xl font-bold mt-4">
+            Join the Reader List
+        </h2>
+
+        <p class="text-brown/55 mt-2">
+            Get new book announcements and updates.
+        </p>
+
+
+        <form
+            onsubmit="subscribe(event)"
+            class="mt-7">
+
+            <input
+                required
+                type="email"
+                placeholder="Your email address"
+                class="w-full px-5 py-4 rounded-2xl border border-[#e5d9cd] outline-none focus:ring-2 focus:ring-mint">
+
+            <button
+                class="w-full bg-teal text-white py-4 rounded-full font-bold mt-4">
+
+                Join the List ✨
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    id="toast"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] bg-brown text-white px-6 py-4 rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300">
+
+    <span id="toastText">
+        Done!
+    </span>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+function toggleMobileMenu() {
+
+    document
+        .getElementById("mobileMenu")
+        .classList.toggle("active");
+
+}
+
+
+function closeMobileMenu() {
+
+    document
+        .getElementById("mobileMenu")
+        .classList.remove("active");
+
+}
+
+
+/* =========================================
+   BOOK DETAILS
+========================================= */
+
+function openBookDetails() {
+
+    document
+        .getElementById("bookModal")
+        .classList.add("active");
+
+}
+
+
+function closeBookDetails() {
+
+    document
+        .getElementById("bookModal")
+        .classList.remove("active");
+
+}
+
+
+/* =========================================
+   NEWSLETTER
+========================================= */
+
+function showNewsletter() {
+
+    document
+        .getElementById("newsletterModal")
+        .classList.add("active");
+
+}
+
+
+function closeNewsletter() {
+
+    document
+        .getElementById("newsletterModal")
+        .classList.remove("active");
+
+}
+
+
+function subscribe(event) {
+
+    event.preventDefault();
+
+    closeNewsletter();
+
+    showToast(
+        "Welcome to the reader list! 📚❤️"
+    );
+
+    event.target.reset();
+
+}
+
+
+/* =========================================
+   CONTACT FORM
+========================================= */
+
+function submitContact(event) {
+
+    event.preventDefault();
+
+    showToast(
+        "Message received! Thank you for writing. 💌"
+    );
+
+    event.target.reset();
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+let toastTimer;
+
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+    document.getElementById("toastText")
+        .textContent = message;
+
+
+    toast.classList.remove(
+        "opacity-0",
+        "pointer-events-none"
+    );
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.add(
+            "opacity-0",
+            "pointer-events-none"
+        );
+
+    }, 2800);
+
+}
+
+
+/* =========================================
+   MODAL BACKDROP
+========================================= */
+
+document
+    .getElementById("bookModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeBookDetails();
+
+        }
+
+    });
+
+
+document
+    .getElementById("newsletterModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeNewsletter();
+
+        }
+
+    });
+
+
+/* =========================================
+   ESC KEY
+========================================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeBookDetails();
+
+        closeNewsletter();
+
+        closeMobileMenu();
+
+    }
+
+});
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: .12
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+</script>
+
+</body>
+</html>

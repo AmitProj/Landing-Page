@@ -1,0 +1,4158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToyBox — Toys, Games & Fun</title>
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:#fffaf2;
+    color:#27233a;
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --purple:#7657e8;
+    --purple-dark:#4f3bb2;
+    --yellow:#ffd84d;
+    --orange:#ff8a3d;
+    --pink:#ff6f9f;
+    --green:#42c98a;
+    --blue:#51b9f4;
+
+    --ink:#29243b;
+    --muted:#817c8e;
+
+    --cream:#fffaf2;
+    --white:#ffffff;
+
+    --border:#eee7dc;
+
+    --shadow:
+        0 18px 45px rgba(47,38,75,.10);
+
+    --radius:24px;
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATIONS
+========================================================= */
+
+.blob{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.25;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.blob.one{
+    background:#ffd84d;
+    top:-100px;
+    left:-100px;
+}
+
+.blob.two{
+    background:#ff6f9f;
+    right:-120px;
+    top:35%;
+}
+
+.blob.three{
+    background:#51b9f4;
+    bottom:-120px;
+    left:30%;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(255,250,242,.88);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(238,231,220,.8);
+}
+
+.nav{
+    width:min(1180px,92%);
+    margin:auto;
+
+    height:76px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:22px;
+    font-weight:1000;
+
+    color:var(--ink);
+}
+
+.logo-icon{
+    width:44px;
+    height:44px;
+
+    display:grid;
+    place-items:center;
+
+    background:var(--yellow);
+
+    border-radius:15px;
+
+    box-shadow:
+        5px 5px 0 var(--purple);
+
+    transform:rotate(-4deg);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#5d586a;
+    font-size:13px;
+    font-weight:800;
+}
+
+.nav-links a:hover{
+    color:var(--purple);
+}
+
+.cart-button{
+    border:0;
+
+    background:var(--purple);
+    color:#fff;
+
+    padding:12px 18px;
+
+    border-radius:15px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 8px 20px rgba(118,87,232,.25);
+
+    transition:.2s;
+}
+
+.cart-button:hover{
+    transform:translateY(-2px);
+}
+
+.cart-count{
+    display:inline-grid;
+    place-items:center;
+
+    width:21px;
+    height:21px;
+
+    margin-left:5px;
+
+    background:var(--yellow);
+    color:var(--ink);
+
+    border-radius:50%;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    width:min(1180px,92%);
+    margin:auto;
+
+    min-height:570px;
+
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+
+    align-items:center;
+
+    gap:50px;
+
+    padding:70px 0 50px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:#fff;
+    border:1px solid var(--border);
+
+    padding:9px 14px;
+
+    border-radius:999px;
+
+    color:var(--purple);
+
+    font-size:11px;
+    font-weight:950;
+
+    box-shadow:0 8px 25px rgba(40,30,70,.06);
+}
+
+.hero h1{
+    margin-top:20px;
+
+    font-size:
+        clamp(42px,6vw,76px);
+
+    line-height:.98;
+
+    letter-spacing:-4px;
+
+    font-weight:1000;
+}
+
+.hero h1 span{
+    color:var(--purple);
+}
+
+.hero-text{
+    margin-top:22px;
+
+    max-width:580px;
+
+    color:var(--muted);
+
+    font-size:16px;
+
+    line-height:1.7;
+}
+
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:30px;
+}
+
+.primary-btn,
+.secondary-btn{
+    border:0;
+
+    padding:15px 22px;
+
+    border-radius:16px;
+
+    font-weight:950;
+
+    transition:.2s;
+}
+
+.primary-btn{
+    background:var(--purple);
+    color:white;
+
+    box-shadow:
+        0 12px 25px rgba(118,87,232,.25);
+}
+
+.secondary-btn{
+    background:white;
+    color:var(--ink);
+
+    border:1px solid var(--border);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-3px);
+}
+
+.hero-art{
+    position:relative;
+
+    min-height:430px;
+
+    display:grid;
+    place-items:center;
+}
+
+.hero-circle{
+    width:390px;
+    height:390px;
+
+    border-radius:48% 52% 55% 45%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffd84d,
+            #ff9f4c
+        );
+
+    transform:rotate(-7deg);
+
+    box-shadow:
+        18px 20px 0 #7657e8;
+}
+
+.toy{
+    position:absolute;
+
+    display:grid;
+    place-items:center;
+
+    filter:
+        drop-shadow(
+            0 15px 15px
+            rgba(30,25,50,.16)
+        );
+
+    animation:float 4s ease-in-out infinite;
+}
+
+.toy.robot{
+    font-size:125px;
+    left:18%;
+    top:19%;
+}
+
+.toy.car{
+    font-size:105px;
+    right:12%;
+    top:38%;
+
+    animation-delay:.7s;
+}
+
+.toy.ball{
+    font-size:75px;
+    left:30%;
+    bottom:13%;
+
+    animation-delay:1.2s;
+}
+
+.spark{
+    position:absolute;
+    font-size:28px;
+    animation:pulse 1.8s infinite;
+}
+
+.spark.one{
+    top:4%;
+    right:14%;
+}
+
+.spark.two{
+    bottom:12%;
+    right:7%;
+}
+
+.spark.three{
+    top:20%;
+    left:3%;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0) rotate(-4deg);
+    }
+    50%{
+        transform:translateY(-15px) rotate(4deg);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1) rotate(0);
+    }
+    50%{
+        transform:scale(1.25) rotate(15deg);
+    }
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+    width:min(1180px,92%);
+    margin:80px auto;
+}
+
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:20px;
+
+    margin-bottom:25px;
+}
+
+.section-title{
+    font-size:36px;
+    letter-spacing:-1.5px;
+    font-weight:1000;
+}
+
+.section-subtitle{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:5px;
+}
+
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+.categories{
+    display:grid;
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:15px;
+}
+
+.category{
+    border:0;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    text-align:left;
+
+    transition:.25s;
+
+    box-shadow:
+        0 8px 25px
+        rgba(40,30,70,.04);
+}
+
+.category:hover{
+    transform:
+        translateY(-7px)
+        rotate(-1deg);
+
+    box-shadow:var(--shadow);
+}
+
+.category-icon{
+    font-size:32px;
+}
+
+.category-name{
+    margin-top:10px;
+
+    font-size:13px;
+    font-weight:950;
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.product-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+}
+
+.product-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    transition:.25s;
+
+    box-shadow:
+        0 8px 25px
+        rgba(40,30,70,.04);
+}
+
+.product-card:hover{
+    transform:translateY(-7px);
+
+    box-shadow:var(--shadow);
+}
+
+.product-image{
+    height:190px;
+
+    display:grid;
+    place-items:center;
+
+    position:relative;
+
+    font-size:78px;
+}
+
+.bg-yellow{
+    background:#fff0a8;
+}
+
+.bg-blue{
+    background:#bde9ff;
+}
+
+.bg-pink{
+    background:#ffd0df;
+}
+
+.bg-green{
+    background:#c7f4dd;
+}
+
+.bg-purple{
+    background:#ddd5ff;
+}
+
+.offer{
+    position:absolute;
+
+    top:12px;
+    left:12px;
+
+    background:#ff5b72;
+    color:white;
+
+    padding:6px 9px;
+
+    border-radius:9px;
+
+    font-size:9px;
+    font-weight:1000;
+}
+
+.product-content{
+    padding:17px;
+}
+
+.product-category{
+    color:var(--purple);
+
+    text-transform:uppercase;
+
+    font-size:9px;
+
+    font-weight:1000;
+
+    letter-spacing:1px;
+}
+
+.product-name{
+    margin-top:5px;
+
+    font-size:15px;
+    font-weight:950;
+}
+
+.product-description{
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:5px;
+
+    line-height:1.5;
+}
+
+.product-bottom{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:15px;
+}
+
+.price{
+    font-size:20px;
+    font-weight:1000;
+}
+
+.old-price{
+    color:#aaa;
+
+    font-size:10px;
+
+    text-decoration:line-through;
+
+    margin-left:4px;
+}
+
+.add-btn{
+    border:0;
+
+    width:40px;
+    height:40px;
+
+    border-radius:13px;
+
+    background:var(--yellow);
+
+    font-size:20px;
+
+    font-weight:1000;
+
+    transition:.2s;
+}
+
+.add-btn:hover{
+    transform:scale(1.1) rotate(5deg);
+
+    background:var(--purple);
+    color:white;
+}
+
+
+/* =========================================================
+   OFFER BANNER
+========================================================= */
+
+.offer-banner{
+    background:
+        linear-gradient(
+            120deg,
+            #7657e8,
+            #9a7eff
+        );
+
+    color:white;
+
+    padding:35px;
+
+    border-radius:30px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.offer-banner:after{
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:#ffd84d;
+
+    right:-70px;
+    top:-100px;
+
+    opacity:.9;
+}
+
+.offer-banner h2{
+    font-size:32px;
+
+    font-weight:1000;
+
+    position:relative;
+
+    z-index:1;
+}
+
+.offer-banner p{
+    margin-top:6px;
+
+    color:#eee8ff;
+
+    font-size:12px;
+
+    position:relative;
+    z-index:1;
+}
+
+.offer-code{
+    padding:13px 18px;
+
+    background:#fff;
+
+    color:var(--purple);
+
+    border-radius:14px;
+
+    font-weight:1000;
+
+    position:relative;
+    z-index:2;
+}
+
+
+/* =========================================================
+   DELIVERY
+========================================================= */
+
+.delivery-box{
+    margin-top:25px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:24px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(40,30,70,.05);
+}
+
+.delivery-title{
+    font-size:20px;
+    font-weight:1000;
+}
+
+.delivery-options{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
+
+    margin-top:18px;
+}
+
+.delivery-option{
+    border:2px solid var(--border);
+
+    background:white;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    text-align:left;
+
+    transition:.2s;
+}
+
+.delivery-option.active{
+    border-color:var(--purple);
+
+    background:#f7f4ff;
+}
+
+.delivery-option:hover{
+    border-color:var(--purple);
+}
+
+.delivery-option-icon{
+    font-size:28px;
+}
+
+.delivery-option strong{
+    display:block;
+
+    margin-top:7px;
+
+    font-size:14px;
+}
+
+.delivery-option small{
+    display:block;
+
+    margin-top:4px;
+
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+.location-btn{
+    width:100%;
+
+    min-height:48px;
+
+    margin-top:18px;
+
+    border:0;
+
+    border-radius:14px;
+
+    background:var(--purple);
+
+    color:white;
+
+    font-size:12px;
+
+    font-weight:950;
+
+    transition:.2s;
+}
+
+.location-btn:hover{
+    transform:translateY(-2px);
+
+    background:var(--purple-dark);
+}
+
+.location-status{
+    margin-top:10px;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:#f7f5fb;
+
+    color:#777487;
+
+    font-size:10px;
+
+    line-height:1.5;
+
+    text-align:center;
+}
+
+.location-status.success{
+    background:#e6f8ee;
+    color:#218653;
+}
+
+.location-status.error{
+    background:#fff0f0;
+    color:#c74c5c;
+}
+
+.distance-card{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:12px;
+}
+
+.distance-card > div{
+    padding:14px;
+
+    border-radius:14px;
+
+    background:#f2eeff;
+
+    text-align:center;
+}
+
+.distance-card span{
+    display:block;
+
+    color:#8b869b;
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+.distance-card strong{
+    display:block;
+
+    margin-top:5px;
+
+    color:var(--purple);
+
+    font-size:18px;
+
+    font-weight:950;
+}
+
+.map-box{
+    height:230px;
+
+    margin-top:14px;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    border:3px solid white;
+
+    box-shadow:
+        0 10px 30px
+        rgba(50,40,80,.10);
+}
+
+.map-box iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+.delivery-rule{
+    margin-top:10px;
+
+    color:#8a8694;
+
+    font-size:10px;
+
+    text-align:center;
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+.checkout{
+    display:grid;
+
+    grid-template-columns:
+        1fr 400px;
+
+    gap:25px;
+}
+
+.checkout-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(40,30,70,.05);
+}
+
+.checkout-card h3{
+    font-size:20px;
+    font-weight:1000;
+}
+
+.form-grid{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:13px;
+
+    margin-top:18px;
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.input-group.full{
+    grid-column:1/-1;
+}
+
+.input-group label{
+    font-size:10px;
+    font-weight:900;
+    color:#696477;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select{
+    width:100%;
+
+    border:1px solid var(--border);
+
+    background:#fffdf9;
+
+    padding:13px;
+
+    border-radius:13px;
+
+    outline:0;
+
+    font-size:12px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus{
+    border-color:var(--purple);
+}
+
+.input-group textarea{
+    min-height:85px;
+    resize:vertical;
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart-list{
+    margin-top:15px;
+
+    max-height:330px;
+
+    overflow:auto;
+}
+
+.cart-empty{
+    padding:30px 10px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.cart-item{
+    display:grid;
+
+    grid-template-columns:55px 1fr auto;
+
+    gap:12px;
+
+    align-items:center;
+
+    padding:12px 0;
+
+    border-bottom:1px solid var(--border);
+}
+
+.cart-item-image{
+    width:55px;
+    height:55px;
+
+    border-radius:14px;
+
+    display:grid;
+    place-items:center;
+
+    font-size:27px;
+}
+
+.cart-item-name{
+    font-size:12px;
+    font-weight:950;
+}
+
+.cart-item-price{
+    margin-top:3px;
+
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    margin-top:6px;
+}
+
+.qty button{
+    width:25px;
+    height:25px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:#f2eefc;
+
+    color:var(--purple);
+
+    font-weight:1000;
+}
+
+.qty span{
+    min-width:18px;
+
+    text-align:center;
+
+    font-size:11px;
+    font-weight:900;
+}
+
+.remove{
+    border:0;
+
+    background:transparent;
+
+    color:#e86678;
+
+    font-size:11px;
+
+    margin-top:5px;
+}
+
+.summary{
+    margin-top:18px;
+
+    padding-top:18px;
+
+    border-top:1px solid var(--border);
+}
+
+.summary-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:11px;
+
+    color:#777284;
+
+    font-size:12px;
+}
+
+.summary-row.total{
+    margin-top:15px;
+
+    padding-top:15px;
+
+    border-top:1px dashed var(--border);
+
+    color:var(--ink);
+
+    font-size:20px;
+
+    font-weight:1000;
+}
+
+.checkout-btn{
+    width:100%;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border:0;
+
+    border-radius:15px;
+
+    background:var(--purple);
+
+    color:white;
+
+    font-weight:1000;
+
+    box-shadow:
+        0 10px 25px
+        rgba(118,87,232,.25);
+}
+
+.checkout-btn:hover{
+    background:var(--purple-dark);
+}
+
+
+/* =========================================================
+   UPI
+========================================================= */
+
+.payment-box{
+    margin-top:18px;
+
+    padding:16px;
+
+    border-radius:17px;
+
+    background:#f8f5ff;
+
+    border:1px solid #e7e0ff;
+}
+
+.payment-box h4{
+    font-size:13px;
+    font-weight:1000;
+}
+
+.upi-input{
+    margin-top:10px;
+
+    width:100%;
+
+    border:1px solid var(--border);
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:white;
+
+    font-size:11px;
+}
+
+.upi-button{
+    width:100%;
+
+    margin-top:9px;
+
+    padding:12px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#41b96f;
+
+    color:white;
+
+    font-weight:950;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    margin-top:80px;
+
+    background:#29243b;
+
+    color:white;
+
+    padding:50px 0;
+}
+
+.footer-inner{
+    width:min(1180px,92%);
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
+    gap:40px;
+}
+
+.footer h3{
+    font-size:20px;
+}
+
+.footer p{
+    margin-top:10px;
+
+    color:#aaa5b7;
+
+    font-size:11px;
+
+    line-height:1.7;
+}
+
+.footer a{
+    display:block;
+
+    color:#aaa5b7;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    margin-top:8px;
+}
+
+.footer a:hover{
+    color:white;
+}
+
+.copyright{
+    width:min(1180px,92%);
+    margin:35px auto 0;
+
+    padding-top:20px;
+
+    border-top:1px solid #484354;
+
+    color:#858090;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(25,20,40,.65);
+
+    backdrop-filter:blur(8px);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:3000;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-card{
+    width:min(470px,100%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:28px;
+
+    animation:modalIn .25s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.modal-head{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+}
+
+.modal-head h3{
+    font-size:23px;
+    font-weight:1000;
+}
+
+.close-modal{
+    width:35px;
+    height:35px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#f3f0f7;
+
+    font-weight:1000;
+}
+
+
+/* =========================================================
+   RECEIPT
+========================================================= */
+
+.receipt{
+    margin-top:20px;
+
+    padding:20px;
+
+    background:#fffdf8;
+
+    border:1px dashed #cfc6b7;
+
+    border-radius:18px;
+}
+
+.receipt-logo{
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:1000;
+}
+
+.receipt-center{
+    text-align:center;
+
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+.receipt-line{
+    height:1px;
+
+    background:#ded6ca;
+
+    margin:15px 0;
+}
+
+.receipt-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-top:8px;
+
+    font-size:11px;
+}
+
+.receipt-total{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:15px;
+
+    padding-top:13px;
+
+    border-top:1px solid #ded6ca;
+
+    font-size:17px;
+
+    font-weight:1000;
+}
+
+.print-btn{
+    width:100%;
+
+    margin-top:15px;
+
+    border:0;
+
+    border-radius:13px;
+
+    padding:13px;
+
+    background:var(--purple);
+
+    color:white;
+
+    font-weight:1000;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+
+    left:50%;
+
+    bottom:25px;
+
+    transform:
+        translate(-50%,120px);
+
+    background:#29243b;
+
+    color:white;
+
+    padding:13px 18px;
+
+    border-radius:14px;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    z-index:5000;
+
+    transition:.3s;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+
+.toast.show{
+    transform:
+        translate(-50%,0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+
+    .hero{
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .hero-text{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-actions{
+        justify-content:center;
+    }
+
+    .hero-art{
+        min-height:400px;
+    }
+
+    .product-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .categories{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .checkout{
+        grid-template-columns:1fr;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .nav{
+        height:68px;
+    }
+
+    .hero{
+        padding-top:45px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero-circle{
+        width:300px;
+        height:300px;
+    }
+
+    .toy.robot{
+        font-size:90px;
+    }
+
+    .toy.car{
+        font-size:75px;
+    }
+
+    .toy.ball{
+        font-size:55px;
+    }
+
+    .categories{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .product-grid{
+        grid-template-columns:1fr;
+    }
+
+    .delivery-options{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .input-group.full{
+        grid-column:auto;
+    }
+
+    .offer-banner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    body *{
+        visibility:hidden;
+    }
+
+    .receipt,
+    .receipt *{
+        visibility:visible;
+    }
+
+    .receipt{
+        position:absolute;
+
+        left:0;
+        top:0;
+
+        width:100%;
+
+        border:0;
+    }
+
+    .print-btn{
+        display:none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- DECORATION -->
+
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="header">
+
+    <nav class="nav">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🧸
+            </div>
+
+            ToyBox
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="#home">Home</a>
+
+            <a href="#categories">
+                Categories
+            </a>
+
+            <a href="#products">
+                Products
+            </a>
+
+            <a href="#checkout">
+                Checkout
+            </a>
+
+        </div>
+
+
+        <button
+            class="cart-button"
+            onclick="scrollToCheckout()"
+        >
+
+            🛒 Cart
+
+            <span
+                class="cart-count"
+                id="cartCount"
+            >
+                0
+            </span>
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<main id="home">
+
+<section class="hero">
+
+    <div>
+
+        <div class="badge">
+            ✨ Fun starts here
+        </div>
+
+
+        <h1>
+
+            Big smiles.
+
+            <br>
+
+            <span>Little adventures.</span>
+
+        </h1>
+
+
+        <p class="hero-text">
+
+            Discover playful toys, creative games and
+            exciting gifts for every little explorer.
+            Browse our collection, check the prices,
+            and visit our shop to pick your favorites.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+            <button
+                class="primary-btn"
+                onclick="document.getElementById('products').scrollIntoView()"
+            >
+                🧸 Explore Toys
+            </button>
+
+
+            <button
+                class="secondary-btn"
+                onclick="scrollToCheckout()"
+            >
+                🛒 View Cart
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-art">
+
+        <div class="hero-circle"></div>
+
+        <div class="toy robot">
+            🤖
+        </div>
+
+        <div class="toy car">
+            🚗
+        </div>
+
+        <div class="toy ball">
+            🏀
+        </div>
+
+        <div class="spark one">
+            ✨
+        </div>
+
+        <div class="spark two">
+            ⭐
+        </div>
+
+        <div class="spark three">
+            💫
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     CATEGORIES
+======================================================= -->
+
+<section
+    class="section"
+    id="categories"
+>
+
+    <div class="section-head">
+
+        <div>
+
+            <h2 class="section-title">
+                Pick your play
+            </h2>
+
+            <p class="section-subtitle">
+                Something fun for every little personality.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="categories">
+
+        <button
+            class="category"
+            onclick="filterProducts('Cars')"
+        >
+            <div class="category-icon">
+                🚗
+            </div>
+
+            <div class="category-name">
+                Cars & Vehicles
+            </div>
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterProducts('Games')"
+        >
+            <div class="category-icon">
+                🎮
+            </div>
+
+            <div class="category-name">
+                Games
+            </div>
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterProducts('Creative')"
+        >
+            <div class="category-icon">
+                🎨
+            </div>
+
+            <div class="category-name">
+                Creative
+            </div>
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterProducts('Outdoor')"
+        >
+            <div class="category-icon">
+                ⚽
+            </div>
+
+            <div class="category-name">
+                Outdoor
+            </div>
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterProducts('Plush')"
+        >
+            <div class="category-icon">
+                🧸
+            </div>
+
+            <div class="category-name">
+                Plush
+            </div>
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     OFFER
+======================================================= -->
+
+<section class="section">
+
+    <div class="offer-banner">
+
+        <div>
+
+            <h2>
+                🎉 Weekend Fun Sale
+            </h2>
+
+            <p>
+                Selected toys are available at special prices.
+            </p>
+
+        </div>
+
+
+        <div class="offer-code">
+            UP TO 20% OFF
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     PRODUCTS
+======================================================= -->
+
+<section
+    class="section"
+    id="products"
+>
+
+    <div class="section-head">
+
+        <div>
+
+            <h2 class="section-title">
+                Popular picks
+            </h2>
+
+            <p class="section-subtitle">
+                Browse products and add your favorites to the cart.
+            </p>
+
+        </div>
+
+        <button
+            class="secondary-btn"
+            onclick="showAllProducts()"
+        >
+            Show All
+        </button>
+
+    </div>
+
+
+    <div
+        class="product-grid"
+        id="productGrid"
+    ></div>
+
+</section>
+
+
+<!-- =======================================================
+     CHECKOUT
+======================================================= -->
+
+<section
+    class="section"
+    id="checkout"
+>
+
+    <div class="section-head">
+
+        <div>
+
+            <h2 class="section-title">
+                Your order
+            </h2>
+
+            <p class="section-subtitle">
+                Choose pickup or delivery before checkout.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="checkout">
+
+        <!-- CUSTOMER -->
+
+        <div>
+
+            <div class="checkout-card">
+
+                <h3>
+                    👋 Customer details
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>
+                            Full name
+                        </label>
+
+                        <input
+                            id="customerName"
+                            type="text"
+                            placeholder="Your name"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Phone
+                        </label>
+
+                        <input
+                            id="customerPhone"
+                            type="tel"
+                            placeholder="+91 XXXXX XXXXX"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group full">
+
+                        <label>
+                            Address
+                        </label>
+
+                        <textarea
+                            id="customerAddress"
+                            placeholder="Enter delivery address"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DELIVERY -->
+
+            <div class="delivery-box">
+
+                <div class="delivery-title">
+                    🚚 How do you want your order?
+                </div>
+
+
+                <div class="delivery-options">
+
+                    <button
+                        class="delivery-option active"
+                        id="pickupOption"
+                        onclick="selectDelivery('pickup')"
+                    >
+
+                        <div class="delivery-option-icon">
+                            🏪
+                        </div>
+
+                        <strong>
+                            Pickup from Shop
+                        </strong>
+
+                        <small>
+                            Free — collect from our shop
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        class="delivery-option"
+                        id="deliveryOption"
+                        onclick="selectDelivery('delivery')"
+                    >
+
+                        <div class="delivery-option-icon">
+                            🛵
+                        </div>
+
+                        <strong>
+                            Home Delivery
+                        </strong>
+
+                        <small>
+                            ₹10 per chargeable kilometer
+                        </small>
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="locationArea"
+                    style="display:none;"
+                >
+
+                    <button
+                        class="location-btn"
+                        onclick="detectLocation()"
+                        id="locationBtn"
+                    >
+                        📍 Detect My Location
+                    </button>
+
+
+                    <div
+                        class="location-status"
+                        id="locationStatus"
+                    >
+                        Allow location access to calculate
+                        your delivery charge.
+                    </div>
+
+
+                    <div
+                        class="distance-card"
+                        id="distanceCard"
+                        style="display:none;"
+                    >
+
+                        <div>
+
+                            <span>
+                                📍 Distance
+                            </span>
+
+                            <strong id="distanceText">
+                                0 km
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                🚚 Delivery Charge
+                            </span>
+
+                            <strong id="distanceCharge">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="map-box"
+                        id="mapBox"
+                        style="display:none;"
+                    >
+
+                        <iframe
+                            id="mapFrame"
+                            loading="lazy"
+                            allowfullscreen
+                        ></iframe>
+
+                    </div>
+
+
+                    <p class="delivery-rule">
+
+                        🚚 Delivery charge:
+                        <b>₹10 per chargeable km</b>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CART -->
+
+        <div class="checkout-card">
+
+            <h3>
+                🛒 Cart
+            </h3>
+
+
+            <div
+                class="cart-list"
+                id="cartList"
+            ></div>
+
+
+            <div class="summary">
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="subtotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Discount
+                    </span>
+
+                    <strong id="discount">
+                        -₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span id="deliveryLabel">
+                        Pickup
+                    </span>
+
+                    <strong id="deliveryCharge">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="total">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="payment-box">
+
+                    <h4>
+                        💳 Google Pay / UPI
+                    </h4>
+
+                    <p
+                        style="
+                        margin-top:5px;
+                        color:#817c8e;
+                        font-size:10px;
+                        line-height:1.5;
+                        "
+                    >
+                        Enter your shop's UPI ID below.
+                        The button will open the supported
+                        UPI payment app.
+                    </p>
+
+
+                    <input
+                        class="upi-input"
+                        id="upiId"
+                        value="yourshop@upi"
+                        placeholder="yourshop@upi"
+                    >
+
+
+                    <button
+                        class="upi-button"
+                        onclick="payWithUPI()"
+                    >
+                        💳 Pay Total with UPI
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="checkout-btn"
+                    onclick="placeOrder()"
+                >
+                    🎉 Place Order & Generate Receipt
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <div>
+
+            <h3>
+                🧸 ToyBox
+            </h3>
+
+            <p>
+                A playful local toy shop bringing
+                games, toys and happy moments to families.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Shop
+            </h3>
+
+            <a href="#products">
+                Toys
+            </a>
+
+            <a href="#categories">
+                Categories
+            </a>
+
+            <a href="#checkout">
+                Cart
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Visit
+            </h3>
+
+            <a href="#">
+                📍 Our Shop
+            </a>
+
+            <a href="#">
+                📞 Call Us
+            </a>
+
+            <a href="#">
+                📸 Instagram
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 ToyBox. All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- =======================================================
+     RECEIPT MODAL
+======================================================= -->
+
+<div
+    class="modal"
+    id="receiptModal"
+>
+
+    <div class="modal-card">
+
+        <div class="modal-head">
+
+            <h3>
+                🎉 Order Receipt
+            </h3>
+
+            <button
+                class="close-modal"
+                onclick="closeReceipt()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="receipt"
+            id="receipt"
+        ></div>
+
+
+        <button
+            class="print-btn"
+            onclick="window.print()"
+        >
+            🖨️ Print / Save Receipt
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast"
+>
+    Added to cart
+</div>
+
+
+<script>
+
+/* =========================================================
+   SHOP CONFIGURATION
+========================================================= */
+
+/*
+    IMPORTANT:
+
+    Replace these coordinates with your client's
+    actual shop location.
+
+    Example coordinates are only demo values.
+*/
+
+const SHOP_LAT = 30.3398;
+const SHOP_LNG = 76.3869;
+
+
+/*
+    Delivery price.
+
+    ₹10 per chargeable kilometer.
+*/
+
+const DELIVERY_RATE_PER_KM = 10;
+
+
+/*
+    Change this to the real shop UPI ID.
+*/
+
+const DEFAULT_UPI_ID = "yourshop@upi";
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+const products = [
+
+    {
+        id:1,
+        name:"Speed Racer Car",
+        category:"Cars",
+        price:499,
+        oldPrice:699,
+        emoji:"🏎️",
+        bg:"bg-yellow",
+        offer:"SAVE 28%",
+        description:"Fast pull-back racing car."
+    },
+
+    {
+        id:2,
+        name:"Super Robot",
+        category:"Games",
+        price:799,
+        oldPrice:999,
+        emoji:"🤖",
+        bg:"bg-blue",
+        offer:"POPULAR",
+        description:"Fun robot toy for creative play."
+    },
+
+    {
+        id:3,
+        name:"Creative Art Kit",
+        category:"Creative",
+        price:349,
+        oldPrice:449,
+        emoji:"🎨",
+        bg:"bg-pink",
+        offer:"SAVE 22%",
+        description:"Colors, stickers and drawing fun."
+    },
+
+    {
+        id:4,
+        name:"Football Fun Set",
+        category:"Outdoor",
+        price:599,
+        oldPrice:749,
+        emoji:"⚽",
+        bg:"bg-green",
+        offer:"HOT",
+        description:"Perfect for outdoor adventures."
+    },
+
+    {
+        id:5,
+        name:"Cute Teddy Bear",
+        category:"Plush",
+        price:699,
+        oldPrice:899,
+        emoji:"🧸",
+        bg:"bg-purple",
+        offer:"SAVE 22%",
+        description:"Soft and cuddly teddy friend."
+    },
+
+    {
+        id:6,
+        name:"Building Blocks",
+        category:"Creative",
+        price:449,
+        oldPrice:599,
+        emoji:"🧱",
+        bg:"bg-yellow",
+        offer:"NEW",
+        description:"Build creative shapes and worlds."
+    },
+
+    {
+        id:7,
+        name:"Remote Control Car",
+        category:"Cars",
+        price:1299,
+        oldPrice:1599,
+        emoji:"🚙",
+        bg:"bg-blue",
+        offer:"SAVE 19%",
+        description:"Remote controlled adventure car."
+    },
+
+    {
+        id:8,
+        name:"Mini Game Console",
+        category:"Games",
+        price:999,
+        oldPrice:1299,
+        emoji:"🎮",
+        bg:"bg-pink",
+        offer:"HOT",
+        description:"Classic games in a pocket console."
+    }
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let cart = {};
+
+let selectedDelivery = "pickup";
+
+let userLatitude = null;
+
+let userLongitude = null;
+
+let detectedDistance = 0;
+
+let automaticDeliveryCharge = 0;
+
+let discountApplied = true;
+
+
+/* =========================================================
+   PRODUCT DISPLAY
+========================================================= */
+
+function renderProducts(list = products){
+
+    const grid =
+        document.getElementById(
+            "productGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    list.forEach(product => {
+
+        const card =
+            document.createElement("article");
+
+
+        card.className =
+            "product-card";
+
+
+        card.innerHTML = `
+
+            <div class="product-image ${product.bg}">
+
+                <span class="offer">
+                    ${product.offer}
+                </span>
+
+                <span>
+                    ${product.emoji}
+                </span>
+
+            </div>
+
+
+            <div class="product-content">
+
+                <div class="product-category">
+                    ${product.category}
+                </div>
+
+
+                <div class="product-name">
+                    ${product.name}
+                </div>
+
+
+                <div class="product-description">
+                    ${product.description}
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        ₹${product.price}
+
+                        <span class="old-price">
+                            ₹${product.oldPrice}
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart(${product.id})"
+                        title="Add to cart"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function filterProducts(category){
+
+    const filtered =
+        products.filter(
+            product =>
+                product.category === category
+        );
+
+
+    renderProducts(filtered);
+
+
+    document.getElementById(
+        "products"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+function showAllProducts(){
+
+    renderProducts(products);
+
+}
+
+
+/* =========================================================
+   ADD TO CART
+========================================================= */
+
+function addToCart(id){
+
+    if(!cart[id]){
+        cart[id] = 0;
+    }
+
+
+    cart[id]++;
+
+
+    updateCart();
+
+
+    showToast(
+        "🧸 Added to cart!"
+    );
+
+}
+
+
+/* =========================================================
+   REMOVE
+========================================================= */
+
+function removeFromCart(id){
+
+    delete cart[id];
+
+    updateCart();
+
+}
+
+
+/* =========================================================
+   CHANGE QUANTITY
+========================================================= */
+
+function changeQuantity(
+    id,
+    amount
+){
+
+    if(!cart[id]){
+        return;
+    }
+
+
+    cart[id] += amount;
+
+
+    if(cart[id] <= 0){
+        delete cart[id];
+    }
+
+
+    updateCart();
+
+}
+
+
+/* =========================================================
+   SUBTOTAL
+========================================================= */
+
+function getSubtotal(){
+
+    let subtotal = 0;
+
+
+    Object.keys(cart).forEach(id => {
+
+        const product =
+            products.find(
+                p =>
+                    p.id === Number(id)
+            );
+
+
+        if(product){
+
+            subtotal +=
+                product.price *
+                cart[id];
+
+        }
+
+    });
+
+
+    return subtotal;
+
+}
+
+
+/* =========================================================
+   DISCOUNT
+========================================================= */
+
+function getDiscount(){
+
+    if(!discountApplied){
+        return 0;
+    }
+
+
+    const subtotal =
+        getSubtotal();
+
+
+    /*
+        Demo: 10% discount.
+
+        You can change/remove this.
+    */
+
+    return Math.round(
+        subtotal * 0.10
+    );
+
+}
+
+
+/* =========================================================
+   DELIVERY
+========================================================= */
+
+function getDeliveryCharge(){
+
+    if(
+        selectedDelivery === "pickup"
+    ){
+
+        return 0;
+
+    }
+
+
+    return automaticDeliveryCharge;
+
+}
+
+
+function selectDelivery(type){
+
+    selectedDelivery =
+        type;
+
+
+    const pickup =
+        document.getElementById(
+            "pickupOption"
+        );
+
+    const delivery =
+        document.getElementById(
+            "deliveryOption"
+        );
+
+
+    const locationArea =
+        document.getElementById(
+            "locationArea"
+        );
+
+
+    pickup.classList.toggle(
+        "active",
+        type === "pickup"
+    );
+
+
+    delivery.classList.toggle(
+        "active",
+        type === "delivery"
+    );
+
+
+    if(type === "delivery"){
+
+        locationArea.style.display =
+            "block";
+
+    }
+
+    else{
+
+        locationArea.style.display =
+            "none";
+
+    }
+
+
+    updateCart();
+
+}
+
+
+/* =========================================================
+   CART RENDER
+========================================================= */
+
+function updateCart(){
+
+    const list =
+        document.getElementById(
+            "cartList"
+        );
+
+
+    const ids =
+        Object.keys(cart);
+
+
+    if(ids.length === 0){
+
+        list.innerHTML = `
+
+            <div class="cart-empty">
+
+                🧸 Your cart is waiting
+                for some fun toys!
+
+            </div>
+
+        `;
+
+    }
+
+    else{
+
+        list.innerHTML = "";
+
+
+        ids.forEach(id => {
+
+            const product =
+                products.find(
+                    p =>
+                        p.id === Number(id)
+                );
+
+
+            if(!product){
+                return;
+            }
+
+
+            const quantity =
+                cart[id];
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "cart-item";
+
+
+            item.innerHTML = `
+
+                <div
+                    class="cart-item-image ${product.bg}"
+                >
+                    ${product.emoji}
+                </div>
+
+
+                <div>
+
+                    <div class="cart-item-name">
+                        ${product.name}
+                    </div>
+
+
+                    <div class="cart-item-price">
+                        ₹${product.price}
+                    </div>
+
+
+                    <div class="qty">
+
+                        <button
+                            onclick="changeQuantity(${product.id},-1)"
+                        >
+                            −
+                        </button>
+
+                        <span>
+                            ${quantity}
+                        </span>
+
+                        <button
+                            onclick="changeQuantity(${product.id},1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div style="text-align:right;">
+
+                    <strong>
+                        ₹${product.price * quantity}
+                    </strong>
+
+                    <br>
+
+                    <button
+                        class="remove"
+                        onclick="removeFromCart(${product.id})"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+            `;
+
+
+            list.appendChild(item);
+
+        });
+
+    }
+
+
+    const subtotal =
+        getSubtotal();
+
+
+    const discount =
+        getDiscount();
+
+
+    const delivery =
+        getDeliveryCharge();
+
+
+    const total =
+        subtotal -
+        discount +
+        delivery;
+
+
+    document.getElementById(
+        "subtotal"
+    ).textContent =
+        "₹" + subtotal;
+
+
+    document.getElementById(
+        "discount"
+    ).textContent =
+        "-₹" + discount;
+
+
+    document.getElementById(
+        "deliveryCharge"
+    ).textContent =
+        "₹" + delivery;
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+        "₹" + Math.max(0,total);
+
+
+    document.getElementById(
+        "deliveryLabel"
+    ).textContent =
+        selectedDelivery === "pickup"
+
+        ? "Pickup"
+
+        : getDeliveryName();
+
+
+    const count =
+        Object.values(cart).reduce(
+            (sum,value) =>
+                sum + value,
+            0
+        );
+
+
+    document.getElementById(
+        "cartCount"
+    ).textContent =
+        count;
+
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+function detectLocation(){
+
+    const button =
+        document.getElementById(
+            "locationBtn"
+        );
+
+
+    const status =
+        document.getElementById(
+            "locationStatus"
+        );
+
+
+    if(!navigator.geolocation){
+
+        status.textContent =
+            "❌ Your browser does not support location detection.";
+
+        status.className =
+            "location-status error";
+
+        return;
+
+    }
+
+
+    button.textContent =
+        "📍 Detecting location...";
+
+    button.disabled =
+        true;
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            userLatitude =
+                position.coords.latitude;
+
+            userLongitude =
+                position.coords.longitude;
+
+
+            detectedDistance =
+                calculateDistance(
+
+                    SHOP_LAT,
+                    SHOP_LNG,
+
+                    userLatitude,
+                    userLongitude
+
+                );
+
+
+            /*
+                Chargeable kilometers.
+
+                0.2 km → 1 km → ₹10
+                1.2 km → 2 km → ₹20
+                3.1 km → 4 km → ₹40
+            */
+
+            const chargeableKm =
+                Math.max(
+                    1,
+                    Math.ceil(
+                        detectedDistance
+                    )
+                );
+
+
+            automaticDeliveryCharge =
+                chargeableKm *
+                DELIVERY_RATE_PER_KM;
+
+
+            document.getElementById(
+                "distanceText"
+            ).textContent =
+                detectedDistance.toFixed(2) +
+                " km";
+
+
+            document.getElementById(
+                "distanceCharge"
+            ).textContent =
+                "₹" +
+                automaticDeliveryCharge;
+
+
+            document.getElementById(
+                "distanceCard"
+            ).style.display =
+                "grid";
+
+
+            status.textContent =
+                "✅ Location detected. Delivery charge calculated automatically.";
+
+            status.className =
+                "location-status success";
+
+
+            showMap();
+
+
+            updateCart();
+
+
+            button.textContent =
+                "📍 Location Detected";
+
+
+            button.disabled =
+                false;
+
+
+            showToast(
+                "🚚 Delivery: ₹" +
+                automaticDeliveryCharge
+            );
+
+        },
+
+
+        function(error){
+
+            button.textContent =
+                "📍 Detect My Location";
+
+            button.disabled =
+                false;
+
+
+            status.className =
+                "location-status error";
+
+
+            if(
+                error.code === 1
+            ){
+
+                status.textContent =
+                    "❌ Location permission denied. Please allow location access.";
+
+            }
+
+            else if(
+                error.code === 2
+            ){
+
+                status.textContent =
+                    "❌ Your location could not be detected.";
+
+            }
+
+            else{
+
+                status.textContent =
+                    "❌ Location detection timed out.";
+
+            }
+
+        },
+
+
+        {
+            enableHighAccuracy:true,
+            timeout:10000,
+            maximumAge:0
+        }
+
+    );
+
+}
+
+
+/* =========================================================
+   DISTANCE
+========================================================= */
+
+function calculateDistance(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+){
+
+    const R = 6371;
+
+
+    const dLat =
+        toRadians(
+            lat2 - lat1
+        );
+
+
+    const dLon =
+        toRadians(
+            lon2 - lon1
+        );
+
+
+    const a =
+        Math.sin(dLat / 2) *
+        Math.sin(dLat / 2) +
+
+        Math.cos(
+            toRadians(lat1)
+        ) *
+
+        Math.cos(
+            toRadians(lat2)
+        ) *
+
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+
+
+    const c =
+        2 *
+        Math.atan2(
+            Math.sqrt(a),
+            Math.sqrt(1 - a)
+        );
+
+
+    return R * c;
+
+}
+
+
+function toRadians(value){
+
+    return value *
+        Math.PI /
+        180;
+
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+function showMap(){
+
+    const mapBox =
+        document.getElementById(
+            "mapBox"
+        );
+
+
+    const mapFrame =
+        document.getElementById(
+            "mapFrame"
+        );
+
+
+    const bbox = [
+
+        Math.min(
+            SHOP_LNG,
+            userLongitude
+        ) - 0.02,
+
+        Math.min(
+            SHOP_LAT,
+            userLatitude
+        ) - 0.02,
+
+        Math.max(
+            SHOP_LNG,
+            userLongitude
+        ) + 0.02,
+
+        Math.max(
+            SHOP_LAT,
+            userLatitude
+        ) + 0.02
+
+    ].join(",");
+
+
+    mapFrame.src =
+        "https://www.openstreetmap.org/export/embed.html?bbox=" +
+
+        encodeURIComponent(bbox) +
+
+        "&layer=mapnik";
+
+
+    mapBox.style.display =
+        "block";
+
+}
+
+
+/* =========================================================
+   DELIVERY NAME
+========================================================= */
+
+function getDeliveryName(){
+
+    if(
+        automaticDeliveryCharge > 0
+    ){
+
+        return (
+            "Delivery • " +
+            detectedDistance.toFixed(2) +
+            " km"
+        );
+
+    }
+
+
+    return "Delivery";
+
+}
+
+
+/* =========================================================
+   UPI PAYMENT
+========================================================= */
+
+function payWithUPI(){
+
+    const total =
+        getSubtotal() -
+        getDiscount() +
+        getDeliveryCharge();
+
+
+    if(total <= 0){
+
+        showToast(
+            "🛒 Add something to your cart first."
+        );
+
+        return;
+
+    }
+
+
+    let upiId =
+        document.getElementById(
+            "upiId"
+        ).value.trim();
+
+
+    if(!upiId){
+
+        upiId =
+            DEFAULT_UPI_ID;
+
+    }
+
+
+    const name =
+        "ToyBox";
+
+
+    const note =
+        "ToyBox Order";
+
+
+    const upiUrl =
+        "upi://pay?" +
+
+        "pa=" +
+        encodeURIComponent(
+            upiId
+        ) +
+
+        "&pn=" +
+        encodeURIComponent(
+            name
+        ) +
+
+        "&am=" +
+        encodeURIComponent(
+            total
+        ) +
+
+        "&cu=INR" +
+
+        "&tn=" +
+        encodeURIComponent(
+            note
+        );
+
+
+    window.location.href =
+        upiUrl;
+
+}
+
+
+/* =========================================================
+   PLACE ORDER
+========================================================= */
+
+function placeOrder(){
+
+    const ids =
+        Object.keys(cart);
+
+
+    if(ids.length === 0){
+
+        showToast(
+            "🛒 Add products before checkout."
+        );
+
+        return;
+
+    }
+
+
+    const name =
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
+
+    const phone =
+        document.getElementById(
+            "customerPhone"
+        ).value.trim();
+
+
+    const address =
+        document.getElementById(
+            "customerAddress"
+        ).value.trim();
+
+
+    if(!name){
+
+        showToast(
+            "Please enter your name."
+        );
+
+        return;
+
+    }
+
+
+    if(!phone){
+
+        showToast(
+            "Please enter your phone number."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        selectedDelivery === "delivery" &&
+        !address
+    ){
+
+        showToast(
+            "Please enter delivery address."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        selectedDelivery === "delivery" &&
+        automaticDeliveryCharge <= 0
+    ){
+
+        showToast(
+            "Please detect your location first."
+        );
+
+        return;
+
+    }
+
+
+    const orderNumber =
+        "TB" +
+        Date.now()
+            .toString()
+            .slice(-7);
+
+
+    const subtotal =
+        getSubtotal();
+
+
+    const discount =
+        getDiscount();
+
+
+    const delivery =
+        getDeliveryCharge();
+
+
+    const total =
+        subtotal -
+        discount +
+        delivery;
+
+
+    generateReceipt({
+
+        orderNumber,
+        name,
+        phone,
+        address,
+        subtotal,
+        discount,
+        delivery,
+        total
+
+    });
+
+
+    document.getElementById(
+        "receiptModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   RECEIPT
+========================================================= */
+
+function generateReceipt(order){
+
+    const receipt =
+        document.getElementById(
+            "receipt"
+        );
+
+
+    let itemsHTML = "";
+
+
+    Object.keys(cart).forEach(id => {
+
+        const product =
+            products.find(
+                p =>
+                    p.id === Number(id)
+            );
+
+
+        if(!product){
+            return;
+        }
+
+
+        itemsHTML += `
+
+            <div class="receipt-row">
+
+                <span>
+                    ${product.name}
+                    × ${cart[id]}
+                </span>
+
+                <strong>
+                    ₹${product.price * cart[id]}
+                </strong>
+
+            </div>
+
+        `;
+
+    });
+
+
+    const deliveryText =
+        selectedDelivery === "pickup"
+
+        ? "Pickup from Shop"
+
+        : (
+            "Home Delivery (" +
+            detectedDistance.toFixed(2) +
+            " km)"
+        );
+
+
+    receipt.innerHTML = `
+
+        <div class="receipt-logo">
+            🧸 ToyBox
+        </div>
+
+
+        <div class="receipt-center">
+            Thank you for your order!
+        </div>
+
+
+        <div class="receipt-line"></div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Order
+            </span>
+
+            <strong>
+                #${order.orderNumber}
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Date
+            </span>
+
+            <strong>
+                ${new Date().toLocaleDateString()}
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Customer
+            </span>
+
+            <strong>
+                ${escapeHTML(order.name)}
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Phone
+            </span>
+
+            <strong>
+                ${escapeHTML(order.phone)}
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Method
+            </span>
+
+            <strong>
+                ${deliveryText}
+            </strong>
+
+        </div>
+
+
+        ${
+            order.address
+
+            ? `
+
+            <div class="receipt-row">
+
+                <span>
+                    Address
+                </span>
+
+                <strong>
+                    ${escapeHTML(order.address)}
+                </strong>
+
+            </div>
+
+            `
+
+            : ""
+        }
+
+
+        <div class="receipt-line"></div>
+
+
+        ${itemsHTML}
+
+
+        <div class="receipt-row">
+
+            <span>
+                Subtotal
+            </span>
+
+            <strong>
+                ₹${order.subtotal}
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Discount
+            </span>
+
+            <strong>
+                -₹${order.discount}
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Delivery
+            </span>
+
+            <strong>
+                ₹${order.delivery}
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-total">
+
+            <span>
+                TOTAL
+            </span>
+
+            <span>
+                ₹${order.total}
+            </span>
+
+        </div>
+
+
+        <div
+            class="receipt-center"
+            style="margin-top:15px;"
+        >
+
+            🎉 Have a fun day!
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(
+            /[&<>"']/g,
+            function(char){
+
+                const map = {
+
+                    "&":"&amp;",
+                    "<":"&lt;",
+                    ">":"&gt;",
+                    '"':"&quot;",
+                    "'":"&#039;"
+
+                };
+
+                return map[char];
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   CLOSE RECEIPT
+========================================================= */
+
+function closeReceipt(){
+
+    document.getElementById(
+        "receiptModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   SCROLL CHECKOUT
+========================================================= */
+
+function scrollToCheckout(){
+
+    document.getElementById(
+        "checkout"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+
+function showToast(message){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            function(){
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2200
+        );
+
+}
+
+
+/* =========================================================
+   MODAL CLICK OUTSIDE
+========================================================= */
+
+document
+    .getElementById("receiptModal")
+    .addEventListener(
+        "click",
+        function(event){
+
+            if(
+                event.target === this
+            ){
+
+                closeReceipt();
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderProducts();
+
+updateCart();
+
+document.getElementById(
+    "upiId"
+).value =
+    DEFAULT_UPI_ID;
+
+</script>
+
+</body>
+</html>

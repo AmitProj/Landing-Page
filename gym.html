@@ -1,0 +1,2411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IRON DISTRICT — Build Your Strongest Self</title>
+
+<meta name="description" content="Premium fitness training, personal coaching and transformation programs. Start your free trial today.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#080808;
+    --dark:#101010;
+    --dark2:#161616;
+    --card:#1b1b1b;
+    --white:#f7f7f5;
+    --muted:#969696;
+
+    --orange:#ff5a1f;
+    --orange2:#ff7a3d;
+
+    --border:rgba(255,255,255,.09);
+
+    --display:"Barlow Condensed",sans-serif;
+    --body:"Inter",sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:var(--white);
+    font-family:var(--body);
+    overflow-x:hidden;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+textarea{
+    font:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+.section{
+    padding:110px 0;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    color:var(--orange);
+
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.eyebrow::before{
+    content:"";
+    width:28px;
+    height:2px;
+    background:var(--orange);
+}
+
+.section-title{
+    font-family:var(--display);
+    font-size:clamp(48px,7vw,88px);
+    line-height:.88;
+    text-transform:uppercase;
+    letter-spacing:-1px;
+}
+
+.section-title span{
+    color:var(--orange);
+}
+
+.section-description{
+    color:var(--muted);
+    line-height:1.8;
+    max-width:600px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    padding:16px 27px;
+
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+
+    transition:.3s;
+}
+
+.btn-orange{
+    background:var(--orange);
+    color:#fff;
+}
+
+.btn-orange:hover{
+    background:var(--orange2);
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.25);
+    color:white;
+}
+
+.btn-outline:hover{
+    border-color:var(--orange);
+    color:var(--orange);
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+    background:var(--orange);
+    color:#fff;
+
+    padding:10px;
+
+    text-align:center;
+
+    font-size:12px;
+    font-weight:800;
+
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    position:fixed;
+    top:36px;
+    left:0;
+    right:0;
+
+    z-index:1000;
+
+    transition:.3s;
+}
+
+.navbar.scrolled{
+    top:0;
+    background:rgba(8,8,8,.94);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+    height:82px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-family:var(--display);
+    font-size:31px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:var(--orange);
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+
+    font-size:13px;
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+.nav-links a{
+    position:relative;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--orange);
+}
+
+.nav-cta{
+    padding:12px 20px;
+    background:var(--orange);
+
+    font-size:12px;
+    font-weight:800;
+
+    text-transform:uppercase;
+}
+
+.menu-btn{
+    display:none;
+
+    width:45px;
+    height:45px;
+
+    background:var(--card);
+    color:white;
+
+    font-size:23px;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu{
+    display:none;
+
+    background:#101010;
+
+    border-top:1px solid var(--border);
+
+    padding:20px;
+}
+
+.mobile-menu.active{
+    display:block;
+}
+
+.mobile-menu a{
+    display:block;
+
+    padding:15px 0;
+
+    border-bottom:1px solid var(--border);
+
+    font-size:13px;
+    font-weight:700;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(90deg,
+        rgba(0,0,0,.94) 0%,
+        rgba(0,0,0,.75) 45%,
+        rgba(0,0,0,.25) 100%),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=90")
+        center/cover;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+    inset:auto 0 0;
+
+    height:180px;
+
+    background:linear-gradient(transparent,var(--black));
+
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    padding-top:100px;
+}
+
+.hero-label{
+    display:inline-block;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    padding:9px 14px;
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-family:var(--display);
+
+    font-size:clamp(75px,11vw,155px);
+
+    line-height:.78;
+
+    text-transform:uppercase;
+
+    max-width:850px;
+
+    margin:25px 0;
+}
+
+.hero h1 span{
+    color:var(--orange);
+}
+
+.hero-text{
+    color:#c3c3c3;
+
+    max-width:560px;
+
+    line-height:1.7;
+
+    margin-bottom:32px;
+}
+
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.hero-bottom{
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:35px;
+
+    z-index:5;
+}
+
+.hero-stats{
+    display:flex;
+    gap:45px;
+}
+
+.hero-stat strong{
+    display:block;
+
+    font-family:var(--display);
+    font-size:35px;
+}
+
+.hero-stat span{
+    color:#aaa;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee{
+    background:var(--orange);
+
+    overflow:hidden;
+
+    padding:18px 0;
+
+    white-space:nowrap;
+}
+
+.marquee-track{
+    display:inline-flex;
+    gap:40px;
+
+    animation:marquee 20s linear infinite;
+}
+
+.marquee span{
+    font-family:var(--display);
+
+    font-size:27px;
+    font-weight:800;
+
+    text-transform:uppercase;
+}
+
+@keyframes marquee{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+
+    align-items:end;
+}
+
+.intro-right{
+    color:#999;
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   PROGRAMS
+========================================================= */
+
+.program-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+
+    margin-top:55px;
+}
+
+.program{
+    position:relative;
+
+    min-height:460px;
+
+    overflow:hidden;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    transition:.4s;
+}
+
+.program:hover{
+    transform:translateY(-8px);
+    border-color:rgba(255,90,31,.5);
+}
+
+.program img{
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.program:hover img{
+    transform:scale(1.08);
+}
+
+.program::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        transparent 30%,
+        rgba(0,0,0,.95)
+    );
+}
+
+.program-content{
+    position:absolute;
+
+    z-index:2;
+
+    bottom:0;
+    left:0;
+    right:0;
+
+    padding:28px;
+}
+
+.program-number{
+    color:var(--orange);
+
+    font-family:var(--display);
+
+    font-size:20px;
+}
+
+.program h3{
+    font-family:var(--display);
+
+    font-size:40px;
+
+    text-transform:uppercase;
+}
+
+.program p{
+    color:#aaa;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+    margin:8px 0 18px;
+}
+
+.program a{
+    font-size:12px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    color:var(--orange);
+}
+
+
+/* =========================================================
+   TRANSFORMATION
+========================================================= */
+
+.transform{
+    background:#111;
+}
+
+.transform-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.before-after{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:5px;
+}
+
+.before-after div{
+    position:relative;
+}
+
+.before-after img{
+    height:560px;
+    object-fit:cover;
+}
+
+.before-after span{
+    position:absolute;
+
+    bottom:20px;
+    left:20px;
+
+    background:#000;
+    padding:8px 13px;
+
+    font-size:11px;
+    font-weight:800;
+
+    text-transform:uppercase;
+}
+
+.results{
+    margin-top:35px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.result{
+    border-top:1px solid var(--border);
+    padding-top:15px;
+}
+
+.result strong{
+    display:block;
+
+    font-family:var(--display);
+
+    font-size:45px;
+
+    color:var(--orange);
+}
+
+.result span{
+    color:#888;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.stat-box{
+    padding:55px 25px;
+
+    text-align:center;
+
+    border-right:1px solid var(--border);
+}
+
+.stat-box:last-child{
+    border-right:0;
+}
+
+.stat-box strong{
+    font-family:var(--display);
+
+    font-size:60px;
+}
+
+.stat-box span{
+    display:block;
+
+    color:#777;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   TRAINERS
+========================================================= */
+
+.trainer-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    margin-top:55px;
+}
+
+.trainer{
+    background:var(--card);
+
+    border:1px solid var(--border);
+}
+
+.trainer-image{
+    overflow:hidden;
+}
+
+.trainer img{
+    height:420px;
+
+    object-fit:cover;
+
+    filter:grayscale(100%);
+
+    transition:.5s;
+}
+
+.trainer:hover img{
+    filter:grayscale(0);
+    transform:scale(1.04);
+}
+
+.trainer-info{
+    padding:22px;
+}
+
+.trainer-info h3{
+    font-family:var(--display);
+
+    font-size:32px;
+
+    text-transform:uppercase;
+}
+
+.trainer-info p{
+    color:var(--orange);
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   TESTIMONIAL
+========================================================= */
+
+.testimonials{
+    background:#f2f2ef;
+    color:#101010;
+}
+
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+}
+
+.quote{
+    font-family:var(--display);
+
+    font-size:clamp(42px,5vw,70px);
+
+    line-height:.95;
+
+    text-transform:uppercase;
+}
+
+.quote span{
+    color:var(--orange);
+}
+
+.quote-author{
+    margin-top:30px;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+}
+
+.testimonial-image img{
+    height:480px;
+
+    object-fit:cover;
+}
+
+
+/* =========================================================
+   MEMBERSHIP
+========================================================= */
+
+.membership-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    margin-top:55px;
+}
+
+.plan{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    padding:35px;
+
+    position:relative;
+}
+
+.plan.featured{
+    border:1px solid var(--orange);
+
+    transform:translateY(-12px);
+}
+
+.featured-label{
+    position:absolute;
+
+    top:0;
+    right:25px;
+
+    background:var(--orange);
+
+    padding:8px 13px;
+
+    font-size:10px;
+    font-weight:800;
+
+    text-transform:uppercase;
+}
+
+.plan h3{
+    font-family:var(--display);
+
+    font-size:35px;
+
+    text-transform:uppercase;
+}
+
+.price{
+    margin:20px 0;
+
+    font-family:var(--display);
+
+    font-size:65px;
+}
+
+.price small{
+    font-family:var(--body);
+
+    font-size:12px;
+
+    color:#777;
+}
+
+.plan ul{
+    list-style:none;
+
+    margin:25px 0;
+}
+
+.plan li{
+    padding:12px 0;
+
+    border-bottom:1px solid var(--border);
+
+    color:#aaa;
+
+    font-size:13px;
+}
+
+.plan li::before{
+    content:"✓";
+
+    color:var(--orange);
+
+    margin-right:10px;
+    font-weight:800;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta{
+    position:relative;
+
+    padding:130px 0;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(90deg,
+        rgba(0,0,0,.94),
+        rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+}
+
+.cta h2{
+    font-family:var(--display);
+
+    font-size:clamp(65px,9vw,125px);
+
+    line-height:.8;
+
+    max-width:850px;
+
+    text-transform:uppercase;
+}
+
+.cta h2 span{
+    color:var(--orange);
+}
+
+.cta p{
+    max-width:550px;
+
+    color:#bbb;
+
+    line-height:1.8;
+
+    margin:30px 0;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+}
+
+.contact-info{
+    margin-top:35px;
+}
+
+.contact-item{
+    padding:20px 0;
+
+    border-bottom:1px solid var(--border);
+}
+
+.contact-item span{
+    display:block;
+
+    color:#777;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    margin-bottom:5px;
+}
+
+.contact-item strong{
+    font-size:16px;
+}
+
+.lead-form{
+    background:var(--card);
+
+    padding:35px;
+
+    border:1px solid var(--border);
+}
+
+.lead-form h3{
+    font-family:var(--display);
+
+    font-size:38px;
+
+    text-transform:uppercase;
+}
+
+.form-group{
+    margin-top:18px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+
+    background:#111;
+
+    border:1px solid var(--border);
+
+    color:#fff;
+
+    padding:16px;
+
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:var(--orange);
+}
+
+.lead-form .btn{
+    width:100%;
+
+    margin-top:20px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#050505;
+
+    border-top:1px solid var(--border);
+
+    padding:50px 0;
+}
+
+.footer-grid{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.footer-logo{
+    font-family:var(--display);
+
+    font-size:30px;
+    font-weight:900;
+}
+
+.footer-logo span{
+    color:var(--orange);
+}
+
+.footer-copy{
+    color:#666;
+
+    font-size:12px;
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+.whatsapp{
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    z-index:999;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    background:#25D366;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:27px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.4);
+
+    transition:.3s;
+}
+
+.whatsapp:hover{
+    transform:scale(1.1);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .nav-links,
+    .nav-cta{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        min-height:850px;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0,0,0,.92),
+                rgba(0,0,0,.65)
+            ),
+            url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=85")
+            center/cover;
+    }
+
+    .hero h1{
+        font-size:clamp(65px,18vw,110px);
+    }
+
+    .hero-bottom{
+        display:none;
+    }
+
+    .intro,
+    .transform-grid,
+    .testimonial-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .program-grid,
+    .trainer-grid,
+    .membership-grid{
+        grid-template-columns:1fr;
+    }
+
+    .program{
+        min-height:520px;
+    }
+
+    .plan.featured{
+        transform:none;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat-box:nth-child(2){
+        border-right:0;
+    }
+
+    .stat-box{
+        border-bottom:1px solid var(--border);
+    }
+
+    .section{
+        padding:80px 0;
+    }
+
+}
+
+@media(max-width:550px){
+
+    .hero-actions{
+        flex-direction:column;
+    }
+
+    .hero-actions .btn{
+        width:100%;
+    }
+
+    .hero{
+        min-height:800px;
+    }
+
+    .hero-content{
+        padding-top:80px;
+    }
+
+    .before-after img{
+        height:400px;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stat-box{
+        border-right:0;
+    }
+
+    .results{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        transition-duration:.01ms !important;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     TOP BAR
+========================================================= -->
+
+<div class="topbar">
+    🔥 Limited Offer — Get Your First 7 Days FREE
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav class="navbar" id="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="#" class="logo">
+            IRON<span>DISTRICT</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="#programs">Programs</a>
+            <a href="#results">Results</a>
+            <a href="#trainers">Coaches</a>
+            <a href="#membership">Membership</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+        <a href="#contact" class="nav-cta">
+            Start Training
+        </a>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="#programs" onclick="closeMenu()">Programs</a>
+        <a href="#results" onclick="closeMenu()">Results</a>
+        <a href="#trainers" onclick="closeMenu()">Coaches</a>
+        <a href="#membership" onclick="closeMenu()">Membership</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="hero">
+
+    <div class="container hero-content">
+
+        <span class="hero-label">
+            Premium Strength & Conditioning
+        </span>
+
+        <h1>
+            Build<br>
+            <span>Something</span><br>
+            Strong.
+        </h1>
+
+        <p class="hero-text">
+            No shortcuts. No gimmicks. Just intelligent training,
+            serious coaching and a community that pushes you to become
+            your strongest version.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#contact" class="btn btn-orange">
+                Claim Free Trial →
+            </a>
+
+            <a href="#programs" class="btn btn-outline">
+                Explore Programs
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-bottom">
+
+        <div class="container">
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+                    <strong>2.5K+</strong>
+                    <span>Members</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>12</strong>
+                    <span>Expert Coaches</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>8+</strong>
+                    <span>Years Strong</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MARQUEE
+========================================================= -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>TRAIN HARD</span>
+        <span>•</span>
+        <span>LIVE STRONG</span>
+        <span>•</span>
+        <span>GET RESULTS</span>
+        <span>•</span>
+
+        <span>TRAIN HARD</span>
+        <span>•</span>
+        <span>LIVE STRONG</span>
+        <span>•</span>
+        <span>GET RESULTS</span>
+        <span>•</span>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="intro reveal">
+
+            <div>
+
+                <span class="eyebrow">
+                    Built Different
+                </span>
+
+                <h2 class="section-title" style="margin-top:20px;">
+                    Your gym<br>
+                    should <span>challenge</span> you.
+                </h2>
+
+            </div>
+
+            <div class="intro-right">
+
+                <p>
+                    Iron District was created for people who are tired of
+                    ordinary gyms. We combine elite coaching, structured
+                    programming and a high-energy training environment
+                    designed to produce measurable results.
+                </p>
+
+                <br>
+
+                <p>
+                    Whether you're stepping into a gym for the first time
+                    or chasing your next personal record, we've got a plan
+                    for you.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROGRAMS
+========================================================= -->
+
+<section class="section" id="programs">
+
+    <div class="container">
+
+        <span class="eyebrow reveal">
+            Training Programs
+        </span>
+
+        <h2 class="section-title reveal" style="margin-top:20px;">
+            Train with<br>
+            <span>purpose.</span>
+        </h2>
+
+
+        <div class="program-grid">
+
+
+            <article class="program reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+                    alt="Strength training">
+
+                <div class="program-content">
+
+                    <span class="program-number">01</span>
+
+                    <h3>Strength</h3>
+
+                    <p>
+                        Build real-world strength with progressive
+                        resistance training and expert coaching.
+                    </p>
+
+                    <a href="#contact">
+                        Start Program →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="program reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=900&q=85"
+                    alt="HIIT workout">
+
+                <div class="program-content">
+
+                    <span class="program-number">02</span>
+
+                    <h3>Conditioning</h3>
+
+                    <p>
+                        High-intensity workouts designed to improve
+                        endurance, speed and athletic performance.
+                    </p>
+
+                    <a href="#contact">
+                        Start Program →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="program reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=900&q=85"
+                    alt="Personal training">
+
+                <div class="program-content">
+
+                    <span class="program-number">03</span>
+
+                    <h3>Personal</h3>
+
+                    <p>
+                        One-on-one coaching built around your goals,
+                        body and lifestyle.
+                    </p>
+
+                    <a href="#contact">
+                        Meet A Coach →
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RESULTS
+========================================================= -->
+
+<section class="section transform" id="results">
+
+    <div class="container">
+
+        <div class="transform-grid">
+
+            <div class="before-after reveal">
+
+                <div>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=85"
+                        alt="Training">
+
+                    <span>
+                        Training
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=85"
+                        alt="Strength">
+
+                    <span>
+                        Progress
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="reveal">
+
+                <span class="eyebrow">
+                    Real Work. Real Results.
+                </span>
+
+                <h2 class="section-title" style="margin-top:20px;">
+                    Results<br>
+                    don't <span>lie.</span>
+                </h2>
+
+                <p class="section-description" style="margin-top:25px;">
+                    Our members aren't chasing quick fixes. They're building
+                    strength, confidence and habits that last.
+                </p>
+
+
+                <div class="results">
+
+                    <div class="result">
+                        <strong>18K+</strong>
+                        <span>Personal Records</span>
+                    </div>
+
+                    <div class="result">
+                        <strong>94%</strong>
+                        <span>Member Retention</span>
+                    </div>
+
+                    <div class="result">
+                        <strong>32K</strong>
+                        <span>Sessions Completed</span>
+                    </div>
+
+                    <div class="result">
+                        <strong>4.9/5</strong>
+                        <span>Member Rating</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STATS
+========================================================= -->
+
+<section class="stats">
+
+    <div class="container stats-grid">
+
+        <div class="stat-box reveal">
+            <strong>8+</strong>
+            <span>Years Experience</span>
+        </div>
+
+        <div class="stat-box reveal">
+            <strong>12</strong>
+            <span>Elite Coaches</span>
+        </div>
+
+        <div class="stat-box reveal">
+            <strong>2.5K</strong>
+            <span>Active Members</span>
+        </div>
+
+        <div class="stat-box reveal">
+            <strong>24/7</strong>
+            <span>Gym Access</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TRAINERS
+========================================================= -->
+
+<section class="section" id="trainers">
+
+    <div class="container">
+
+        <span class="eyebrow reveal">
+            The Coaches
+        </span>
+
+        <h2 class="section-title reveal" style="margin-top:20px;">
+            Train with<br>
+            <span>people who know.</span>
+        </h2>
+
+
+        <div class="trainer-grid">
+
+
+            <article class="trainer reveal">
+
+                <div class="trainer-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=85"
+                        alt="Coach">
+
+                </div>
+
+                <div class="trainer-info">
+
+                    <h3>Marcus Reed</h3>
+
+                    <p>
+                        Strength Coach
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="trainer reveal">
+
+                <div class="trainer-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1549476464-37392f717541?auto=format&fit=crop&w=800&q=85"
+                        alt="Coach">
+
+                </div>
+
+                <div class="trainer-info">
+
+                    <h3>Alex Stone</h3>
+
+                    <p>
+                        Performance Coach
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="trainer reveal">
+
+                <div class="trainer-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=800&q=85"
+                        alt="Coach">
+
+                </div>
+
+                <div class="trainer-info">
+
+                    <h3>Maya Cole</h3>
+
+                    <p>
+                        Personal Trainer
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TESTIMONIAL
+========================================================= -->
+
+<section class="section testimonials">
+
+    <div class="container">
+
+        <div class="testimonial-grid">
+
+            <div class="reveal">
+
+                <span class="eyebrow">
+                    Member Story
+                </span>
+
+                <div class="quote">
+
+                    "I didn't just change my body.
+
+                    <span>
+                        I changed how I see myself."
+                    </span>
+
+                </div>
+
+                <div class="quote-author">
+                    — Daniel M. · Member since 2023
+                </div>
+
+            </div>
+
+
+            <div class="testimonial-image reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+                    alt="Gym member">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MEMBERSHIP
+========================================================= -->
+
+<section class="section" id="membership">
+
+    <div class="container">
+
+        <div style="text-align:center;">
+
+            <span class="eyebrow reveal">
+                Membership
+            </span>
+
+            <h2 class="section-title reveal" style="margin-top:20px;">
+                Choose your<br>
+                <span>level.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="membership-grid">
+
+
+            <div class="plan reveal">
+
+                <h3>Essential</h3>
+
+                <div class="price">
+                    $39
+                    <small>/mo</small>
+                </div>
+
+                <ul>
+
+                    <li>24/7 Gym Access</li>
+                    <li>Full Equipment Access</li>
+                    <li>Locker Room</li>
+                    <li>Free Wi-Fi</li>
+
+                </ul>
+
+                <a href="#contact" class="btn btn-outline">
+                    Choose Plan
+                </a>
+
+            </div>
+
+
+            <div class="plan featured reveal">
+
+                <div class="featured-label">
+                    Most Popular
+                </div>
+
+                <h3>Performance</h3>
+
+                <div class="price">
+                    $69
+                    <small>/mo</small>
+                </div>
+
+                <ul>
+
+                    <li>Everything in Essential</li>
+                    <li>Group Training</li>
+                    <li>Monthly Coach Session</li>
+                    <li>Nutrition Guidance</li>
+                    <li>Progress Tracking</li>
+
+                </ul>
+
+                <a href="#contact" class="btn btn-orange">
+                    Choose Plan
+                </a>
+
+            </div>
+
+
+            <div class="plan reveal">
+
+                <h3>Elite</h3>
+
+                <div class="price">
+                    $129
+                    <small>/mo</small>
+                </div>
+
+                <ul>
+
+                    <li>Everything in Performance</li>
+                    <li>Weekly Personal Training</li>
+                    <li>Custom Workout Plan</li>
+                    <li>Nutrition Coaching</li>
+                    <li>Priority Booking</li>
+
+                </ul>
+
+                <a href="#contact" class="btn btn-outline">
+                    Choose Plan
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BIG CTA
+========================================================= -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <span class="eyebrow">
+            Your First Step
+        </span>
+
+        <h2 style="margin-top:25px;">
+            Stop waiting.<br>
+            <span>Start building.</span>
+        </h2>
+
+        <p>
+            Come experience Iron District for yourself.
+            Your first 7 days are on us. No pressure. No contracts.
+            Just training.
+        </p>
+
+        <a href="#contact" class="btn btn-orange">
+            Claim My Free Trial →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT / LEAD FORM
+========================================================= -->
+
+<section class="section" id="contact">
+
+    <div class="container">
+
+        <div class="contact-grid">
+
+
+            <div class="reveal">
+
+                <span class="eyebrow">
+                    Start Your Journey
+                </span>
+
+                <h2 class="section-title" style="margin-top:20px;">
+                    Ready to<br>
+                    <span>get serious?</span>
+                </h2>
+
+                <p class="section-description" style="margin-top:25px;">
+                    Leave your details and one of our coaches will contact
+                    you to arrange your free trial and answer any questions.
+                </p>
+
+
+                <div class="contact-info">
+
+                    <div class="contact-item">
+
+                        <span>
+                            Location
+                        </span>
+
+                        <strong>
+                            28 Industrial Avenue, Downtown
+                        </strong>
+
+                    </div>
+
+                    <div class="contact-item">
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <strong>
+                            +1 555 248 9012
+                        </strong>
+
+                    </div>
+
+                    <div class="contact-item">
+
+                        <span>
+                            Opening Hours
+                        </span>
+
+                        <strong>
+                            24 Hours · 7 Days
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <form class="lead-form reveal" id="leadForm">
+
+                <h3>
+                    Claim Your<br>
+                    Free Trial.
+                </h3>
+
+                <div class="form-group">
+
+                    <input
+                        id="name"
+                        type="text"
+                        placeholder="Your Name"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <input
+                        id="phone"
+                        type="tel"
+                        placeholder="Phone Number"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <select id="goal" required>
+
+                        <option value="">
+                            What's your main goal?
+                        </option>
+
+                        <option>
+                            Build Muscle
+                        </option>
+
+                        <option>
+                            Lose Fat
+                        </option>
+
+                        <option>
+                            Get Stronger
+                        </option>
+
+                        <option>
+                            Improve Fitness
+                        </option>
+
+                        <option>
+                            Personal Training
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button class="btn btn-orange" type="submit">
+                    Get My Free Trial →
+                </button>
+
+                <p style="
+                    color:#666;
+                    font-size:10px;
+                    text-align:center;
+                    margin-top:15px;
+                ">
+                    No spam. No pressure. Just a quick conversation.
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+        <div>
+
+            <div class="footer-logo">
+                IRON<span>DISTRICT</span>
+            </div>
+
+            <div class="footer-copy" style="margin-top:8px;">
+                Strength · Discipline · Community
+            </div>
+
+        </div>
+
+        <div class="footer-copy">
+            © 2026 Iron District. All rights reserved.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     WHATSAPP
+========================================================= -->
+
+<a
+    class="whatsapp"
+    id="whatsappButton"
+    href="#"
+    target="_blank"
+    aria-label="Chat on WhatsApp">
+
+    ☎
+
+</a>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   CONFIGURATION
+========================================================= */
+
+/*
+    CHANGE THIS NUMBER TO YOUR REAL WHATSAPP NUMBER.
+
+    Use country code without + or spaces.
+
+    Example India:
+    919876543210
+*/
+
+const WHATSAPP_NUMBER = "919876543210";
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+function whatsappMessage(message){
+
+    const url =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(url,"_blank");
+
+}
+
+
+/* Floating WhatsApp */
+
+document
+    .getElementById("whatsappButton")
+    .addEventListener("click",function(e){
+
+        e.preventDefault();
+
+        whatsappMessage(
+            "Hi Iron District! I would like to know more about the free gym trial."
+        );
+
+    });
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMenu(){
+
+    document
+        .getElementById("mobileMenu")
+        .classList.toggle("active");
+
+}
+
+function closeMenu(){
+
+    document
+        .getElementById("mobileMenu")
+        .classList.remove("active");
+
+}
+
+
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
+
+const navbar =
+    document.getElementById("navbar");
+
+window.addEventListener("scroll",function(){
+
+    if(window.scrollY > 50){
+
+        navbar.classList.add("scrolled");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("show");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+
+/* =========================================================
+   LEAD FORM
+========================================================= */
+
+document
+    .getElementById("leadForm")
+    .addEventListener("submit",function(e){
+
+        e.preventDefault();
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const goal =
+            document.getElementById("goal").value;
+
+
+        if(!name || !phone || !goal){
+
+            alert("Please complete all fields.");
+
+            return;
+
+        }
+
+
+        const message =
+            `Hi Iron District!
+
+I want to claim the FREE 7-day gym trial.
+
+Name: ${name}
+Phone: ${phone}
+Goal: ${goal}
+
+Please contact me with the details.`;
+
+
+        whatsappMessage(message);
+
+    });
+
+
+/* =========================================================
+   ESCAPE MOBILE MENU
+========================================================= */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "Escape"){
+
+        closeMenu();
+
+    }
+
+});
+
+
+/* =========================================================
+   SMOOTH NAVIGATION
+========================================================= */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener("click",function(e){
+
+            const target =
+                document.querySelector(
+                    this.getAttribute("href")
+                );
+
+            if(target){
+
+                e.preventDefault();
+
+                target.scrollIntoView({
+                    behavior:"smooth"
+                });
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

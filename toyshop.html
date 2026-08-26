@@ -1,0 +1,3897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ToyPop — Big Fun Starts Here!</title>
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        "Trebuchet MS",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:#fffaf4;
+    color:#24233a;
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+    --purple:#7357e8;
+    --purple-dark:#5540bd;
+
+    --pink:#ff668c;
+    --yellow:#ffd84d;
+    --blue:#55c8ef;
+    --green:#58c994;
+    --orange:#ff9d4d;
+
+    --dark:#25243b;
+    --muted:#77758b;
+
+    --cream:#fffaf4;
+    --white:#ffffff;
+
+    --card:#ffffff;
+
+    --shadow:
+        0 18px 45px rgba(48,38,85,.10);
+
+    --radius:25px;
+}
+
+
+/* =========================================================
+   DECORATIVE BACKGROUND
+========================================================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+    background:
+
+        radial-gradient(
+            circle at 5% 15%,
+            rgba(255,216,77,.16),
+            transparent 20%
+        ),
+
+        radial-gradient(
+            circle at 95% 30%,
+            rgba(85,200,239,.14),
+            transparent 22%
+        ),
+
+        radial-gradient(
+            circle at 45% 90%,
+            rgba(255,102,140,.10),
+            transparent 25%
+        );
+}
+
+
+/* =========================================================
+   FLOATING DECORATIONS
+========================================================= */
+
+.decor{
+
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    opacity:.35;
+
+    font-size:30px;
+
+    animation:
+        floatToy 5s ease-in-out infinite;
+}
+
+.decor.one{
+    top:18%;
+    left:2%;
+}
+
+.decor.two{
+    top:65%;
+    right:2%;
+    animation-delay:-2s;
+}
+
+.decor.three{
+    top:40%;
+    right:1%;
+    font-size:24px;
+    animation-delay:-3s;
+}
+
+@keyframes floatToy{
+
+    0%,100%{
+        transform:translateY(0) rotate(-8deg);
+    }
+
+    50%{
+        transform:translateY(-18px) rotate(8deg);
+    }
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    background:
+        rgba(255,250,244,.90);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid rgba(50,40,80,.07);
+}
+
+.nav{
+
+    width:min(1180px,92%);
+
+    height:78px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:25px;
+}
+
+
+/* LOGO */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-weight:950;
+
+    font-size:22px;
+
+    color:var(--dark);
+}
+
+.logo-mark{
+
+    width:43px;
+    height:43px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+        var(--yellow);
+
+    transform:
+        rotate(-5deg);
+
+    box-shadow:
+        0 7px 0 #e5b928;
+}
+
+.logo span{
+    color:var(--purple);
+}
+
+
+/* NAV LINKS */
+
+.nav-links{
+
+    display:flex;
+
+    gap:30px;
+
+    align-items:center;
+}
+
+.nav-links a{
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#66647a;
+
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--purple);
+}
+
+
+/* CART */
+
+.cart-button{
+
+    position:relative;
+
+    border:0;
+
+    background:
+        var(--purple);
+
+    color:white;
+
+    width:48px;
+    height:48px;
+
+    border-radius:15px;
+
+    font-size:20px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(115,87,232,.25);
+
+    transition:.3s;
+}
+
+.cart-button:hover{
+
+    transform:
+        translateY(-3px)
+        rotate(-3deg);
+}
+
+.cart-count{
+
+    position:absolute;
+
+    top:-6px;
+    right:-6px;
+
+    min-width:20px;
+    height:20px;
+
+    padding:0 5px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+        var(--pink);
+
+    color:white;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    border:2px solid var(--cream);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    min-height:650px;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        .95fr;
+
+    align-items:center;
+
+    gap:60px;
+
+    padding:80px 0;
+}
+
+
+/* HERO COPY */
+
+.hero-badge{
+
+    display:inline-flex;
+
+    padding:9px 15px;
+
+    border-radius:50px;
+
+    background:
+        #fff0a8;
+
+    color:#725a00;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    transform:
+        rotate(-2deg);
+}
+
+.hero h1{
+
+    margin-top:22px;
+
+    font-size:
+        clamp(
+            3.5rem,
+            7vw,
+            6.5rem
+        );
+
+    line-height:.88;
+
+    letter-spacing:-5px;
+
+    color:var(--dark);
+}
+
+.hero h1 span{
+
+    color:var(--purple);
+
+    display:block;
+
+    position:relative;
+}
+
+.hero h1 span::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:4px;
+    bottom:-12px;
+
+    width:170px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:
+        var(--pink);
+
+    transform:
+        rotate(-2deg);
+}
+
+.hero-text{
+
+    max-width:560px;
+
+    margin-top:32px;
+
+    color:var(--muted);
+
+    font-size:16px;
+
+    line-height:1.8;
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+
+    min-height:52px;
+
+    padding:0 22px;
+
+    border-radius:15px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    border:0;
+
+    font-size:13px;
+
+    font-weight:900;
+
+    transition:.3s;
+}
+
+.btn-primary{
+
+    color:white;
+
+    background:
+        var(--purple);
+
+    box-shadow:
+        0 9px 0 var(--purple-dark);
+}
+
+.btn-primary:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 0 var(--purple-dark);
+}
+
+.btn-secondary{
+
+    background:white;
+
+    color:var(--dark);
+
+    border:
+        2px solid #eee8e2;
+}
+
+.btn-secondary:hover{
+    border-color:var(--yellow);
+}
+
+
+/* =========================================================
+   HERO TOY DISPLAY
+========================================================= */
+
+.hero-visual{
+
+    min-height:500px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.blob{
+
+    position:absolute;
+
+    width:430px;
+    height:430px;
+
+    border-radius:
+        43% 57% 65% 35%
+        /
+        47% 40% 60% 53%;
+
+    background:
+        var(--yellow);
+
+    transform:
+        rotate(-10deg);
+
+    animation:
+        blobMove 7s ease-in-out infinite;
+}
+
+@keyframes blobMove{
+
+    0%,100%{
+        border-radius:
+            43% 57% 65% 35% /
+            47% 40% 60% 53%;
+    }
+
+    50%{
+        border-radius:
+            60% 40% 40% 60% /
+            35% 60% 40% 65%;
+    }
+}
+
+.toy-display{
+
+    position:relative;
+
+    z-index:2;
+
+    width:390px;
+    height:390px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:35px;
+
+    background:
+        rgba(255,255,255,.55);
+
+    border:
+        8px solid white;
+
+    box-shadow:
+        var(--shadow);
+
+    transform:
+        rotate(3deg);
+}
+
+.big-toy{
+
+    font-size:180px;
+
+    filter:
+        drop-shadow(
+            0 15px 10px
+            rgba(60,40,90,.15)
+        );
+
+    animation:
+        toyBounce 3s ease-in-out infinite;
+}
+
+@keyframes toyBounce{
+
+    0%,100%{
+        transform:translateY(0) rotate(-4deg);
+    }
+
+    50%{
+        transform:translateY(-15px) rotate(4deg);
+    }
+}
+
+.sticker{
+
+    position:absolute;
+
+    padding:10px 14px;
+
+    border-radius:50px;
+
+    font-size:11px;
+
+    font-weight:950;
+
+    box-shadow:
+        0 8px 20px rgba(50,40,80,.15);
+}
+
+.sticker.sale{
+
+    top:20px;
+    right:-35px;
+
+    background:var(--pink);
+
+    color:white;
+
+    transform:rotate(8deg);
+}
+
+.sticker.new{
+
+    bottom:25px;
+    left:-40px;
+
+    background:var(--blue);
+
+    color:white;
+
+    transform:rotate(-8deg);
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features{
+
+    width:min(1050px,92%);
+
+    margin:0 auto 70px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+.feature{
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:white;
+
+    box-shadow:
+        0 10px 30px
+        rgba(50,40,80,.06);
+
+    text-align:center;
+}
+
+.feature-icon{
+
+    font-size:25px;
+}
+
+.feature strong{
+
+    display:block;
+
+    margin-top:9px;
+
+    font-size:13px;
+}
+
+.feature span{
+
+    display:block;
+
+    margin-top:5px;
+
+    color:#9290a0;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    padding:90px 0;
+}
+
+.section-heading{
+
+    display:flex;
+
+    align-items:end;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    margin-bottom:40px;
+}
+
+.section-heading h2{
+
+    font-size:
+        clamp(2.5rem,5vw,4.5rem);
+
+    line-height:.95;
+
+    letter-spacing:-3px;
+}
+
+.section-heading h2 span{
+    color:var(--purple);
+}
+
+.section-heading p{
+
+    max-width:440px;
+
+    color:var(--muted);
+
+    line-height:1.7;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.filters{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:30px;
+}
+
+.filter{
+
+    border:0;
+
+    padding:9px 16px;
+
+    border-radius:50px;
+
+    background:#eee9ff;
+
+    color:#6b5ac5;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    transition:.25s;
+}
+
+.filter.active,
+.filter:hover{
+
+    background:
+        var(--purple);
+
+    color:white;
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+}
+
+.product{
+
+    position:relative;
+
+    background:white;
+
+    border-radius:23px;
+
+    padding:13px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(50,40,80,.07);
+
+    transition:.35s;
+
+    border:
+        1px solid #f1ece7;
+}
+
+.product:hover{
+
+    transform:
+        translateY(-8px)
+        rotate(-.5deg);
+
+    box-shadow:
+        0 22px 45px
+        rgba(50,40,80,.13);
+}
+
+.product-image{
+
+    height:210px;
+
+    border-radius:17px;
+
+    display:grid;
+
+    place-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.product-image::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.4);
+}
+
+.product:nth-child(1) .product-image{
+    background:#dff5ff;
+}
+
+.product:nth-child(2) .product-image{
+    background:#fff0ba;
+}
+
+.product:nth-child(3) .product-image{
+    background:#ffe0eb;
+}
+
+.product:nth-child(4) .product-image{
+    background:#e5dcff;
+}
+
+.product:nth-child(5) .product-image{
+    background:#dcf6e8;
+}
+
+.product:nth-child(6) .product-image{
+    background:#ffe6cf;
+}
+
+.product:nth-child(7) .product-image{
+    background:#e5e9ff;
+}
+
+.product:nth-child(8) .product-image{
+    background:#ffe0e0;
+}
+
+.product-emoji{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:100px;
+
+    filter:
+        drop-shadow(
+            0 12px 8px
+            rgba(50,40,80,.13)
+        );
+
+    transition:.4s;
+}
+
+.product:hover .product-emoji{
+
+    transform:
+        scale(1.12)
+        rotate(4deg);
+}
+
+.product-tag{
+
+    position:absolute;
+
+    top:10px;
+    left:10px;
+
+    z-index:4;
+
+    padding:6px 9px;
+
+    border-radius:30px;
+
+    background:
+        var(--pink);
+
+    color:white;
+
+    font-size:8px;
+
+    font-weight:900;
+}
+
+.favorite{
+
+    position:absolute;
+
+    top:10px;
+    right:10px;
+
+    z-index:5;
+
+    width:33px;
+    height:33px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.85);
+
+    color:#8b8997;
+
+    transition:.25s;
+}
+
+.favorite.active{
+
+    background:
+        var(--pink);
+
+    color:white;
+}
+
+.product-info{
+    padding:16px 5px 5px;
+}
+
+.product-category{
+
+    color:#a09daa;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    font-weight:800;
+}
+
+.product h3{
+
+    margin-top:5px;
+
+    font-size:15px;
+}
+
+.rating{
+
+    margin-top:7px;
+
+    color:#f5b929;
+
+    font-size:10px;
+}
+
+.rating span{
+    color:#aaa7b2;
+}
+
+.price-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-top:13px;
+}
+
+.price{
+
+    font-size:17px;
+
+    font-weight:950;
+
+    color:var(--dark);
+}
+
+.old-price{
+
+    margin-left:5px;
+
+    color:#aaa7b1;
+
+    font-size:10px;
+
+    text-decoration:line-through;
+}
+
+.add-cart{
+
+    width:38px;
+    height:38px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:
+        var(--purple);
+
+    color:white;
+
+    font-size:18px;
+
+    transition:.25s;
+}
+
+.add-cart:hover{
+
+    background:
+        var(--pink);
+
+    transform:
+        rotate(8deg)
+        scale(1.08);
+}
+
+
+/* =========================================================
+   OFFER BANNER
+========================================================= */
+
+.offer{
+
+    margin-top:70px;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        var(--purple);
+
+    color:white;
+}
+
+.offer::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,216,77,.8);
+
+    right:-100px;
+    top:-100px;
+}
+
+.offer::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(85,200,239,.5);
+
+    left:-100px;
+    bottom:-100px;
+}
+
+.offer-content{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.offer h2{
+
+    font-size:35px;
+
+    letter-spacing:-2px;
+}
+
+.offer p{
+
+    margin-top:8px;
+
+    color:#ddd6ff;
+
+    font-size:13px;
+}
+
+.offer-code{
+
+    padding:15px 20px;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    border:
+        1px dashed
+        rgba(255,255,255,.45);
+
+    font-weight:950;
+
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   CART SECTION
+========================================================= */
+
+.cart-section{
+
+    background:
+        #f4efff;
+
+    padding:
+        90px 0;
+}
+
+.cart-layout{
+
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1.35fr
+        .65fr;
+
+    gap:22px;
+
+    align-items:start;
+}
+
+
+/* CART */
+
+.cart-box,
+.checkout-box{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:25px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(60,45,100,.08);
+}
+
+.cart-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:20px;
+}
+
+.cart-title h2{
+
+    font-size:25px;
+
+    letter-spacing:-1px;
+}
+
+.cart-title span{
+
+    padding:6px 10px;
+
+    border-radius:30px;
+
+    background:#f1edff;
+
+    color:var(--purple);
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+.cart-items{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.cart-item{
+
+    display:grid;
+
+    grid-template-columns:
+        70px
+        1fr
+        auto;
+
+    gap:15px;
+
+    align-items:center;
+
+    padding:12px;
+
+    border-radius:17px;
+
+    background:#faf9fc;
+}
+
+.cart-image{
+
+    width:70px;
+    height:70px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:15px;
+
+    font-size:40px;
+
+    background:#fff0ba;
+}
+
+.cart-item h4{
+
+    font-size:13px;
+}
+
+.cart-item small{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:#9996a5;
+
+    font-size:10px;
+}
+
+.qty{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    margin-top:8px;
+}
+
+.qty button{
+
+    width:25px;
+    height:25px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:white;
+
+    color:var(--purple);
+
+    font-weight:900;
+
+    box-shadow:
+        0 2px 7px rgba(0,0,0,.08);
+}
+
+.qty span{
+
+    font-size:11px;
+
+    font-weight:900;
+}
+
+.cart-price{
+
+    text-align:right;
+}
+
+.cart-price strong{
+
+    display:block;
+
+    font-size:13px;
+}
+
+.remove{
+
+    margin-top:6px;
+
+    border:0;
+
+    background:none;
+
+    color:#e8839c;
+
+    font-size:10px;
+}
+
+.empty-cart{
+
+    padding:55px 20px;
+
+    text-align:center;
+
+    color:#9996a5;
+
+    font-size:13px;
+}
+
+.empty-cart div{
+
+    font-size:45px;
+
+    margin-bottom:10px;
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+.checkout-box{
+
+    position:sticky;
+
+    top:100px;
+}
+
+.checkout-box h2{
+
+    font-size:23px;
+
+    margin-bottom:20px;
+}
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:10px 0;
+
+    color:#858294;
+
+    font-size:12px;
+}
+
+.summary-row.total{
+
+    border-top:
+        1px dashed #ddd8e4;
+
+    margin-top:8px;
+
+    padding-top:18px;
+
+    color:var(--dark);
+
+    font-size:18px;
+
+    font-weight:950;
+}
+
+.coupon{
+
+    display:flex;
+
+    margin:
+        18px 0;
+}
+
+.coupon input{
+
+    flex:1;
+
+    min-width:0;
+
+    border:
+        1px solid #e6e2eb;
+
+    border-right:0;
+
+    border-radius:
+        10px 0 0 10px;
+
+    padding:12px;
+
+    outline:none;
+
+    font-size:11px;
+}
+
+.coupon button{
+
+    border:0;
+
+    padding:0 14px;
+
+    border-radius:
+        0 10px 10px 0;
+
+    background:
+        var(--dark);
+
+    color:white;
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+.checkout-btn{
+
+    width:100%;
+
+    min-height:52px;
+
+    border:0;
+
+    border-radius:14px;
+
+    background:
+        var(--pink);
+
+    color:white;
+
+    font-weight:950;
+
+    box-shadow:
+        0 8px 0 #df4c70;
+
+    transition:.25s;
+}
+
+.checkout-btn:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 11px 0 #df4c70;
+}
+
+.secure{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:#aaa6b5;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   CHECKOUT MODAL
+========================================================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(35,30,55,.55);
+
+    backdrop-filter:
+        blur(8px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-card{
+
+    width:min(500px,100%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    padding:28px;
+
+    border-radius:25px;
+
+    background:white;
+
+    box-shadow:
+        0 30px 90px
+        rgba(20,15,40,.3);
+
+    animation:
+        modalIn .3s ease;
+}
+
+@keyframes modalIn{
+
+    from{
+        transform:
+            translateY(20px)
+            scale(.96);
+
+        opacity:0;
+    }
+
+    to{
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity:1;
+    }
+}
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:22px;
+}
+
+.modal-header h2{
+    font-size:25px;
+}
+
+.close{
+
+    width:35px;
+    height:35px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#f2eff7;
+
+    color:#555266;
+
+    font-size:20px;
+}
+
+.form-group{
+    margin-bottom:14px;
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    color:#686576;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+
+    width:100%;
+
+    padding:12px 13px;
+
+    border:
+        1px solid #e5e1eb;
+
+    border-radius:11px;
+
+    outline:none;
+
+    color:var(--dark);
+
+    background:#fff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+    border-color:
+        var(--purple);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(115,87,232,.08);
+}
+
+.success-message{
+
+    display:none;
+
+    text-align:center;
+
+    padding:30px 10px;
+}
+
+.success-message.show{
+    display:block;
+}
+
+.success-icon{
+
+    width:65px;
+    height:65px;
+
+    margin:auto;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:50%;
+
+    background:#dff8eb;
+
+    color:#31ad72;
+
+    font-size:30px;
+}
+
+.success-message h3{
+
+    margin-top:15px;
+
+    font-size:22px;
+}
+
+.success-message p{
+
+    margin-top:8px;
+
+    color:#85818e;
+
+    font-size:12px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    background:
+        #26243b;
+
+    color:white;
+
+    padding:50px 0 25px;
+}
+
+.footer{
+
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.footer p{
+
+    color:#aaa7bb;
+
+    font-size:11px;
+}
+
+.socials{
+
+    display:flex;
+
+    gap:8px;
+}
+
+.socials a{
+
+    width:35px;
+    height:35px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    font-size:13px;
+
+    transition:.25s;
+}
+
+.socials a:hover{
+
+    background:
+        var(--pink);
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:25px;
+    left:50%;
+
+    transform:
+        translate(-50%,30px);
+
+    z-index:5000;
+
+    padding:13px 20px;
+
+    border-radius:50px;
+
+    background:
+        var(--dark);
+
+    color:white;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.35s;
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .hero-text{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        min-height:430px;
+    }
+
+    .features{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .products{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .cart-layout{
+        grid-template-columns:1fr;
+    }
+
+    .checkout-box{
+        position:static;
+    }
+
+    .section-heading{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+
+
+@media(max-width:650px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        padding-top:60px;
+    }
+
+    .hero h1{
+
+        font-size:
+            3.7rem;
+
+        letter-spacing:-3px;
+    }
+
+    .blob{
+
+        width:310px;
+        height:310px;
+    }
+
+    .toy-display{
+
+        width:290px;
+        height:290px;
+    }
+
+    .big-toy{
+        font-size:125px;
+    }
+
+    .sticker.sale{
+        right:-5px;
+    }
+
+    .sticker.new{
+        left:-5px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .product-image{
+        height:250px;
+    }
+
+    .offer{
+        padding:30px 22px;
+    }
+
+    .offer-content{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .cart-item{
+        grid-template-columns:
+            60px 1fr auto;
+    }
+
+    .cart-image{
+        width:60px;
+        height:60px;
+    }
+
+    .footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- DECOR -->
+
+<div class="decor one">🧸</div>
+<div class="decor two">🚀</div>
+<div class="decor three">⭐</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+<nav class="nav">
+
+<a href="#" class="logo">
+
+    <div class="logo-mark">
+        🧸
+    </div>
+
+    Toy<span>Pop</span>
+
+</a>
+
+
+<div class="nav-links">
+
+    <a href="#products">
+        Toys
+    </a>
+
+    <a href="#offers">
+        Offers
+    </a>
+
+    <a href="#cart">
+        Cart
+    </a>
+
+</div>
+
+
+<button
+    class="cart-button"
+    onclick="scrollToCart()"
+>
+
+    🛒
+
+    <span
+        class="cart-count"
+        id="cartCount"
+    >
+        0
+    </span>
+
+</button>
+
+</nav>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+<section class="hero">
+
+<div>
+
+<span class="hero-badge">
+    ✨ PLAY • LAUGH • IMAGINE
+</span>
+
+<h1>
+
+    Big fun.
+
+    <span>
+        Little smiles.
+    </span>
+
+</h1>
+
+<p class="hero-text">
+
+    Discover colorful toys, exciting games and
+    adorable playtime buddies made to bring more
+    imagination into every day.
+
+</p>
+
+
+<div class="hero-buttons">
+
+<a
+    href="#products"
+    class="btn btn-primary"
+>
+    Explore Toys 🧸
+</a>
+
+<a
+    href="#cart"
+    class="btn btn-secondary"
+>
+    View Cart 🛒
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-visual">
+
+<div class="blob"></div>
+
+<div class="toy-display">
+
+<div class="big-toy">
+    🧸
+</div>
+
+<div class="sticker sale">
+    SALE! 🎉
+</div>
+
+<div class="sticker new">
+    NEW TOYS ✨
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<div class="features">
+
+<div class="feature">
+
+<div class="feature-icon">
+    🚚
+</div>
+
+<strong>
+    Fast Delivery
+</strong>
+
+<span>
+    Quick & safe shipping
+</span>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+    🛡️
+</div>
+
+<strong>
+    Kid Friendly
+</strong>
+
+<span>
+    Carefully selected toys
+</span>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+    🎁
+</div>
+
+<strong>
+    Gift Ready
+</strong>
+
+<span>
+    Perfect for birthdays
+</span>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+    💕
+</div>
+
+<strong>
+    Happy Customers
+</strong>
+
+<span>
+    Made for smiles
+</span>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     PRODUCTS
+========================================================= -->
+
+<section
+    class="section"
+    id="products"
+>
+
+<div class="section-heading">
+
+<div>
+
+<h2>
+    Pick your
+    <span>favorite!</span>
+</h2>
+
+</div>
+
+<p>
+
+    From cuddly friends to creative games,
+    there is always something fun waiting
+    for little explorers.
+
+</p>
+
+</div>
+
+
+<div class="filters">
+
+<button
+    class="filter active"
+    data-filter="all"
+>
+    All Toys
+</button>
+
+<button
+    class="filter"
+    data-filter="soft"
+>
+    Soft Toys
+</button>
+
+<button
+    class="filter"
+    data-filter="games"
+>
+    Games
+</button>
+
+<button
+    class="filter"
+    data-filter="vehicle"
+>
+    Vehicles
+</button>
+
+<button
+    class="filter"
+    data-filter="creative"
+>
+    Creative
+</button>
+
+</div>
+
+
+<div
+    class="products"
+    id="productGrid"
+>
+
+
+<!-- PRODUCT 1 -->
+
+<div
+    class="product"
+    data-category="soft"
+    data-id="1"
+    data-name="Cuddly Bear"
+    data-price="799"
+    data-emoji="🧸"
+>
+
+<div class="product-image">
+
+<span class="product-tag">
+    BESTSELLER
+</span>
+
+<button
+    class="favorite"
+    onclick="favorite(this)"
+>
+    ♥
+</button>
+
+<div class="product-emoji">
+    🧸
+</div>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+    Soft Toy
+</div>
+
+<h3>
+    Cuddly Bear
+</h3>
+
+<div class="rating">
+    ★★★★★
+    <span>(42)</span>
+</div>
+
+<div class="price-row">
+
+<div class="price">
+    ₹799
+    <span class="old-price">
+        ₹999
+    </span>
+</div>
+
+<button
+    class="add-cart"
+    onclick="addToCart(1)"
+>
+    +
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 2 -->
+
+<div
+    class="product"
+    data-category="vehicle"
+    data-id="2"
+    data-name="Racing Car"
+    data-price="599"
+    data-emoji="🏎️"
+>
+
+<div class="product-image">
+
+<span
+    class="product-tag"
+    style="background:#7357e8"
+>
+    HOT
+</span>
+
+<button
+    class="favorite"
+    onclick="favorite(this)"
+>
+    ♥
+</button>
+
+<div class="product-emoji">
+    🏎️
+</div>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+    Vehicle
+</div>
+
+<h3>
+    Turbo Racing Car
+</h3>
+
+<div class="rating">
+    ★★★★★
+    <span>(35)</span>
+</div>
+
+<div class="price-row">
+
+<div class="price">
+    ₹599
+    <span class="old-price">
+        ₹749
+    </span>
+</div>
+
+<button
+    class="add-cart"
+    onclick="addToCart(2)"
+>
+    +
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 3 -->
+
+<div
+    class="product"
+    data-category="games"
+    data-id="3"
+    data-name="Color Blocks"
+    data-price="449"
+    data-emoji="🧩"
+>
+
+<div class="product-image">
+
+<button
+    class="favorite"
+    onclick="favorite(this)"
+>
+    ♥
+</button>
+
+<div class="product-emoji">
+    🧩
+</div>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+    Game
+</div>
+
+<h3>
+    Color Puzzle Blocks
+</h3>
+
+<div class="rating">
+    ★★★★☆
+    <span>(28)</span>
+</div>
+
+<div class="price-row">
+
+<div class="price">
+    ₹449
+</div>
+
+<button
+    class="add-cart"
+    onclick="addToCart(3)"
+>
+    +
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 4 -->
+
+<div
+    class="product"
+    data-category="creative"
+    data-id="4"
+    data-name="Art Kit"
+    data-price="699"
+    data-emoji="🎨"
+>
+
+<div class="product-image">
+
+<span
+    class="product-tag"
+    style="background:#58c994"
+>
+    NEW
+</span>
+
+<button
+    class="favorite"
+    onclick="favorite(this)"
+>
+    ♥
+</button>
+
+<div class="product-emoji">
+    🎨
+</div>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+    Creative
+</div>
+
+<h3>
+    Little Artist Kit
+</h3>
+
+<div class="rating">
+    ★★★★★
+    <span>(51)</span>
+</div>
+
+<div class="price-row">
+
+<div class="price">
+    ₹699
+    <span class="old-price">
+        ₹899
+    </span>
+</div>
+
+<button
+    class="add-cart"
+    onclick="addToCart(4)"
+>
+    +
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 5 -->
+
+<div
+    class="product"
+    data-category="soft"
+    data-id="5"
+    data-name="Cute Bunny"
+    data-price="549"
+    data-emoji="🐰"
+>
+
+<div class="product-image">
+
+<button
+    class="favorite"
+    onclick="favorite(this)"
+>
+    ♥
+</button>
+
+<div class="product-emoji">
+    🐰
+</div>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+    Soft Toy
+</div>
+
+<h3>
+    Sleepy Bunny
+</h3>
+
+<div class="rating">
+    ★★★★★
+    <span>(37)</span>
+</div>
+
+<div class="price-row">
+
+<div class="price">
+    ₹549
+</div>
+
+<button
+    class="add-cart"
+    onclick="addToCart(5)"
+>
+    +
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 6 -->
+
+<div
+    class="product"
+    data-category="games"
+    data-id="6"
+    data-name="Building Set"
+    data-price="899"
+    data-emoji="🧱"
+>
+
+<div class="product-image">
+
+<button
+    class="favorite"
+    onclick="favorite(this)"
+>
+    ♥
+</button>
+
+<div class="product-emoji">
+    🧱
+</div>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+    Building Game
+</div>
+
+<h3>
+    Mega Building Set
+</h3>
+
+<div class="rating">
+    ★★★★★
+    <span>(63)</span>
+</div>
+
+<div class="price-row">
+
+<div class="price">
+    ₹899
+    <span class="old-price">
+        ₹1,099
+    </span>
+</div>
+
+<button
+    class="add-cart"
+    onclick="addToCart(6)"
+>
+    +
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 7 -->
+
+<div
+    class="product"
+    data-category="vehicle"
+    data-id="7"
+    data-name="Toy Plane"
+    data-price="749"
+    data-emoji="✈️"
+>
+
+<div class="product-image">
+
+<button
+    class="favorite"
+    onclick="favorite(this)"
+>
+    ♥
+</button>
+
+<div class="product-emoji">
+    ✈️
+</div>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+    Vehicle
+</div>
+
+<h3>
+    Sky Explorer Plane
+</h3>
+
+<div class="rating">
+    ★★★★☆
+    <span>(21)</span>
+</div>
+
+<div class="price-row">
+
+<div class="price">
+    ₹749
+</div>
+
+<button
+    class="add-cart"
+    onclick="addToCart(7)"
+>
+    +
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 8 -->
+
+<div
+    class="product"
+    data-category="creative"
+    data-id="8"
+    data-name="DIY Craft Box"
+    data-price="599"
+    data-emoji="✂️"
+>
+
+<div class="product-image">
+
+<span
+    class="product-tag"
+    style="background:#ff9d4d"
+>
+    OFFER
+</span>
+
+<button
+    class="favorite"
+    onclick="favorite(this)"
+>
+    ♥
+</button>
+
+<div class="product-emoji">
+    ✂️
+</div>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+    DIY
+</div>
+
+<h3>
+    Creative Craft Box
+</h3>
+
+<div class="rating">
+    ★★★★★
+    <span>(46)</span>
+</div>
+
+<div class="price-row">
+
+<div class="price">
+    ₹599
+    <span class="old-price">
+        ₹799
+    </span>
+</div>
+
+<button
+    class="add-cart"
+    onclick="addToCart(8)"
+>
+    +
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- OFFER -->
+
+<div
+    class="offer"
+    id="offers"
+>
+
+<div class="offer-content">
+
+<div>
+
+<h2>
+    🎉 Play More. Save More.
+</h2>
+
+<p>
+    Get 10% OFF on your next toy adventure.
+</p>
+
+</div>
+
+<div class="offer-code">
+    CODE: PLAY10
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CART + CHECKOUT
+========================================================= -->
+
+<section
+    class="cart-section"
+    id="cart"
+>
+
+<div class="cart-layout">
+
+
+<!-- CART -->
+
+<div class="cart-box">
+
+<div class="cart-title">
+
+<h2>
+    🛒 Your Toy Basket
+</h2>
+
+<span id="cartLabel">
+    0 items
+</span>
+
+</div>
+
+
+<div
+    class="cart-items"
+    id="cartItems"
+>
+
+<div class="empty-cart">
+
+<div>
+    🧸
+</div>
+
+Your basket is waiting
+for some fun!
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CHECKOUT SUMMARY -->
+
+<div class="checkout-box">
+
+<h2>
+    Order Summary
+</h2>
+
+
+<div class="summary-row">
+
+<span>
+    Subtotal
+</span>
+
+<strong id="subtotal">
+    ₹0
+</strong>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+    Discount
+</span>
+
+<strong id="discount">
+    - ₹0
+</strong>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+    Delivery
+</span>
+
+<strong id="delivery">
+    ₹0
+</strong>
+
+</div>
+
+
+<div class="coupon">
+
+<input
+    type="text"
+    id="couponInput"
+    placeholder="Have a coupon?"
+>
+
+<button onclick="applyCoupon()">
+    APPLY
+</button>
+
+</div>
+
+
+<div class="summary-row total">
+
+<span>
+    Total
+</span>
+
+<strong id="total">
+    ₹0
+</strong>
+
+</div>
+
+
+<button
+    class="checkout-btn"
+    onclick="openCheckout()"
+>
+    Continue to Checkout →
+</button>
+
+
+<div class="secure">
+    🔒 Secure checkout • Your details stay private
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     CHECKOUT MODAL
+========================================================= -->
+
+<div
+    class="modal"
+    id="checkoutModal"
+>
+
+<div class="modal-card">
+
+
+<div
+    class="modal-header"
+    id="modalHeader"
+>
+
+<h2>
+    🎁 Checkout
+</h2>
+
+<button
+    class="close"
+    onclick="closeCheckout()"
+>
+    ×
+</button>
+
+</div>
+
+
+<form
+    id="checkoutForm"
+    onsubmit="placeOrder(event)"
+>
+
+<div class="form-group">
+
+<label>
+    YOUR NAME
+</label>
+
+<input
+    type="text"
+    id="customerName"
+    placeholder="Enter your name"
+    required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    PHONE NUMBER
+</label>
+
+<input
+    type="tel"
+    id="customerPhone"
+    placeholder="Enter phone number"
+    required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    EMAIL
+</label>
+
+<input
+    type="email"
+    placeholder="you@example.com"
+    required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    DELIVERY ADDRESS
+</label>
+
+<textarea
+    rows="3"
+    placeholder="Enter your address"
+    required
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    PAYMENT METHOD
+</label>
+
+<select required>
+
+<option value="">
+    Select payment method
+</option>
+
+<option>
+    Cash on Delivery
+</option>
+
+<option>
+    UPI
+</option>
+
+<option>
+    Card
+</option>
+
+</select>
+
+</div>
+
+
+<button
+    class="checkout-btn"
+    type="submit"
+>
+    Place Order 🎉
+</button>
+
+</form>
+
+
+<div
+    class="success-message"
+    id="successMessage"
+>
+
+<div class="success-icon">
+    ✓
+</div>
+
+<h3>
+    Order Received!
+</h3>
+
+<p id="successText">
+
+    Thanks! Your toy order has been received.
+
+</p>
+
+<button
+    class="btn btn-primary"
+    style="margin-top:20px;width:100%"
+    onclick="closeCheckout()"
+>
+    Continue Shopping
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast"
+>
+    Added to your toy basket! 🎉
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer">
+
+<p>
+    © 2026 ToyPop. Made for little imaginations. 🧸
+</p>
+
+<div class="socials">
+
+<a href="#">
+    f
+</a>
+
+<a href="#">
+    ◎
+</a>
+
+<a href="#">
+    ▶
+</a>
+
+<a href="#">
+    ♡
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   PRODUCT DATA
+========================================================= */
+
+const products = {
+
+    1:{
+        name:"Cuddly Bear",
+        price:799,
+        emoji:"🧸"
+    },
+
+    2:{
+        name:"Turbo Racing Car",
+        price:599,
+        emoji:"🏎️"
+    },
+
+    3:{
+        name:"Color Puzzle Blocks",
+        price:449,
+        emoji:"🧩"
+    },
+
+    4:{
+        name:"Little Artist Kit",
+        price:699,
+        emoji:"🎨"
+    },
+
+    5:{
+        name:"Sleepy Bunny",
+        price:549,
+        emoji:"🐰"
+    },
+
+    6:{
+        name:"Mega Building Set",
+        price:899,
+        emoji:"🧱"
+    },
+
+    7:{
+        name:"Sky Explorer Plane",
+        price:749,
+        emoji:"✈️"
+    },
+
+    8:{
+        name:"Creative Craft Box",
+        price:599,
+        emoji:"✂️"
+    }
+
+};
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+let cart = {};
+
+let couponApplied = false;
+
+
+/* ADD */
+
+function addToCart(id){
+
+    if(cart[id]){
+        cart[id]++;
+    }else{
+        cart[id]=1;
+    }
+
+    updateCart();
+
+    showToast(
+        products[id].name +
+        " added! 🎉"
+    );
+}
+
+
+/* UPDATE */
+
+function updateCart(){
+
+    const cartItems =
+        document.getElementById(
+            "cartItems"
+        );
+
+    const ids =
+        Object.keys(cart);
+
+    let totalItems = 0;
+
+    let subtotal = 0;
+
+
+    if(ids.length === 0){
+
+        cartItems.innerHTML = `
+
+            <div class="empty-cart">
+
+                <div>
+                    🧸
+                </div>
+
+                Your basket is waiting
+                for some fun!
+
+            </div>
+
+        `;
+
+    }else{
+
+        cartItems.innerHTML = "";
+
+        ids.forEach(
+            id => {
+
+                const product =
+                    products[id];
+
+                const quantity =
+                    cart[id];
+
+                totalItems += quantity;
+
+                subtotal +=
+                    product.price *
+                    quantity;
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+                item.className =
+                    "cart-item";
+
+
+                item.innerHTML = `
+
+                    <div class="cart-image">
+                        ${product.emoji}
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            ${product.name}
+                        </h4>
+
+                        <small>
+                            ₹${product.price}
+                            each
+                        </small>
+
+                        <div class="qty">
+
+                            <button
+                                onclick="changeQty(${id},-1)"
+                            >
+                                −
+                            </button>
+
+                            <span>
+                                ${quantity}
+                            </span>
+
+                            <button
+                                onclick="changeQty(${id},1)"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="cart-price">
+
+                        <strong>
+                            ₹${(
+                                product.price *
+                                quantity
+                            ).toLocaleString("en-IN")}
+                        </strong>
+
+                        <button
+                            class="remove"
+                            onclick="removeItem(${id})"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+
+                `;
+
+                cartItems.appendChild(item);
+
+            }
+        );
+
+    }
+
+
+    let discount =
+        couponApplied
+        ? Math.round(subtotal * .10)
+        : 0;
+
+
+    let delivery =
+        subtotal > 0
+        ? subtotal >= 999
+            ? 0
+            : 79
+        : 0;
+
+
+    let total =
+        subtotal -
+        discount +
+        delivery;
+
+
+    document
+        .getElementById("cartCount")
+        .textContent =
+        totalItems;
+
+
+    document
+        .getElementById("cartLabel")
+        .textContent =
+        totalItems +
+        (totalItems === 1
+            ? " item"
+            : " items");
+
+
+    document
+        .getElementById("subtotal")
+        .textContent =
+        "₹" +
+        subtotal.toLocaleString(
+            "en-IN"
+        );
+
+
+    document
+        .getElementById("discount")
+        .textContent =
+        "- ₹" +
+        discount.toLocaleString(
+            "en-IN"
+        );
+
+
+    document
+        .getElementById("delivery")
+        .textContent =
+        delivery === 0
+        ? "FREE"
+        : "₹" +
+          delivery;
+
+
+    document
+        .getElementById("total")
+        .textContent =
+        "₹" +
+        total.toLocaleString(
+            "en-IN"
+        );
+
+}
+
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+function changeQty(id, change){
+
+    cart[id] += change;
+
+    if(cart[id] <= 0){
+
+        delete cart[id];
+
+    }
+
+    updateCart();
+
+}
+
+
+/* =========================================================
+   REMOVE
+========================================================= */
+
+function removeItem(id){
+
+    delete cart[id];
+
+    updateCart();
+
+    showToast(
+        "Toy removed from basket"
+    );
+
+}
+
+
+/* =========================================================
+   FAVORITE
+========================================================= */
+
+function favorite(button){
+
+    button.classList.toggle(
+        "active"
+    );
+
+    button.textContent =
+        button.classList.contains(
+            "active"
+        )
+        ? "♥"
+        : "♡";
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+const filters =
+    document.querySelectorAll(
+        ".filter"
+    );
+
+const productCards =
+    document.querySelectorAll(
+        ".product"
+    );
+
+
+filters.forEach(
+    filter => {
+
+        filter.addEventListener(
+            "click",
+            function(){
+
+                filters.forEach(
+                    f =>
+                    f.classList.remove(
+                        "active"
+                    )
+                );
+
+                this.classList.add(
+                    "active"
+                );
+
+
+                const category =
+                    this.dataset.filter;
+
+
+                productCards.forEach(
+                    card => {
+
+                        if(
+                            category === "all" ||
+                            card.dataset.category ===
+                            category
+                        ){
+
+                            card.style.display =
+                                "block";
+
+                        }else{
+
+                            card.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   COUPON
+========================================================= */
+
+function applyCoupon(){
+
+    const input =
+        document.getElementById(
+            "couponInput"
+        );
+
+    const value =
+        input.value
+        .trim()
+        .toUpperCase();
+
+
+    if(value === "PLAY10"){
+
+        couponApplied = true;
+
+        updateCart();
+
+        input.value =
+            "PLAY10";
+
+        showToast(
+            "🎉 10% discount applied!"
+        );
+
+    }else{
+
+        showToast(
+            "Try coupon PLAY10"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SCROLL CART
+========================================================= */
+
+function scrollToCart(){
+
+    document
+        .getElementById("cart")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function openCheckout(){
+
+    if(
+        Object.keys(cart).length === 0
+    ){
+
+        showToast(
+            "Add a toy before checkout 🧸"
+        );
+
+        scrollToCart();
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "checkoutModal"
+        )
+        .classList
+        .add("show");
+
+}
+
+
+function closeCheckout(){
+
+    document
+        .getElementById(
+            "checkoutModal"
+        )
+        .classList
+        .remove("show");
+
+}
+
+
+/* =========================================================
+   PLACE ORDER
+========================================================= */
+
+function placeOrder(event){
+
+    event.preventDefault();
+
+
+    const name =
+        document
+            .getElementById(
+                "customerName"
+            )
+            .value;
+
+
+    document
+        .getElementById(
+            "checkoutForm"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "modalHeader"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "successMessage"
+        )
+        .classList
+        .add("show");
+
+
+    document
+        .getElementById(
+            "successText"
+        )
+        .textContent =
+        `Thanks ${name}! Your toy order has been received. This demo does not process real payments.`;
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL OUTSIDE
+========================================================= */
+
+document
+    .getElementById(
+        "checkoutModal"
+    )
+    .addEventListener(
+        "click",
+        function(event){
+
+            if(
+                event.target === this
+            ){
+
+                closeCheckout();
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+    toast.textContent =
+        message;
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            function(){
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2200
+        );
+
+}
+
+
+/* =========================================================
+   INITIAL CART
+========================================================= */
+
+updateCart();
+
+</script>
+
+</body>
+</html>

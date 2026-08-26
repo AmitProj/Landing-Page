@@ -1,0 +1,2606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AYANA — Modern Yoga & Wellness</title>
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f3efe7;
+    color:#202c26;
+    overflow-x:hidden;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+:root{
+    --forest:#243a30;
+    --forest-2:#172a22;
+    --olive:#566d58;
+    --sage:#aeb9a3;
+
+    --cream:#f3efe7;
+    --cream-2:#e9e2d5;
+
+    --clay:#b8755d;
+    --clay-light:#d7a08b;
+
+    --white:#ffffff;
+
+    --muted:#727a73;
+
+    --border:rgba(36,58,48,.12);
+
+    --shadow:
+        0 25px 70px rgba(27,42,34,.12);
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+.section{
+    padding:120px 0;
+}
+
+.section-label{
+    display:inline-block;
+
+    color:var(--clay);
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:2.5px;
+
+    text-transform:uppercase;
+}
+
+.section-title{
+    margin-top:15px;
+
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(2.7rem,5vw,5rem);
+
+    line-height:.98;
+
+    font-weight:400;
+
+    letter-spacing:-3px;
+}
+
+.section-title em{
+    color:var(--olive);
+    font-style:italic;
+}
+
+.section-description{
+    margin-top:20px;
+
+    max-width:550px;
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:fixed;
+
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:1000;
+
+    padding:20px 0;
+
+    transition:.35s;
+}
+
+.header.scrolled{
+    padding:12px 0;
+
+    background:
+        rgba(243,239,231,.88);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 5px 30px
+        rgba(30,45,37,.06);
+}
+
+.nav{
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.logo{
+    color:white;
+
+    font-family:Georgia,serif;
+
+    font-size:25px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.header.scrolled .logo{
+    color:var(--forest);
+}
+
+.logo span{
+    color:var(--clay);
+}
+
+.nav-links{
+    display:flex;
+    gap:34px;
+
+    color:rgba(255,255,255,.9);
+
+    font-size:11px;
+    font-weight:700;
+
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.header.scrolled .nav-links{
+    color:var(--forest);
+}
+
+.nav-links a{
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:1px;
+
+    background:var(--clay);
+
+    transition:.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-cta{
+    padding:12px 19px;
+
+    border-radius:40px;
+
+    background:white;
+
+    color:var(--forest);
+
+    font-size:10px;
+    font-weight:800;
+
+    transition:.3s;
+}
+
+.header.scrolled .nav-cta{
+    background:var(--forest);
+    color:white;
+}
+
+.nav-cta:hover{
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    color:white;
+}
+
+.hero-image{
+    position:absolute;
+
+    inset:0;
+
+    z-index:-3;
+}
+
+.hero-image img{
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:-2;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20,36,29,.82) 0%,
+            rgba(20,36,29,.56) 45%,
+            rgba(20,36,29,.15) 100%
+        );
+}
+
+.hero-content{
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    padding-top:80px;
+}
+
+.hero-small{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-weight:800;
+}
+
+.hero-small::before{
+    content:"";
+
+    width:35px;
+    height:1px;
+
+    background:var(--clay-light);
+}
+
+.hero h1{
+    max-width:800px;
+
+    margin-top:24px;
+
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(4rem,8vw,8.5rem);
+
+    line-height:.86;
+
+    font-weight:400;
+
+    letter-spacing:-6px;
+}
+
+.hero h1 em{
+    color:#d7a08b;
+    font-style:italic;
+}
+
+.hero-text{
+    max-width:510px;
+
+    margin-top:30px;
+
+    color:rgba(255,255,255,.76);
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+.hero-buttons{
+    display:flex;
+
+    gap:12px;
+
+    margin-top:35px;
+}
+
+.btn{
+    min-height:53px;
+
+    padding:0 25px;
+
+    border-radius:50px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:1px solid transparent;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.7px;
+
+    text-transform:uppercase;
+
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--clay);
+
+    color:white;
+
+    box-shadow:
+        0 12px 30px
+        rgba(184,117,93,.3);
+}
+
+.btn-primary:hover{
+    background:#a6634d;
+
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    color:white;
+
+    border-color:
+        rgba(255,255,255,.4);
+
+    background:
+        rgba(255,255,255,.05);
+
+    backdrop-filter:blur(8px);
+}
+
+.btn-outline:hover{
+    background:white;
+    color:var(--forest);
+}
+
+.hero-bottom{
+    position:absolute;
+
+    left:50%;
+
+    bottom:35px;
+
+    transform:translateX(-50%);
+
+    width:min(1180px,92%);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.scroll{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.65);
+}
+
+.scroll-line{
+    width:45px;
+    height:1px;
+
+    background:rgba(255,255,255,.5);
+}
+
+.hero-stat{
+    display:flex;
+    gap:35px;
+
+    text-align:right;
+}
+
+.hero-stat strong{
+    display:block;
+
+    font-family:Georgia,serif;
+
+    font-size:24px;
+
+    font-weight:400;
+}
+
+.hero-stat span{
+    display:block;
+
+    margin-top:3px;
+
+    color:rgba(255,255,255,.6);
+
+    font-size:8px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    display:grid;
+
+    grid-template-columns:.9fr 1.1fr;
+
+    gap:90px;
+
+    align-items:center;
+}
+
+.intro-image{
+    position:relative;
+}
+
+.intro-image img{
+    height:620px;
+
+    object-fit:cover;
+
+    border-radius:
+        0 150px 0 150px;
+}
+
+.image-caption{
+    position:absolute;
+
+    right:-35px;
+    bottom:30px;
+
+    width:190px;
+
+    padding:23px;
+
+    background:var(--forest);
+
+    color:white;
+
+    box-shadow:var(--shadow);
+}
+
+.image-caption strong{
+    font-family:Georgia,serif;
+
+    font-size:25px;
+
+    font-weight:400;
+}
+
+.image-caption p{
+    margin-top:7px;
+
+    color:#bbc8c0;
+
+    font-size:9px;
+
+    line-height:1.6;
+}
+
+.intro-content p{
+    max-width:540px;
+
+    margin-top:25px;
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+.intro-list{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+
+    margin-top:35px;
+}
+
+.intro-item{
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+}
+
+.intro-item strong{
+    font-family:Georgia,serif;
+
+    font-size:23px;
+
+    font-weight:400;
+}
+
+.intro-item span{
+    display:block;
+
+    margin-top:7px;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   VIDEO SECTION
+========================================================= */
+
+.video-section{
+    background:var(--forest);
+
+    color:white;
+
+    overflow:hidden;
+}
+
+.video-layout{
+    display:grid;
+
+    grid-template-columns:
+        .75fr 1.25fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.video-section .section-label{
+    color:#d7a08b;
+}
+
+.video-section .section-title{
+    color:white;
+}
+
+.video-section .section-title em{
+    color:#b6c6b8;
+}
+
+.video-section .section-description{
+    color:#aebbb4;
+}
+
+.video-info{
+    position:relative;
+}
+
+.video-info::before{
+    content:"";
+
+    position:absolute;
+
+    width:280px;
+    height:280px;
+
+    border-radius:50%;
+
+    background:
+        rgba(174,185,163,.07);
+
+    top:-100px;
+    left:-100px;
+
+    z-index:0;
+}
+
+.video-info > *{
+    position:relative;
+    z-index:1;
+}
+
+.video-feature{
+    position:relative;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.3);
+}
+
+.video-feature img{
+    height:530px;
+
+    object-fit:cover;
+}
+
+.video-feature::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(0,0,0,.55)
+        );
+}
+
+.video-play{
+    position:absolute;
+
+    z-index:5;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:85px;
+    height:85px;
+
+    border-radius:50%;
+
+    border:1px solid
+        rgba(255,255,255,.7);
+
+    background:
+        rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    font-size:21px;
+
+    transition:.3s;
+}
+
+.video-play:hover{
+    background:white;
+
+    color:var(--forest);
+
+    transform:
+        translate(-50%,-50%)
+        scale(1.08);
+}
+
+.video-label{
+    position:absolute;
+
+    z-index:6;
+
+    left:30px;
+    bottom:25px;
+}
+
+.video-label small{
+    display:block;
+
+    color:#d7a08b;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+}
+
+.video-label strong{
+    display:block;
+
+    margin-top:7px;
+
+    font-family:Georgia,serif;
+
+    font-size:26px;
+
+    font-weight:400;
+}
+
+
+/* =========================================================
+   PROGRAMS
+========================================================= */
+
+.program-header{
+    display:flex;
+
+    align-items:end;
+
+    justify-content:space-between;
+
+    margin-bottom:45px;
+}
+
+.program-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.program{
+    background:white;
+
+    overflow:hidden;
+
+    border-radius:4px;
+
+    transition:.4s;
+
+    box-shadow:
+        0 12px 40px
+        rgba(36,58,48,.06);
+}
+
+.program:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+        0 25px 60px
+        rgba(36,58,48,.12);
+}
+
+.program-image{
+    position:relative;
+
+    height:330px;
+
+    overflow:hidden;
+}
+
+.program-image img{
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.program:hover .program-image img{
+    transform:scale(1.05);
+}
+
+.program-tag{
+    position:absolute;
+
+    top:18px;
+    left:18px;
+
+    padding:7px 10px;
+
+    background:white;
+
+    color:var(--forest);
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+.program-content{
+    padding:25px;
+}
+
+.program-content h3{
+    font-family:Georgia,serif;
+
+    font-size:25px;
+
+    font-weight:400;
+}
+
+.program-content p{
+    margin-top:10px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    line-height:1.7;
+}
+
+.program-meta{
+    margin-top:20px;
+
+    padding-top:15px;
+
+    border-top:1px solid var(--border);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#78827c;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   MEMBERSHIP
+========================================================= */
+
+.membership{
+    background:#e5dfd2;
+}
+
+.membership-header{
+    text-align:center;
+
+    max-width:700px;
+
+    margin:auto;
+}
+
+.membership-header .section-description{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.plans{
+    margin-top:55px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.plan{
+    background:#f7f4ed;
+
+    padding:38px 32px;
+
+    position:relative;
+
+    border:1px solid rgba(36,58,48,.1);
+
+    transition:.35s;
+}
+
+.plan:hover{
+    transform:translateY(-7px);
+}
+
+.plan.featured{
+    background:var(--forest);
+
+    color:white;
+
+    transform:translateY(-12px);
+
+    border:0;
+
+    box-shadow:
+        0 30px 70px
+        rgba(36,58,48,.2);
+}
+
+.plan.featured:hover{
+    transform:translateY(-18px);
+}
+
+.plan-badge{
+    position:absolute;
+
+    top:20px;
+    right:20px;
+
+    padding:7px 10px;
+
+    background:var(--clay);
+
+    color:white;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+.plan h3{
+    font-family:Georgia,serif;
+
+    font-size:27px;
+
+    font-weight:400;
+}
+
+.plan-description{
+    margin-top:9px;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    line-height:1.6;
+}
+
+.featured .plan-description{
+    color:#aebbb4;
+}
+
+.price{
+    margin-top:25px;
+
+    font-family:Georgia,serif;
+
+    font-size:48px;
+}
+
+.price small{
+    color:var(--muted);
+
+    font-family:Arial;
+
+    font-size:9px;
+}
+
+.featured .price small{
+    color:#aebbb4;
+}
+
+.plan-features{
+    margin-top:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:13px;
+}
+
+.plan-features div{
+    color:#68736d;
+
+    font-size:10px;
+}
+
+.featured .plan-features div{
+    color:#d1dad4;
+}
+
+.plan-button{
+    width:100%;
+
+    margin-top:30px;
+
+    height:50px;
+
+    border-radius:50px;
+
+    border:1px solid var(--border);
+
+    background:transparent;
+
+    color:var(--forest);
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+.featured .plan-button{
+    background:#e2ebe3;
+
+    border:0;
+
+    color:var(--forest);
+}
+
+
+/* =========================================================
+   TESTIMONIAL
+========================================================= */
+
+.testimonial-layout{
+    display:grid;
+
+    grid-template-columns:.8fr 1.2fr;
+
+    gap:90px;
+
+    align-items:center;
+}
+
+.testimonial-image img{
+    height:520px;
+
+    object-fit:cover;
+}
+
+.testimonial-quote{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(2rem,4vw,4rem);
+
+    line-height:1.15;
+
+    letter-spacing:-2px;
+}
+
+.testimonial-author{
+    margin-top:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.author-line{
+    width:30px;
+    height:1px;
+
+    background:var(--clay);
+}
+
+.testimonial-author div{
+    color:var(--muted);
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta{
+    position:relative;
+
+    min-height:530px;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    color:white;
+}
+
+.cta-image{
+    position:absolute;
+
+    inset:0;
+
+    z-index:-3;
+}
+
+.cta-image img{
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center;
+}
+
+.cta::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:-2;
+
+    background:
+        rgba(27,45,36,.7);
+}
+
+.cta-content{
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.cta-content h2{
+    max-width:850px;
+
+    margin:auto;
+
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(3rem,6vw,6.5rem);
+
+    line-height:.95;
+
+    font-weight:400;
+
+    letter-spacing:-4px;
+}
+
+.cta-content h2 em{
+    color:#d7a08b;
+
+    font-style:italic;
+}
+
+.cta-content p{
+    max-width:550px;
+
+    margin:25px auto;
+
+    color:rgba(255,255,255,.72);
+
+    line-height:1.8;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#14251e;
+
+    color:white;
+
+    padding:60px 0 25px;
+}
+
+.footer-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:40px;
+
+    padding-bottom:45px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.1);
+}
+
+.footer-logo{
+    font-family:Georgia,serif;
+
+    font-size:28px;
+}
+
+.footer-brand p{
+    margin-top:10px;
+
+    color:#9eaaa4;
+
+    max-width:280px;
+
+    line-height:1.6;
+
+    font-size:10px;
+}
+
+.footer-links{
+    display:flex;
+
+    gap:70px;
+}
+
+.footer-column h4{
+    color:#d7a08b;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+}
+
+.footer-column a{
+    display:block;
+
+    margin-top:13px;
+
+    color:#aeb9b3;
+
+    font-size:10px;
+
+    transition:.2s;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    display:flex;
+
+    justify-content:space-between;
+
+    padding-top:25px;
+
+    color:#718078;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   VIDEO MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(10,20,16,.82);
+
+    backdrop-filter:blur(12px);
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-content{
+    width:min(950px,100%);
+
+    position:relative;
+
+    background:#101d18;
+
+    padding:10px;
+
+    border-radius:5px;
+
+    box-shadow:
+        0 40px 100px
+        rgba(0,0,0,.5);
+}
+
+.modal video{
+    width:100%;
+
+    max-height:75vh;
+
+    display:block;
+
+    background:black;
+}
+
+.close-modal{
+    position:absolute;
+
+    right:-15px;
+    top:-15px;
+
+    width:42px;
+    height:42px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:var(--forest);
+
+    font-size:20px;
+
+    z-index:10;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        letter-spacing:-4px;
+    }
+
+    .intro,
+    .video-layout,
+    .testimonial-layout{
+        grid-template-columns:1fr;
+
+        gap:50px;
+    }
+
+    .intro-image img{
+        height:500px;
+    }
+
+    .video-info{
+        order:2;
+    }
+
+    .program-grid,
+    .plans{
+        grid-template-columns:1fr;
+    }
+
+    .plan.featured{
+        transform:none;
+    }
+
+    .plan.featured:hover{
+        transform:translateY(-7px);
+    }
+
+    .testimonial-image img{
+        height:450px;
+    }
+}
+
+@media(max-width:600px){
+
+    .header{
+        padding:15px 0;
+    }
+
+    .nav-cta{
+        padding:10px 14px;
+    }
+
+    .hero{
+        min-height:800px;
+    }
+
+    .hero-content{
+        padding-top:100px;
+    }
+
+    .hero h1{
+        font-size:4rem;
+
+        letter-spacing:-3px;
+    }
+
+    .hero-bottom{
+        display:none;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .section{
+        padding:85px 0;
+    }
+
+    .intro-image img{
+        height:430px;
+
+        border-radius:
+            0 90px 0 90px;
+    }
+
+    .image-caption{
+        right:10px;
+    }
+
+    .intro-list{
+        grid-template-columns:1fr;
+    }
+
+    .video-feature img{
+        height:420px;
+    }
+
+    .program-image{
+        height:390px;
+    }
+
+    .footer-top,
+    .footer-bottom{
+        flex-direction:column;
+    }
+
+    .footer-links{
+        gap:35px;
+    }
+
+    .cta-content h2{
+        letter-spacing:-2px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header" id="header">
+
+<nav class="nav">
+
+<a href="#" class="logo">
+    AYANA<span>.</span>
+</a>
+
+<div class="nav-links">
+
+<a href="#about">About</a>
+<a href="#practice">Practice</a>
+<a href="#courses">Courses</a>
+<a href="#membership">Membership</a>
+
+</div>
+
+<a href="#membership" class="nav-cta">
+    Start Practicing
+</a>
+
+</nav>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+<div class="hero-image">
+
+<img
+src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=2000&q=90"
+alt="Woman practicing yoga"
+>
+
+</div>
+
+
+<div class="hero-content">
+
+<div class="hero-small">
+    Yoga • Movement • Mindfulness
+</div>
+
+<h1>
+    Move with
+    <em>intention.</em>
+</h1>
+
+<p class="hero-text">
+
+A modern yoga space for people who want to
+feel stronger in their bodies, quieter in their
+minds and more present in everyday life.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#practice" class="btn btn-primary">
+    Explore Practice
+</a>
+
+<a href="#video" class="btn btn-outline">
+    Watch Free Class
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-bottom">
+
+<div class="scroll">
+    <span class="scroll-line"></span>
+    Scroll to explore
+</div>
+
+<div class="hero-stat">
+
+<div>
+<strong>350+</strong>
+<span>Practices</span>
+</div>
+
+<div>
+<strong>12K</strong>
+<span>Members</span>
+</div>
+
+<div>
+<strong>4.9</strong>
+<span>Rating</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section class="section" id="about">
+
+<div class="container intro reveal">
+
+<div class="intro-image">
+
+<img
+src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=85"
+alt="Woman practicing meditation"
+>
+
+<div class="image-caption">
+
+<strong>
+    Your practice,
+    your pace.
+</strong>
+
+<p>
+    No pressure. No perfection.
+    Just space to reconnect.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="intro-content">
+
+<span class="section-label">
+    The AYANA Approach
+</span>
+
+<h2 class="section-title">
+    Yoga for the
+    <em>life you actually live.</em>
+</h2>
+
+<p>
+
+AYANA combines traditional yoga principles
+with modern movement practices to create
+classes that fit naturally into real life.
+
+Whether you have ten minutes before work
+or an entire evening for yourself, there is a
+practice waiting for you.
+
+</p>
+
+
+<div class="intro-list">
+
+<div class="intro-item">
+
+<strong>
+    05–60
+</strong>
+
+<span>
+    Minute practices
+    for every schedule
+</span>
+
+</div>
+
+<div class="intro-item">
+
+<strong>
+    All Levels
+</strong>
+
+<span>
+    From complete beginners
+    to experienced yogis
+</span>
+
+</div>
+
+<div class="intro-item">
+
+<strong>
+    24/7
+</strong>
+
+<span>
+    Practice whenever
+    your body needs it
+</span>
+
+</div>
+
+<div class="intro-item">
+
+<strong>
+    100%
+</strong>
+
+<span>
+    Designed around
+    mindful movement
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     VIDEO
+========================================================= -->
+
+<section class="section video-section" id="video">
+
+<div class="container video-layout reveal">
+
+
+<div class="video-info">
+
+<span class="section-label">
+    Free Practice
+</span>
+
+<h2 class="section-title">
+    Take a moment
+    to <em>breathe.</em>
+</h2>
+
+<p class="section-description">
+
+Press play and step away from the noise
+for a few minutes. This gentle full-body
+practice is suitable for all levels.
+
+</p>
+
+<div style="margin-top:30px;">
+
+<a href="#membership" class="btn btn-primary">
+    Unlock Full Library
+</a>
+
+</div>
+
+</div>
+
+
+<div class="video-feature">
+
+<img
+src="https://images.unsplash.com/photo-1599447421404-5e6d7c2f7c47?auto=format&fit=crop&w=1400&q=90"
+alt="Yoga practice"
+>
+
+<button
+class="video-play"
+id="playVideo"
+aria-label="Play yoga video"
+>
+    ▶
+</button>
+
+<div class="video-label">
+
+<small>
+    Free Class
+</small>
+
+<strong>
+    18-Minute Morning Flow
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     COURSES
+========================================================= -->
+
+<section class="section" id="courses">
+
+<div class="container">
+
+<div class="program-header reveal">
+
+<div>
+
+<span class="section-label">
+    Programs
+</span>
+
+<h2 class="section-title">
+    Build your
+    <em>practice.</em>
+</h2>
+
+<p class="section-description">
+    Structured programs created to help
+    you develop consistency without pressure.
+</p>
+
+</div>
+
+<a href="#membership" class="btn btn-outline"
+style="border-color:#9aa59d;color:#243a30;">
+    View All Courses
+</a>
+
+</div>
+
+
+<div class="program-grid">
+
+
+<div class="program reveal">
+
+<div class="program-image">
+
+<img
+src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=1000&q=85"
+alt="Yoga class"
+>
+
+<span class="program-tag">
+    Beginner
+</span>
+
+</div>
+
+<div class="program-content">
+
+<h3>
+    Yoga Foundations
+</h3>
+
+<p>
+    Learn essential poses, alignment,
+    breathing and mindful movement.
+</p>
+
+<div class="program-meta">
+
+<span>
+    14 Lessons
+</span>
+
+<span>
+    4 Weeks
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="program reveal">
+
+<div class="program-image">
+
+<img
+src="https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=1000&q=85"
+alt="Yoga stretching"
+>
+
+<span class="program-tag">
+    All Levels
+</span>
+
+</div>
+
+<div class="program-content">
+
+<h3>
+    Strong & Flexible
+</h3>
+
+<p>
+    Build strength, mobility and confidence
+    through progressive yoga sequences.
+</p>
+
+<div class="program-meta">
+
+<span>
+    20 Lessons
+</span>
+
+<span>
+    6 Weeks
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="program reveal">
+
+<div class="program-image">
+
+<img
+src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=1000&q=85"
+alt="Meditation and yoga"
+>
+
+<span class="program-tag">
+    Relaxation
+</span>
+
+</div>
+
+<div class="program-content">
+
+<h3>
+    Rest & Restore
+</h3>
+
+<p>
+    Slow practices designed for stress
+    relief, deep relaxation and sleep.
+</p>
+
+<div class="program-meta">
+
+<span>
+    12 Lessons
+</span>
+
+<span>
+    3 Weeks
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     MEMBERSHIP
+========================================================= -->
+
+<section class="section membership" id="membership">
+
+<div class="container">
+
+<div class="membership-header reveal">
+
+<span class="section-label">
+    Membership
+</span>
+
+<h2 class="section-title">
+    Make space for
+    <em>yourself.</em>
+</h2>
+
+<p class="section-description">
+
+Choose a plan that fits your lifestyle.
+Cancel whenever you need.
+
+</p>
+
+</div>
+
+
+<div class="plans">
+
+
+<div class="plan reveal">
+
+<h3>
+    Essential
+</h3>
+
+<p class="plan-description">
+    A simple way to begin a consistent
+    home yoga practice.
+</p>
+
+<div class="price">
+    ₹399
+    <small>/ month</small>
+</div>
+
+<div class="plan-features">
+
+<div>✓ 100+ yoga classes</div>
+<div>✓ Beginner library</div>
+<div>✓ Meditation sessions</div>
+<div>✓ Mobile access</div>
+
+</div>
+
+<button
+class="plan-button"
+onclick="selectPlan('Essential')"
+>
+    Start Essential
+</button>
+
+</div>
+
+
+<div class="plan featured reveal">
+
+<div class="plan-badge">
+    Most Popular
+</div>
+
+<h3>
+    Unlimited
+</h3>
+
+<p class="plan-description">
+    The complete AYANA experience
+    for your everyday practice.
+</p>
+
+<div class="price">
+    ₹699
+    <small>/ month</small>
+</div>
+
+<div class="plan-features">
+
+<div>✓ Unlimited yoga classes</div>
+<div>✓ All courses & programs</div>
+<div>✓ New classes every week</div>
+<div>✓ Breathwork library</div>
+<div>✓ Progress tracking</div>
+
+</div>
+
+<button
+class="plan-button"
+onclick="selectPlan('Unlimited')"
+>
+    Start Unlimited
+</button>
+
+</div>
+
+
+<div class="plan reveal">
+
+<h3>
+    Annual
+</h3>
+
+<p class="plan-description">
+    Best value for those ready to make
+    wellness part of their lifestyle.
+</p>
+
+<div class="price">
+    ₹5,999
+    <small>/ year</small>
+</div>
+
+<div class="plan-features">
+
+<div>✓ Everything in Unlimited</div>
+<div>✓ Premium masterclasses</div>
+<div>✓ Live monthly sessions</div>
+<div>✓ Exclusive programs</div>
+<div>✓ Priority support</div>
+
+</div>
+
+<button
+class="plan-button"
+onclick="selectPlan('Annual')"
+>
+    Start Annual
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     TESTIMONIAL
+========================================================= -->
+
+<section class="section">
+
+<div class="container testimonial-layout reveal">
+
+<div class="testimonial-image">
+
+<img
+src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=1000&q=85"
+alt="Woman practicing yoga"
+>
+
+</div>
+
+
+<div>
+
+<span class="section-label">
+    Member Story
+</span>
+
+<div class="testimonial-quote">
+
+“Yoga stopped being something
+I had to find time for — it became
+the time I gave myself.”
+
+</div>
+
+<div class="testimonial-author">
+
+<span class="author-line"></span>
+
+<div>
+    Meera S. — AYANA Member
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta">
+
+<div class="cta-image">
+
+<img
+src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=2000&q=90"
+alt="Yoga retreat"
+>
+
+</div>
+
+
+<div class="cta-content reveal">
+
+<h2>
+    Your body is here.
+    <em>Come back to it.</em>
+</h2>
+
+<p>
+    Start with one class. One breath.
+    One quiet moment for yourself.
+</p>
+
+<a href="#membership" class="btn btn-primary">
+    Begin Your Practice
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-top">
+
+<div class="footer-brand">
+
+<div class="footer-logo">
+    AYANA.
+</div>
+
+<p>
+    Modern yoga, mindful movement
+    and space to reconnect.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<div class="footer-column">
+
+<h4>
+    Explore
+</h4>
+
+<a href="#about">About</a>
+<a href="#practice">Practice</a>
+<a href="#courses">Courses</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>
+    Membership
+</h4>
+
+<a href="#membership">Plans</a>
+<a href="#">FAQ</a>
+<a href="#">Contact</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>
+    Follow
+</h4>
+
+<a href="#">Instagram</a>
+<a href="#">YouTube</a>
+<a href="#">Facebook</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+    © 2026 AYANA Yoga.
+</span>
+
+<span>
+    Move • Breathe • Be
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =========================================================
+     VIDEO MODAL
+========================================================= -->
+
+<div class="modal" id="videoModal">
+
+<div class="modal-content">
+
+<button
+class="close-modal"
+id="closeVideo"
+>
+    ×
+</button>
+
+<video
+id="yogaVideo"
+controls
+poster="https://images.unsplash.com/photo-1599447421404-5e6d7c2f7c47?auto=format&fit=crop&w=1400&q=90"
+>
+
+<!--
+    Replace this source with your client's
+    actual yoga video.
+-->
+
+<source
+src="https://cdn.coverr.co/videos/coverr-a-woman-doing-yoga-1573/1080p.mp4"
+type="video/mp4"
+>
+
+Your browser does not support video playback.
+
+</video>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+const header =
+document.getElementById("header");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY > 50){
+
+        header.classList.add("scrolled");
+
+    }else{
+
+        header.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   VIDEO MODAL
+========================================================= */
+
+const playVideo =
+document.getElementById("playVideo");
+
+const videoModal =
+document.getElementById("videoModal");
+
+const closeVideo =
+document.getElementById("closeVideo");
+
+const yogaVideo =
+document.getElementById("yogaVideo");
+
+
+playVideo.addEventListener("click",()=>{
+
+    videoModal.classList.add("active");
+
+    document.body.style.overflow="hidden";
+
+    yogaVideo.play().catch(()=>{});
+
+});
+
+
+closeVideo.addEventListener("click",closeVideoModal);
+
+
+videoModal.addEventListener("click",(event)=>{
+
+    if(event.target === videoModal){
+
+        closeVideoModal();
+
+    }
+
+});
+
+
+function closeVideoModal(){
+
+    videoModal.classList.remove("active");
+
+    yogaVideo.pause();
+
+    yogaVideo.currentTime=0;
+
+    document.body.style.overflow="";
+
+}
+
+
+document.addEventListener("keydown",(event)=>{
+
+    if(event.key==="Escape"){
+
+        closeVideoModal();
+
+    }
+
+});
+
+
+/* =========================================================
+   MEMBERSHIP
+========================================================= */
+
+function selectPlan(plan){
+
+    alert(
+        "You selected the " +
+        plan +
+        " membership.\n\nConnect this button to your subscription/payment system."
+    );
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+
+const observer =
+new IntersectionObserver(
+
+    (entries)=>{
+
+        entries.forEach((entry)=>{
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add(
+                    "visible"
+                );
+
+                observer.unobserve(
+                    entry.target
+                );
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.12
+    }
+
+);
+
+
+revealElements.forEach((element)=>{
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   SMOOTH NAVIGATION
+========================================================= */
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(link=>{
+
+    link.addEventListener("click",(event)=>{
+
+        const target =
+        document.querySelector(
+            link.getAttribute("href")
+        );
+
+        if(target){
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior:"smooth"
+            });
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
